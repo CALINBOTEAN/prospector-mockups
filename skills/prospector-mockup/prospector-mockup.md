@@ -66,6 +66,18 @@ legible. Do not shrink a generated or reconstructed logo into the small header
 as the main brand moment. On mobile, center the hero logo and align it
 deliberately with the hero headline/content stack.
 
+**Logo creation is out of scope for the mockup builder.** Calin generates the
+logo separately, outside this pipeline, using an external image tool (e.g.
+ChatGPT image generation) from a written brief matching the lead's category
+shell (palette + typeface feel). The builder (Codex/Claude Code) never
+designs, generates, or improvises a logo itself — its job starts only once a
+source logo file has been supplied, and is limited to two steps: apply the
+watermark (below) and place the result in the hero per the placement rule
+above. If no source logo file has been supplied for a lead, do not invent
+one and do not proceed without it as if it were optional — build without a
+logo, flag its absence clearly in the delivery notes, and note that a
+ChatGPT-generated source image is needed before the mockup is complete.
+
 If a free mockup uses a newly generated logo, apply a visible `DEMO` watermark
 to the logo asset with Python's Pillow library before inserting it in the page.
 The watermark must stay visible, but make it visually restrained: prefer a
@@ -206,11 +218,12 @@ never the leading action in the design.
   guarantees, client counts, or brand partnerships. Every stated fact must be
   verifiable from the listing or reviews. Where a template section needs a
   fact you do not have, use neutral phrasing or delete the element.
-- If a free mockup uses a newly generated logo, follow the shared logo
-  watermark rule above: visible but subtle `DEMO` watermark applied with
-  Python's Pillow library before the logo is inserted. Keep the clean logo
-  version out of the free mockup; it is reserved for delivery only after the
-  client signs.
+- If a free mockup uses an externally supplied logo (see the logo-ownership
+  rule above — the builder never generates the logo itself), follow the
+  shared logo watermark rule: visible but subtle `DEMO` watermark applied
+  with Python's Pillow library before the logo is inserted. Keep the clean
+  logo version out of the free mockup; it is reserved for delivery only
+  after the client signs.
 - If a lead has zero real listing photos, generic atmospheric imagery for the
   trade is acceptable as decorative mood-setting content (for example feed
   sacks, fields, workshop materials, or tools). It must never be captioned or
