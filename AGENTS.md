@@ -125,3 +125,30 @@ billing or API access looks broken.
   sent by hand.
 - Do not set `ANTHROPIC_API_KEY` in this environment — Claude Code should
   authenticate with the Pro subscription login, not API billing.
+
+## Session log
+
+Most recent first. Add a new dated entry at the end of any session with
+meaningful progress or a real discovered issue — a few lines, key lessons
+only, not a full transcript.
+
+- **2026-08-14** — Hero-lockup alignment bug on the Sabo ITP & SERVICE
+  mockup: after switching `hero-lockup`'s `align-items` from `center` to
+  `flex-start` so the logo/H1/subline/buttons would left-align, the kicker
+  span stayed centered because it had its own `margin: 0 auto`, which
+  silently overrides a parent's `align-items`. Lesson generalized into
+  `skills/prospector-mockup/prospector-mockup.md`'s shared rules and baked
+  into `skills/prospector-mockup/assets/template.html`'s hero-lockup as the
+  default: alignment must be controlled only by the parent container, never
+  by a child's own margin/auto-centering rule.
+- **2026-08-14** — Fixed the Google Cloud org-mismatch issue: the
+  PROSPECTOR project lives under "No organization", not
+  `calinbotean-work-org` — use the direct project URL going forward (see
+  "Google Cloud console — org gotcha" above). Learned GitHub Pages needs
+  either a `.nojekyll` file or a plain static-deploy Actions workflow, not
+  "Deploy from a branch" with Jekyll — Jekyll processing breaks on
+  `{{TOKEN}}` placeholders in SKILL.md files. WhatsApp outreach still on
+  the UK number as a stopgap; Romanian number migration still pending (see
+  "Later" above). `data/pipeline.csv` briefly existed in the public GitHub
+  repo's commit history before `.gitignore` was added — decision was to
+  leave it as-is, not scrub history.

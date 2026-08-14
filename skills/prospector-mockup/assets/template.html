@@ -63,6 +63,23 @@ header{position:sticky;top:0;z-index:100;background:var(--c-primary);color:#fff;
 
 /* Hero */
 .hero{background:var(--c-primary);color:#fff;text-align:center;padding:88px 0 72px}
+
+/* hero-lockup groups the logo (optional) + eyebrow + H1 + rule as one unit.
+   ALIGNMENT RULE — do not violate: the PARENT (.hero-lockup here, or the
+   copy column wrapping it in a two-column hero-with-photo variant) is the
+   only thing that sets alignment, via align-items — center by default
+   below, flex-start if a shell switches to a left-aligned two-column
+   layout (with its own mobile-breakpoint override back to center for the
+   stacked layout). Never give a hero-lockup CHILD (logo plate, eyebrow,
+   etc.) its own margin:auto or other self-centering rule — a child's own
+   auto-margin silently overrides the parent's align-items and re-centers
+   just that one element even when the parent says flex-start. This is not
+   theoretical: it shipped on a real mockup (hero-kicker's margin:0 auto
+   fighting hero-lockup's align-items:flex-start) and cost a whole revision
+   pass to track down. */
+.hero-lockup{display:flex;flex-direction:column;align-items:center;max-width:100%}
+.hero-logo-plate{display:inline-block;background:#fff;padding:12px 18px;border-radius:4px;box-shadow:0 16px 34px rgba(0,0,0,.28);margin-bottom:16px}
+.hero-logo{display:block;height:auto;max-width:220px}
 .hero .eyebrow{display:inline-block;font:600 13px var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--c-accent-2);margin-bottom:14px}
 .hero h1{font-size:44px;color:#fff}
 .hero .rule{margin:20px auto 22px}
@@ -153,9 +170,20 @@ footer .copy{font-size:13px;color:var(--c-text-muted);margin-top:14px}
 
 <section class="hero">
   <div class="wrap">
-    <span class="eyebrow">{{CATEGORY_LABEL}} · {{LOCALITY}}</span>
-    <h1>{{BUSINESS_NAME}}</h1>
-    <div class="rule"></div>
+    <div class="hero-lockup">
+      <!-- OPTIONAL: only include this logo plate if a watermarked source
+           logo was supplied for this lead (see SKILL.md's logo-ownership
+           rule — never generate one yourself). If none, delete this
+           commented block entirely; do not invent a logo. -->
+      <!--
+      <span class="hero-logo-plate">
+        <img class="hero-logo" src="logos/{{SLUG}}-logo-demo.png" alt="{{BUSINESS_NAME}} logo demonstrativ" decoding="async">
+      </span>
+      -->
+      <span class="eyebrow">{{CATEGORY_LABEL}} · {{LOCALITY}}</span>
+      <h1>{{BUSINESS_NAME}}</h1>
+      <div class="rule"></div>
+    </div>
     <p>{{TAGLINE}}</p>
     <div class="hero-cta">
       <a class="btn btn-wa" href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}">

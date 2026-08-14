@@ -95,6 +95,19 @@ using the palette variables; avoid placing hero badges outside the section or in
 absolute/overflow layouts; verify at 360px that the bottom of every tag/badge is
 within the hero's rendered bounds.
 
+When building the hero-lockup (logo + kicker + headline + subline + buttons),
+alignment must be controlled entirely by the parent container — `align-items`
+on desktop, overridden inside the mobile media query — never by an individual
+child's own `margin: 0 auto` or similar self-centering rule. Root cause of the
+Sabo alignment bug: `hero-kicker` kept its own `margin: 0 auto`, which
+silently overrode `hero-lockup`'s `align-items: flex-start` and re-centered
+just that one element while the logo, H1, subline, and buttons correctly
+moved left. Fix pattern: keep every hero-lockup child free of its own
+horizontal margin/auto-centering; let the parent's `align-items` (and its
+mobile-breakpoint override) be the single source of truth for alignment. If a
+child looks off-alignment after a parent `align-items` change, check that
+child's own CSS for a competing `margin:auto` before touching anything else.
+
 Every map embed needs a robust fallback because WhatsApp's in-app browser can
 block or fail iframe content more aggressively than Chrome/Safari. Pair the
 iframe with a visible `Deschide harta` link/button to the Google Maps listing,
