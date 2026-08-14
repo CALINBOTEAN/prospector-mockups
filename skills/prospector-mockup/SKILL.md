@@ -33,7 +33,7 @@ the Maps listing before building — do not invent them.
 5. Write the Romanian copy per the copy rules below.
 6. Run the QA checklist. Deliver the file and the deployment note.
 
-## Styling standard
+## Shared/general mockup rules
 
 Tailwind CSS via CDN is now the base styling system for every mockup and
 category shell. Use Tailwind utility classes for layout, spacing, flex/grid
@@ -50,6 +50,51 @@ custom CSS when Tailwind utilities can express them clearly.
 Use `text-balance` / `text-wrap: balance` for multi-line headings and body copy
 that otherwise gets an accidental ragged edge. Never use full text justification
 for Romanian body copy in these narrow mockup layouts.
+
+Mobile headers use a compact, repeatable pattern: text-only business name or
+small brand mark on the left, hamburger/dropdown navigation for page anchors,
+and the WhatsApp CTA on the right. Do not crowd the mobile header with full
+inline nav links plus a full WhatsApp label. Desktop may keep the full inline
+nav.
+
+The header WhatsApp button keeps the full "WhatsApp" text label on desktop. On
+mobile, when width is constrained, use the WhatsApp icon alone with a clear
+`aria-label`; never use a truncated text abbreviation such as `WA`.
+
+Logos belong primarily in the hero, large enough that the mark and text are
+legible. Do not shrink a generated or reconstructed logo into the small header
+as the main brand moment. On mobile, center the hero logo and align it
+deliberately with the hero headline/content stack.
+
+If a free mockup uses a newly generated logo, apply a visible `DEMO` watermark
+to the logo asset with Python's Pillow library before inserting it in the page.
+The watermark must stay visible, but make it visually restrained: prefer a
+small corner ribbon or reduced-opacity stamp. Never remove it from a free
+mockup, and never make it so heavy-handed that the logo looks ugly or unusable.
+
+The hero section must own the full dark/background treatment for every hero
+child on every breakpoint. Root cause of the Agrofarm mobile bug: late-stacked
+mobile hero children (category tags and quick-fact badges) can appear to sit on
+the next light section if the dark hero background is only implied by utility
+classes, height assumptions, or a wrapper that does not contain all mobile
+children. Fix pattern: put photo, copy, buttons, tags, and badges inside the
+same `.hero` section; give `.hero` a direct custom-CSS background/color fallback
+using the palette variables; avoid placing hero badges outside the section or in
+absolute/overflow layouts; verify at 360px that the bottom of every tag/badge is
+within the hero's rendered bounds.
+
+Every map embed needs a robust fallback because WhatsApp's in-app browser can
+block or fail iframe content more aggressively than Chrome/Safari. Pair the
+iframe with a visible `Deschide harta` link/button to the Google Maps listing,
+and show that fallback if the iframe fails, is blocked, or remains blank after a
+short timeout. Use `Vezi harta` / `Deschide harta` wording unless the link truly
+opens turn-by-turn directions.
+
+Before a mockup is finished, run an alignment scan across the whole page on
+desktop and 360px mobile: header, hero, services/products grid, trust section,
+reviews, contact/map, sticky bar, and footer. Decide deliberately what is
+centered versus left-aligned, and make headings, body text, cards, buttons, and
+section edges line up consistently.
 
 ## Sector palette system
 
@@ -125,10 +170,11 @@ never the leading action in the design.
   guarantees, client counts, or brand partnerships. Every stated fact must be
   verifiable from the listing or reviews. Where a template section needs a
   fact you do not have, use neutral phrasing or delete the element.
-- If a free mockup uses a newly generated logo, apply a visible `DEMO`
-  watermark to the logo asset with Python's Pillow library before inserting it
-  in the page. Keep the clean logo version out of the free mockup; it is
-  reserved for delivery only after the client signs.
+- If a free mockup uses a newly generated logo, follow the shared logo
+  watermark rule above: visible but subtle `DEMO` watermark applied with
+  Python's Pillow library before the logo is inserted. Keep the clean logo
+  version out of the free mockup; it is reserved for delivery only after the
+  client signs.
 - If a lead has zero real listing photos, generic atmospheric imagery for the
   trade is acceptable as decorative mood-setting content (for example feed
   sacks, fields, workshop materials, or tools). It must never be captioned or
@@ -155,11 +201,14 @@ never the leading action in the design.
 4. `wa.me` link opens the correct number with the prefilled message;
    `tel:` link (secondary, footer only) dials the correct number.
 5. Diacritics render in headings and body.
-6. Maps embed points at the correct listing; map CTA wording is accurate
-   (`Vezi harta` / `Deschide harta`, not directions wording unless it really
-   opens turn-by-turn directions).
+6. Maps embed points at the correct listing and has a visible `Deschide harta`
+   fallback for iframe failure/blocking; map CTA wording is accurate (`Vezi
+   harta` / `Deschide harta`, not directions wording unless it really opens
+   turn-by-turn directions).
 7. All images load; no broken references; page weight sensible (< ~1.5 MB).
-8. Footer disclaimer + noindex meta present.
+8. Desktop and 360px mobile alignment scan passed across header, hero,
+   services/products, trust, reviews, contact/map, sticky bar, and footer.
+9. Footer disclaimer + noindex meta present.
 
 ## Output
 
