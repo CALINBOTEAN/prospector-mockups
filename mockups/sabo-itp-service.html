@@ -99,14 +99,16 @@ header.menu-open .menu-toggle span:nth-child(3){transform:rotate(-45deg)}
 .header-wa svg{width:16px;height:16px;fill:#fff}
 
 .hero{background:var(--c-primary);color:#fff;isolation:isolate;overflow:hidden}
-.hero-grid{grid-template-areas:"title photo" "details photo"}
-.hero-lockup{display:inline-flex;max-width:100%;flex-direction:column;align-items:center}
-.hero-logo-plate{display:inline-block;background:#fff;padding:14px 20px;border-radius:var(--radius);box-shadow:0 16px 34px rgba(0,0,0,.32);margin-bottom:18px}
+.hero-grid{grid-template-areas:"copy photo"}
+.hero-copy{grid-area:copy;display:flex;flex-direction:column;max-width:560px}
+.hero-lockup{display:flex;max-width:100%;flex-direction:column;align-items:center;margin-bottom:30px}
+.hero-logo-plate{display:inline-block;background:#fff;padding:12px 18px;border-radius:var(--radius);box-shadow:0 16px 34px rgba(0,0,0,.32);margin-bottom:16px}
 .hero-logo{display:block;height:auto}
-.hero-kicker{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;max-width:100%;line-height:1.25;margin:0 auto 16px;font:600 15px var(--font-display);letter-spacing:.08em;text-transform:uppercase;color:var(--c-accent-2)}
+.hero-kicker{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;max-width:100%;line-height:1.25;margin:0 auto 14px;font:600 15px var(--font-display);letter-spacing:.08em;text-transform:uppercase;color:var(--c-accent-2)}
 
-.hero-photo{grid-area:photo;position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.30);border:1px solid rgba(255,255,255,.10)}
-.hero-photo svg{width:100%;height:auto;aspect-ratio:4/3;display:block}
+.hero-photo{grid-area:photo;border-radius:var(--radius);overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.30);border:1px solid rgba(255,255,255,.10)}
+.photo-frame{position:relative;aspect-ratio:4/5;overflow:hidden}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:78% 46%;display:block}
 .photo-caption{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;background:var(--c-panel);color:var(--c-text-muted);font-size:12px}
 .photo-caption strong{color:var(--c-primary)}
 
@@ -117,7 +119,7 @@ header.menu-open .menu-toggle span:nth-child(3){transform:rotate(-45deg)}
 .bay-tag:focus-visible{outline:2px solid var(--c-accent);outline-offset:3px}
 .bay-tag.flag-amber{--flag:var(--c-accent-2)}
 
-.badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.badges{display:flex;gap:12px;justify-content:flex-start;flex-wrap:wrap}
 .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:9px 16px;font:600 14px var(--font-body);color:#fff}
 .badge .star{color:var(--c-accent-2)}
 
@@ -177,13 +179,15 @@ footer .copy{font-size:13px;color:#9A9DA3;margin-top:14px}
   .top-nav a{font-size:12px;padding:8px 7px}
 }
 @media(max-width:860px){
-  .hero-grid{grid-template-areas:"title" "photo" "details"}
+  .hero-grid{grid-template-areas:"copy" "photo"}
+  .hero-copy{max-width:none}
+  .photo-frame{aspect-ratio:16/9}
 }
 @media(max-width:767px){
   body h1{font-size:42px}
   body h2{font-size:29px}
-  .hero-title{text-align:center}
-  .hero-lockup{margin:0 auto}
+  .hero-copy{text-align:center;align-items:center}
+  .photo-frame{aspect-ratio:4/3}
   section[id],article[id]{scroll-margin-top:88px}
   .mobile-menu{background:var(--c-primary);border-top:1px solid rgba(255,255,255,.10);box-shadow:0 16px 28px rgba(0,0,0,.22)}
   header.menu-open .mobile-menu{display:grid}
@@ -238,48 +242,19 @@ footer .copy{font-size:13px;color:#9A9DA3;margin-top:14px}
   </nav>
 </header>
 
-<section class="hero flex min-h-[74vh] items-center bg-[var(--c-primary)] py-[88px] pb-[72px] text-white max-md:min-h-0 max-md:py-[56px] max-md:pb-[48px]">
-  <div class="wrap hero-grid mx-auto grid max-w-[1120px] grid-cols-[minmax(0,1.02fr)_minmax(300px,.98fr)] items-center gap-x-[54px] px-5 max-[860px]:grid-cols-1 max-[860px]:gap-7 max-md:px-[18px]">
-    <div class="hero-title self-end [grid-area:title]">
+<section class="hero flex min-h-[58vh] items-center bg-[var(--c-primary)] py-[76px] max-md:py-[52px]">
+  <div class="wrap hero-grid mx-auto grid max-w-[1120px] grid-cols-[minmax(0,1.05fr)_minmax(300px,.95fr)] items-center gap-x-[54px] px-5 max-[860px]:grid-cols-1 max-[860px]:gap-9 max-md:px-[18px]">
+    <div class="hero-copy text-white">
       <div class="hero-lockup">
         <span class="hero-logo-plate">
-          <img class="hero-logo w-[clamp(200px,17vw,250px)] max-md:w-[clamp(150px,44vw,180px)]" src="logos/sabo-itp-service-logo-demo.png" alt="Sabo ITP & SERVICE logo demonstrativ" decoding="async">
+          <img class="hero-logo w-[clamp(170px,14vw,208px)] max-md:w-[clamp(140px,40vw,168px)]" src="logos/sabo-itp-service-logo-demo.png" alt="Sabo ITP & SERVICE logo demonstrativ" decoding="async">
         </span>
         <span class="hero-kicker">Service auto &amp; Stație ITP · Apahida</span>
         <h1 class="text-balance">Sabo ITP &amp; SERVICE</h1>
         <div class="rule"></div>
       </div>
-    </div>
-
-    <figure class="hero-photo [grid-area:photo]">
-      <svg viewBox="0 0 480 360" role="img" aria-label="Ilustrație decorativă: anvelopă și cheie de service">
-        <defs>
-          <linearGradient id="bayBg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#22252B"/>
-            <stop offset="1" stop-color="#0C0D10"/>
-          </linearGradient>
-        </defs>
-        <rect x="0" y="0" width="480" height="360" fill="url(#bayBg)"/>
-        <text x="240" y="235" text-anchor="middle" font-family="Oswald, Arial, sans-serif" font-weight="700" font-size="108" letter-spacing="4" fill="#ffffff" opacity="0.045">SERVICE</text>
-        <g transform="translate(190,170)">
-          <circle r="108" fill="none" stroke="#3A3D44" stroke-width="16" stroke-dasharray="9 15"/>
-          <circle r="108" fill="none" stroke="#0C0D10" stroke-width="30"/>
-          <circle r="62" fill="none" stroke="#F2A33C" stroke-width="10"/>
-          <circle r="22" fill="#E63B2E"/>
-          <circle r="22" fill="none" stroke="#16181D" stroke-width="4"/>
-        </g>
-        <g transform="translate(360,255) rotate(-38)">
-          <rect x="-95" y="-15" width="190" height="30" rx="8" fill="#E9E9E5"/>
-          <circle cx="-95" cy="0" r="26" fill="none" stroke="#E9E9E5" stroke-width="16"/>
-          <circle cx="95" cy="0" r="26" fill="none" stroke="#E9E9E5" stroke-width="16"/>
-        </g>
-      </svg>
-      <figcaption class="photo-caption"><strong>Sabo ITP &amp; SERVICE</strong><span>Imagine decorativă de atelier — nu este o fotografie a service-ului.</span></figcaption>
-    </figure>
-
-    <div class="hero-details self-start [grid-area:details] max-[860px]:text-center">
-      <p class="balance-copy mb-8 max-w-[560px] text-balance text-lg text-[#DADBDD] max-md:text-[16px] max-[860px]:mx-auto">În Apahida, Sabo ITP &amp; SERVICE face ITP și reparații auto rapide, cu diagnoza explicată clar înainte să se pună mâna pe mașină.</p>
-      <div class="hero-actions mb-8 flex flex-wrap gap-3.5 max-[860px]:justify-center">
+      <p class="balance-copy mb-7 text-balance text-lg text-[#DADBDD] max-md:text-[16px]">În Apahida, Sabo ITP &amp; SERVICE face ITP și reparații auto rapide, cu diagnoza explicată clar înainte să se pună mâna pe mașină.</p>
+      <div class="hero-actions mb-7 flex flex-wrap gap-3.5 max-[860px]:justify-center">
         <a class="btn btn-wa" href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE.">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
           Scrie pe WhatsApp
@@ -288,7 +263,7 @@ footer .copy{font-size:13px;color:#9A9DA3;margin-top:14px}
           Vezi harta
         </a>
       </div>
-      <div class="badges mb-8 max-[860px]:justify-center">
+      <div class="badges mb-7 max-[860px]:justify-center">
         <span class="badge"><span class="star" aria-hidden="true">★</span> 4,7 / 5 · 102 recenzii Google</span>
         <span class="badge">📍 Apahida</span>
         <span class="badge">🕐 Luni-Vineri 08:00-20:00 - Sâmbătă 08:00-14:00</span>
@@ -300,6 +275,13 @@ footer .copy{font-size:13px;color:#9A9DA3;margin-top:14px}
         <a class="bay-tag flag-amber" href="#servicii">Ulei</a>
       </div>
     </div>
+
+    <figure class="hero-photo [grid-area:photo]">
+      <div class="photo-frame">
+        <img src="sabo-itp-service-hero.jpg" alt="Mașină ridicată pe elevator într-o boxă de service auto, seara" width="1600" height="900" decoding="async">
+      </div>
+      <figcaption class="photo-caption"><strong>Sabo ITP &amp; SERVICE</strong><span>Imagine decorativă de atelier — nu este o fotografie a service-ului.</span></figcaption>
+    </figure>
   </div>
 </section>
 
@@ -310,7 +292,7 @@ footer .copy{font-size:13px;color:#9A9DA3;margin-top:14px}
     <span class="section-kicker">Boxa de service</span>
     <h2>Ce facem la Sabo ITP &amp; SERVICE</h2>
     <div class="rule"></div>
-    <div class="grid services-grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6 min-[1180px]:grid-cols-3">
+    <div class="grid services-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <article class="service-card relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]" data-code="ITP"><h3>ITP — Inspecție Tehnică Periodică</h3><p class="balance-copy">Programare rapidă pentru inspecția tehnică, cu actele pregătite dinainte.</p></article>
       <article class="service-card relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]" data-code="DIAGNOZĂ"><h3>Diagnoză auto computerizată</h3><p class="balance-copy">Verificare completă cu echipament de diagnoză, explicată pe înțelesul dumneavoastră.</p></article>
       <article class="service-card relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]" data-code="FRÂNE"><h3>Sistem de frânare</h3><p class="balance-copy">Verificare și reparație frâne, plăcuțe, discuri și lichid de frână.</p></article>
@@ -350,7 +332,7 @@ footer .copy{font-size:13px;color:#9A9DA3;margin-top:14px}
     <span class="section-kicker">Recenzii reale</span>
     <h2>Ce spun clienții</h2>
     <div class="rule"></div>
-    <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <article class="review relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]"><div class="stars">★★★★★</div><p class="balance-copy">„Service și itp excelent, cu oameni profi și preturi foarte bune! Recomand cu încredere!"</p><div class="author">Ioni D.</div></article>
       <article class="review relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]"><div class="stars">★★★★★</div><p class="balance-copy">„Rapiditate, seriozitate si profesionalism. Recomand cu drag serviciile acestei firme."</p><div class="author">Daniela D.</div></article>
       <article class="review relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]"><div class="stars">★★★★★</div><p class="balance-copy">„Servicii de calitate, echipa de profesionisti"</p><div class="author">Paul C.</div></article>
