@@ -1,0 +1,229 @@
+﻿{
+    "id":  "ChIJh9VGpl8NSUcR1PPO69vNm8Q",
+    "nationalPhoneNumber":  "0770 202 324",
+    "internationalPhoneNumber":  "+40 770 202 324",
+    "formattedAddress":  "Strada București 79, ap 33, parter, 400000 Cluj-Napoca, Romania",
+    "location":  {
+                     "latitude":  46.7813792,
+                     "longitude":  23.6086277
+                 },
+    "rating":  5,
+    "googleMapsUri":  "https://maps.google.com/?cid=14167143397261767636\u0026g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+    "websiteUri":  "https://www.facebook.com/profile.php?id=100081438834159",
+    "regularOpeningHours":  {
+                                "openNow":  true,
+                                "periods":  [
+                                                {
+                                                    "open":  {
+                                                                 "day":  1,
+                                                                 "hour":  9,
+                                                                 "minute":  0
+                                                             },
+                                                    "close":  {
+                                                                  "day":  1,
+                                                                  "hour":  18,
+                                                                  "minute":  0
+                                                              }
+                                                },
+                                                {
+                                                    "open":  {
+                                                                 "day":  2,
+                                                                 "hour":  9,
+                                                                 "minute":  0
+                                                             },
+                                                    "close":  {
+                                                                  "day":  2,
+                                                                  "hour":  18,
+                                                                  "minute":  0
+                                                              }
+                                                },
+                                                {
+                                                    "open":  {
+                                                                 "day":  3,
+                                                                 "hour":  9,
+                                                                 "minute":  0
+                                                             },
+                                                    "close":  {
+                                                                  "day":  3,
+                                                                  "hour":  18,
+                                                                  "minute":  0
+                                                              }
+                                                },
+                                                {
+                                                    "open":  {
+                                                                 "day":  4,
+                                                                 "hour":  9,
+                                                                 "minute":  0
+                                                             },
+                                                    "close":  {
+                                                                  "day":  4,
+                                                                  "hour":  18,
+                                                                  "minute":  0
+                                                              }
+                                                },
+                                                {
+                                                    "open":  {
+                                                                 "day":  5,
+                                                                 "hour":  9,
+                                                                 "minute":  0
+                                                             },
+                                                    "close":  {
+                                                                  "day":  5,
+                                                                  "hour":  18,
+                                                                  "minute":  0
+                                                              }
+                                                },
+                                                {
+                                                    "open":  {
+                                                                 "day":  6,
+                                                                 "hour":  9,
+                                                                 "minute":  0
+                                                             },
+                                                    "close":  {
+                                                                  "day":  6,
+                                                                  "hour":  13,
+                                                                  "minute":  0
+                                                              }
+                                                }
+                                            ],
+                                "weekdayDescriptions":  [
+                                                            "Monday: 9:00 AM – 6:00 PM",
+                                                            "Tuesday: 9:00 AM – 6:00 PM",
+                                                            "Wednesday: 9:00 AM – 6:00 PM",
+                                                            "Thursday: 9:00 AM – 6:00 PM",
+                                                            "Friday: 9:00 AM – 6:00 PM",
+                                                            "Saturday: 9:00 AM – 1:00 PM",
+                                                            "Sunday: Closed"
+                                                        ],
+                                "nextCloseTime":  "2026-08-14T15:00:00Z"
+                            },
+    "businessStatus":  "OPERATIONAL",
+    "userRatingCount":  9,
+    "displayName":  {
+                        "text":  "Agrofarm Marius",
+                        "languageCode":  "ro"
+                    },
+    "reviews":  [
+                    {
+                        "name":  "places/ChIJh9VGpl8NSUcR1PPO69vNm8Q/reviews/Ci9DQUlRQUNvZENodHljRjlvT25aNFNUWllTMHBMY0Y5amVTMXFRVkZoY2tvMVozYxAB",
+                        "relativePublishTimeDescription":  "2 months ago",
+                        "rating":  5,
+                        "text":  {
+                                     "text":  "I found here everything I needed for the garden and phytosanitary treatments, quality products and very well explained. The professionalism and patience of the seller make the difference – he offers correct recommendations, understandable to everyone, and it is clear that he has experience. Impeccable service, seriousness and respect for customers. I highly recommend this store to everyone who wants good products and professional advice!",
+                                     "languageCode":  "en-US"
+                                 },
+                        "originalText":  {
+                                             "text":  "Am găsit aici tot ce aveam nevoie pentru grădină și tratamente fitosanitare, produse de calitate și foarte bine explicate. Profesionalismul și răbdarea vânzătorului fac diferența – oferă recomandări corecte, pe înțelesul tuturor, și se vede că are experiență. Servire impecabilă, seriozitate și respect față de clienți. Recomand cu mare încredere acest magazin tuturor celor care vor produse bune și sfaturi profesioniste!",
+                                             "languageCode":  "ro"
+                                         },
+                        "authorAttribution":  {
+                                                  "displayName":  "Florica Mocian",
+                                                  "uri":  "https://www.google.com/maps/contrib/100559513209684440672/reviews",
+                                                  "photoUri":  "https://lh3.googleusercontent.com/a/ACg8ocIa2oT29e3QIRCrxb_ry_V2R45L9BBsmr1DeAFiC11pa0VoeQ=s128-c0x00000000-cc-rp-mo"
+                                              },
+                        "publishTime":  "2026-05-28T16:47:57.050632258Z",
+                        "flagContentUri":  "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT25aNFNUWllTMHBMY0Y5amVTMXFRVkZoY2tvMVozYxAB\u0026d=17924085\u0026t=1",
+                        "googleMapsUri":  "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25aNFNUWllTMHBMY0Y5amVTMXFRVkZoY2tvMVozYxAB!2m1!1s0x47490d5fa646d587:0xc49bcddbebcef3d4"
+                    },
+                    {
+                        "name":  "places/ChIJh9VGpl8NSUcR1PPO69vNm8Q/reviews/Ci9DQUlRQUNvZENodHljRjlvT25CbVNFOWlZVzQxZGpCS01TMXRaVkZCTmw5VmFFRRAB",
+                        "relativePublishTimeDescription":  "3 months ago",
+                        "rating":  5,
+                        "text":  {
+                                     "text":  "Quality products at decent prices. For all the plants, spray solutions, seeds, that I purchased, Marius came with information, advice, a recommendation. He is a professional! I recommend this store!",
+                                     "languageCode":  "en-US"
+                                 },
+                        "originalText":  {
+                                             "text":  "Produse de calitate la prețuri decente. La toate plantele, soluțiile de stropit, semințe, pe care le-am achiziționat,  Marius a venit cu o informație, un sfat, o recomandare. Este un profesionist! Recomand acest magazin!",
+                                             "languageCode":  "ro"
+                                         },
+                        "authorAttribution":  {
+                                                  "displayName":  "IOAN NEMES",
+                                                  "uri":  "https://www.google.com/maps/contrib/102812710913028140766/reviews",
+                                                  "photoUri":  "https://lh3.googleusercontent.com/a/ACg8ocIDzjhYu-c1yvbTngckBkVqChM60_CTSODMg8RTBJQJFSCzrQ=s128-c0x00000000-cc-rp-mo"
+                                              },
+                        "publishTime":  "2026-05-08T06:38:41.968572810Z",
+                        "flagContentUri":  "https://www.google.com/local/content/rap/report?postId=Ci9DQUlRQUNvZENodHljRjlvT25CbVNFOWlZVzQxZGpCS01TMXRaVkZCTmw5VmFFRRAB\u0026d=17924085\u0026t=1",
+                        "googleMapsUri":  "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sCi9DQUlRQUNvZENodHljRjlvT25CbVNFOWlZVzQxZGpCS01TMXRaVkZCTmw5VmFFRRAB!2m1!1s0x47490d5fa646d587:0xc49bcddbebcef3d4"
+                    },
+                    {
+                        "name":  "places/ChIJh9VGpl8NSUcR1PPO69vNm8Q/reviews/ChdDSUhNMG9nS0VJQ0FnSUNKbE1PQzBRRRAB",
+                        "relativePublishTimeDescription":  "3 years ago",
+                        "rating":  5,
+                        "text":  {
+                                     "text":  "I had a wonderful experience at your store. I want to share how impressed I was with the excellent level of service and professionalism.\n\nFrom the moment I entered the store, I was greeted by an extremely polite and friendly salesperson. He was very kind and willing to answer all my questions about plant care. His knowledge of agricultural products and care techniques was impressive. He offered helpful advice and personalized recommendations based on my specific needs.\n\nIn addition to all this, I really appreciated the patience and attention the salesperson gave me. He was willing to help me choose the most suitable products for my individual needs and give me valuable advice to ensure the health of my plants.\n\nI highly recommend your agricultural products store to anyone interested in plant care. You will find here not only top quality products, but also a well-trained and friendly salesperson, ready to provide you with the support you need to enjoy a beautiful and healthy garden.",
+                                     "languageCode":  "en-US"
+                                 },
+                        "originalText":  {
+                                             "text":  "Am avut o experiență extraordinară la magazinul dvs. Vreau să împărtășesc cât de impresionat am fost de nivelul de servicii excelente și de profesionalismul.\n\nDe la momentul în care am intrat în magazin, am fost întâmpinat de un vânzător extrem de politicos și prietenos. A fost foarte amabil și dispus să răspundă la toate întrebările mele legate de îngrijirea plantelor. Cunoștințele sale despre produsele agricole și tehnici de îngrijire au fost impresionante. A oferit sfaturi utile și recomandări personalizate în funcție de nevoile mele specifice.\n\nPe lângă toate acestea, am apreciat cu adevărat răbdarea și atenția pe care vânzătorul mi le-a acordat. A fost dispus să mă ajute să aleg cele mai potrivite produse pentru nevoile mele individuale și să-mi ofere sfaturi prețioase pentru a asigura sănătatea plantelor mele.\n\nRecomand cu căldură magazinul dvs. de produse agricole tuturor celor interesați de îngrijirea plantelor. Veți găsi aici nu numai produse de calitate superioară, dar și de vânzător bine instruit și amabil, gata să vă ofere suportul necesar pentru a vă bucura de o grădină frumoasă și sănătoasă.",
+                                             "languageCode":  "ro"
+                                         },
+                        "authorAttribution":  {
+                                                  "displayName":  "Alexandr Ricov",
+                                                  "uri":  "https://www.google.com/maps/contrib/100210882440876971164/reviews",
+                                                  "photoUri":  "https://lh3.googleusercontent.com/a/ACg8ocKaSS1dn2FCaQBBeGG0G2ixyk6zaefqpBmWQevpxzTgH-GK1xJk=s128-c0x00000000-cc-rp-mo-ba3"
+                                              },
+                        "publishTime":  "2023-06-21T14:27:15.919523Z",
+                        "flagContentUri":  "https://www.google.com/local/content/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSUNKbE1PQzBRRRAB\u0026d=17924085\u0026t=1",
+                        "googleMapsUri":  "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSUNKbE1PQzBRRRAB!2m1!1s0x47490d5fa646d587:0xc49bcddbebcef3d4"
+                    },
+                    {
+                        "name":  "places/ChIJh9VGpl8NSUcR1PPO69vNm8Q/reviews/ChdDSUhNMG9nS0VJQ0FnSURkaklxSWtnRRAB",
+                        "relativePublishTimeDescription":  "2 years ago",
+                        "rating":  5,
+                        "text":  {
+                                     "text":  "I recommend this store with agricultural products. In addition to the diversity of products, I also found a specialist in the field. Useful, practical advice, a lot of knowledge explained in a way that anyone can understand. I will always be happy to come back to purchase products and for advice! Bravo!",
+                                     "languageCode":  "en-US"
+                                 },
+                        "originalText":  {
+                                             "text":  "Recomand acest magazin cu produse agricole. Pe langa diversitatea de produse, am găsit și un specialist in domeniu. Sfaturi utile, practice, cunoștințe multe explicate pe înțelesul oricui. Mă voi întoarce mereu cu plăcere pentru a achiziționa produse cat și pentru sfaturi! Bravo!",
+                                             "languageCode":  "ro"
+                                         },
+                        "authorAttribution":  {
+                                                  "displayName":  "Bîrlibescu Ioana Cosmina",
+                                                  "uri":  "https://www.google.com/maps/contrib/116437741405509077630/reviews",
+                                                  "photoUri":  "https://lh3.googleusercontent.com/a-/ALV-UjVQ1GYLPTlxl5SfiR6TxgvUdjkaHsaibbP6BBDQoyi7ZA8HY6Tgpg=s128-c0x00000000-cc-rp-mo-ba2"
+                                              },
+                        "publishTime":  "2024-02-21T11:37:51.124173Z",
+                        "flagContentUri":  "https://www.google.com/local/content/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURkaklxSWtnRRAB\u0026d=17924085\u0026t=1",
+                        "googleMapsUri":  "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURkaklxSWtnRRAB!2m1!1s0x47490d5fa646d587:0xc49bcddbebcef3d4"
+                    },
+                    {
+                        "name":  "places/ChIJh9VGpl8NSUcR1PPO69vNm8Q/reviews/ChdDSUhNMG9nS0VJQ0FnSURoMnVDQmlnRRAB",
+                        "relativePublishTimeDescription":  "3 years ago",
+                        "rating":  5,
+                        "text":  {
+                                     "text":  "The most important thing for me was getting some advice on how to set up and prepare a vegetable garden. I left the store with both the necessary products and some additional knowledge in the field of agriculture.\n\nI 100% recommend buying from here. I will definitely do it again.",
+                                     "languageCode":  "en-US"
+                                 },
+                        "originalText":  {
+                                             "text":  "Cel mai important lucru pentru mine a fost sa primesc niste sfaturi referitoare la cum ar trebui amenajata și pregătită o gradina de legume. Am plecat din magazin atât cu produsele necesare, cat și cu niște cunoștințe în plus din domeniul agriculturii.\n\n100% recomand să cumpărați de aici. Eu sigur o voi mai face.",
+                                             "languageCode":  "ro"
+                                         },
+                        "authorAttribution":  {
+                                                  "displayName":  "Alexandru-Dan Nemes",
+                                                  "uri":  "https://www.google.com/maps/contrib/110633270945429533178/reviews",
+                                                  "photoUri":  "https://lh3.googleusercontent.com/a-/ALV-UjUown5E7oIIe9K4PubKUXqlLVB2WvxZz-ZFgFvOlfctEQN4eAV-NA=s128-c0x00000000-cc-rp-mo-ba3"
+                                              },
+                        "publishTime":  "2023-03-06T18:17:34.279180Z",
+                        "flagContentUri":  "https://www.google.com/local/content/rap/report?postId=ChdDSUhNMG9nS0VJQ0FnSURoMnVDQmlnRRAB\u0026d=17924085\u0026t=1",
+                        "googleMapsUri":  "https://www.google.com/maps/reviews/data=!4m6!14m5!1m4!2m3!1sChdDSUhNMG9nS0VJQ0FnSURoMnVDQmlnRRAB!2m1!1s0x47490d5fa646d587:0xc49bcddbebcef3d4"
+                    }
+                ],
+    "photos":  [
+                   {
+                       "name":  "places/ChIJh9VGpl8NSUcR1PPO69vNm8Q/photos/AWCwydjqk0h5AhI-YBDNYlpOyXCmJ_zLypLYaDarSkVcjc4XazCQVOm9kYp_iaoyrupVAYGmTcFLPnidIHfAlA5lm7_2tJNmkVOkrhXddBhHa8xoK1sDRQiC1SfmBnv8I13kQkhSPm7yGUP-G3JC38xrsAFHoGAM-CA9VTpU--CzV61RXgyyyI9f64Vy2Fn6RgVt505eMjn60y8Dg4zl1E7b-GP8HOp5RBq6mDk9QwiPbnnI7T1HxgOh6TDiU7t2QCq7Wq-K2MTzIUGan3l-tinfQx6_LTKbAGu4b6gFc2SWI935CVst1bHzY4QRpBSxfvOWjuDMcMyxBN6nZ0DwdzzMn7nMTiFrmthp2PY7Fm7enhIQTRCE8NZ2hLMQCQBAHGky0Mj2NryDr_3boEhLZ_u0VHzQ2UmTQOuGQc1xzcurHyhk2w",
+                       "widthPx":  2048,
+                       "heightPx":  1536,
+                       "authorAttributions":  [
+                                                  {
+                                                      "displayName":  "Agrofarm Marius",
+                                                      "uri":  "https://maps.google.com/maps/contrib/101441751999728605155",
+                                                      "photoUri":  "https://lh3.googleusercontent.com/a/ACg8ocL05rrsuJc9ZiNHCtC1onnwF5JWZ7RJW1eUwp-YH-Qkwi-uKQ=s100-p-k-no-mo"
+                                                  }
+                                              ],
+                       "flagContentUri":  "https://www.google.com/local/content/rap/report?postId=!1e10!2sCIHM0ogKEICAgIDW-uzXYA\u0026t=27\u0026cb_client=maps_api_places.places_api\u0026hl=en-US",
+                       "googleMapsUri":  "https://www.google.com/maps/place//data=!3m4!1e2!3m2!1sCIHM0ogKEICAgIDW-uzXYA!2e10!4m2!3m1!1s0x47490d5fa646d587:0xc49bcddbebcef3d4"
+                   }
+               ]
+}

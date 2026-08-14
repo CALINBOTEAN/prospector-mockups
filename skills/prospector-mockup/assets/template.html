@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- DEMO ONLY: never remove noindex before the client signs -->
+<meta name="robots" content="noindex,nofollow">
+<title>{{BUSINESS_NAME}} — {{LOCALITY}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Oswald:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   PALETTE — replace this :root block with the sector palette (SKILL.md).
+   Ready-to-paste variants:
+
+   AGRI / FEED / FOOD      : primary #5C1A1A  accent #C8860A  accent2 #E8A020  bg #F5ECD7  bg-alt #EDE0C4  display 'Playfair Display'
+   AUTO                    : primary #16181D  accent #E63B2E  accent2 #F2A33C  bg #F4F4F2  bg-alt #E9E9E5  display 'Oswald'
+   CONSTRUCTION / METAL    : primary #1F2A33  accent #E8A020  accent2 #C8860A  bg #F2F0EB  bg-alt #E7E4DC  display 'Oswald'
+   CARPENTRY / FURNITURE   : primary #3B2A1D  accent #B5762A  accent2 #D99A45  bg #F6F1E8  bg-alt #ECE3D4  display 'Playfair Display'
+   VET / SALON / SERVICES  : primary #234A3F  accent #C8860A  accent2 #2D6A4F  bg #F4F1EA  bg-alt #E9E4D8  display 'Playfair Display'
+   ===================================================================== */
+:root{
+  --c-primary:#5C1A1A;
+  --c-primary-dark:#3E1111;
+  --c-accent:#C8860A;
+  --c-accent-2:#E8A020;
+  --c-bg:#F5ECD7;
+  --c-bg-alt:#EDE0C4;
+  --c-text:#2C1810;
+  --c-text-muted:#7A5C4E;
+  --c-border:#D4B896;
+  --c-whatsapp:#25D366;
+  --font-display:'Playfair Display',Georgia,serif;
+  --font-body:'Inter','Helvetica Neue',Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--c-text);background:var(--c-bg);font-size:16px;line-height:1.6}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--font-display);line-height:1.2;letter-spacing:.01em}
+h2{font-size:32px;color:var(--c-primary);text-align:center}
+.rule{width:60px;height:3px;background:linear-gradient(90deg,var(--c-accent),var(--c-accent-2));margin:16px auto 40px}
+section{padding:64px 0}
+.divider{height:4px;background:linear-gradient(90deg,var(--c-primary),var(--c-accent),var(--c-accent-2),var(--c-accent),var(--c-primary))}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:4px;padding:14px 28px;font:700 16px var(--font-body);letter-spacing:.03em;text-transform:uppercase;transition:background .2s,border-color .2s;cursor:pointer}
+.btn-wa{background:var(--c-whatsapp);color:#fff;border:2px solid var(--c-whatsapp)}
+.btn-wa:hover{filter:brightness(.93)}
+.btn-secondary{background:transparent;color:#fff;border:2px solid var(--c-accent)}
+.btn-secondary:hover{background:rgba(255,255,255,.08);border-color:var(--c-accent-2)}
+.btn svg{width:18px;height:18px;fill:currentColor;flex:none}
+
+/* Header */
+header{position:sticky;top:0;z-index:100;background:var(--c-primary);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.header-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
+.brand{font-family:var(--font-display);font-size:20px;font-weight:700}
+.header-wa{display:flex;align-items:center;gap:8px;color:#fff;background:var(--c-whatsapp);border-radius:4px;padding:8px 14px;font-weight:700;font-size:14px;white-space:nowrap}
+.header-wa svg{width:16px;height:16px;fill:#fff}
+
+/* Hero */
+.hero{background:var(--c-primary);color:#fff;text-align:center;padding:88px 0 72px}
+.hero .eyebrow{display:inline-block;font:600 13px var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--c-accent-2);margin-bottom:14px}
+.hero h1{font-size:44px;color:#fff}
+.hero .rule{margin:20px auto 22px}
+.hero p{font-size:19px;color:var(--c-bg);max-width:640px;margin:0 auto 32px}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:34px}
+.badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid var(--c-accent);border-radius:4px;padding:8px 16px;font:600 14px var(--font-body);color:#fff}
+.badge .star{color:var(--c-accent-2)}
+
+/* Services */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:#fff;border:1px solid var(--c-border);border-top:3px solid var(--c-accent);border-radius:6px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.05);transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:0 6px 24px rgba(0,0,0,.10);transform:translateY(-2px)}
+.card h3{font-size:21px;margin-bottom:8px}
+.card p{color:var(--c-text-muted);font-size:15px}
+
+/* Pillars */
+.alt{background:var(--c-bg-alt)}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;text-align:center}
+.pillar h3{font-size:20px;margin:10px 0 8px;color:var(--c-primary)}
+.pillar p{color:var(--c-text-muted);font-size:15px}
+.pillar .ico{width:46px;height:46px;margin:0 auto;border:2px solid var(--c-accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--c-accent);font-family:var(--font-display);font-size:20px;font-weight:700}
+
+/* About / owner strip */
+.about{background:var(--c-primary);color:#fff;text-align:center}
+.about h2{color:#fff}
+.about p{max-width:680px;margin:0 auto;color:var(--c-bg);font-size:17px}
+
+/* Reviews */
+.review{background:#fff;border:1px solid var(--c-border);border-radius:6px;padding:24px}
+.review .stars{color:var(--c-accent-2);letter-spacing:3px;margin-bottom:10px}
+.review p{font-size:15px;font-style:italic}
+.review .author{margin-top:12px;font-style:normal;font-weight:600;color:var(--c-text-muted);font-size:14px}
+.reviews-src{text-align:center;color:var(--c-text-muted);font-size:13px;margin-top:22px}
+
+/* CTA strip */
+.cta{background:var(--c-primary);color:#fff;text-align:center}
+.cta h2{color:#fff;margin-bottom:8px}
+.cta p{color:var(--c-bg);margin-bottom:26px}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.contact-item{display:flex;gap:12px;margin-bottom:18px}
+.contact-item svg{width:20px;height:20px;fill:var(--c-accent);flex:none;margin-top:3px}
+.contact-item strong{display:block;font-size:15px}
+.contact-item span{color:var(--c-text-muted);font-size:15px}
+.map{border:1px solid var(--c-border);border-radius:6px;overflow:hidden;min-height:300px}
+.map iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
+
+/* Footer */
+footer{background:var(--c-primary-dark);color:var(--c-bg);text-align:center;padding:36px 20px 110px;border-top:4px solid var(--c-accent)}
+footer .fbrand{font-family:var(--font-display);font-size:19px;font-weight:700;color:#fff;margin-bottom:6px}
+footer .copy{font-size:13px;color:var(--c-text-muted);margin-top:14px}
+.demo-note{margin-top:18px;padding:12px 16px;border:1px dashed var(--c-accent);border-radius:4px;display:inline-block;font-size:13px;color:var(--c-accent-2)}
+
+/* Mobile sticky bar — WhatsApp primary, phone + directions secondary */
+.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;display:flex;background:var(--c-primary);height:62px;box-shadow:0 -2px 12px rgba(0,0,0,.25)}
+.sticky-bar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#fff;font:600 12px var(--font-body);border-right:1px solid rgba(255,255,255,.12)}
+.sticky-bar a:last-child{border-right:none}
+.sticky-bar svg{width:20px;height:20px;fill:var(--c-accent-2)}
+.sticky-bar .wa{background:var(--c-whatsapp)}
+.sticky-bar .wa svg{fill:#fff}
+
+@media(min-width:768px){
+  .hero h1{font-size:58px}
+  h2{font-size:38px}
+  .sticky-bar{display:none}
+  footer{padding-bottom:36px}
+}
+@media(max-width:767px){
+  section{padding:52px 0}
+  .hero{padding:64px 0 56px}
+  .contact-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-in">
+    <div class="brand">{{BUSINESS_NAME}}</div>
+    <a class="header-wa" href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}" aria-label="Scrie pe WhatsApp">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+      WhatsApp
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">{{CATEGORY_LABEL}} · {{LOCALITY}}</span>
+    <h1>{{BUSINESS_NAME}}</h1>
+    <div class="rule"></div>
+    <p>{{TAGLINE}}</p>
+    <div class="hero-cta">
+      <a class="btn btn-wa" href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+        Scrie pe WhatsApp
+      </a>
+      <a class="btn btn-secondary" href="tel:{{PHONE_E164}}">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+        {{PHONE_DISPLAY}}
+      </a>
+    </div>
+    <div class="badges">
+      <span class="badge"><span class="star">★</span> {{RATING}} / 5 · {{REVIEW_COUNT}} recenzii Google</span>
+      <span class="badge">📍 {{LOCALITY}}</span>
+      <span class="badge">🕐 {{HOURS_SHORT}}</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="servicii">
+  <div class="wrap">
+    <h2>{{SERVICES_TITLE}}</h2>
+    <div class="rule"></div>
+    <div class="grid">
+      <div class="card"><h3>{{SERVICE_1_TITLE}}</h3><p>{{SERVICE_1_DESC}}</p></div>
+      <div class="card"><h3>{{SERVICE_2_TITLE}}</h3><p>{{SERVICE_2_DESC}}</p></div>
+      <div class="card"><h3>{{SERVICE_3_TITLE}}</h3><p>{{SERVICE_3_DESC}}</p></div>
+      <div class="card"><h3>{{SERVICE_4_TITLE}}</h3><p>{{SERVICE_4_DESC}}</p></div>
+      <div class="card"><h3>{{SERVICE_5_TITLE}}</h3><p>{{SERVICE_5_DESC}}</p></div>
+      <div class="card"><h3>{{SERVICE_6_TITLE}}</h3><p>{{SERVICE_6_DESC}}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>De ce {{BUSINESS_NAME}}?</h2>
+    <div class="rule"></div>
+    <div class="pillars">
+      <div class="pillar"><div class="ico">1</div><h3>{{PILLAR_1_TITLE}}</h3><p>{{PILLAR_1_DESC}}</p></div>
+      <div class="pillar"><div class="ico">2</div><h3>{{PILLAR_2_TITLE}}</h3><p>{{PILLAR_2_DESC}}</p></div>
+      <div class="pillar"><div class="ico">3</div><h3>{{PILLAR_3_TITLE}}</h3><p>{{PILLAR_3_DESC}}</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <h2>{{ABOUT_TITLE}}</h2>
+    <div class="rule"></div>
+    <p>{{ABOUT_TEXT}}</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Ce spun clienții</h2>
+    <div class="rule"></div>
+    <div class="grid">
+      <div class="review"><div class="stars">★★★★★</div><p>„{{REVIEW_1_TEXT}}"</p><div class="author">— {{REVIEW_1_AUTHOR}}</div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>„{{REVIEW_2_TEXT}}"</p><div class="author">— {{REVIEW_2_AUTHOR}}</div></div>
+      <div class="review"><div class="stars">★★★★★</div><p>„{{REVIEW_3_TEXT}}"</p><div class="author">— {{REVIEW_3_AUTHOR}}</div></div>
+    </div>
+    <p class="reviews-src">Recenzii reale preluate de pe profilul Google al firmei.</p>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Aveți nevoie de {{CATEGORY_LABEL_LOWER}}?</h2>
+    <p>Scrieți-ne pe WhatsApp — răspundem rapid.</p>
+    <div class="hero-cta">
+      <a class="btn btn-wa" href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}">Scrie pe WhatsApp</a>
+      <a class="btn btn-secondary" href="tel:{{PHONE_E164}}">Sună acum</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="contact">
+  <div class="wrap">
+    <h2>Contact & Locație</h2>
+    <div class="rule"></div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg><div><strong>Adresă</strong><span>{{ADDRESS}}</span></div></div>
+        <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg><div><strong>WhatsApp</strong><span><a href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}">{{PHONE_DISPLAY}}</a></span></div></div>
+        <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4 11h-5V6h2v5h3z"/></svg><div><strong>Program</strong><span>{{HOURS}}</span></div></div>
+      </div>
+      <div class="map"><iframe src="{{MAPS_EMBED_URL}}" loading="lazy" title="Hartă {{BUSINESS_NAME}}" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">{{BUSINESS_NAME}}</div>
+  <div>{{ADDRESS}} · <a href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}">WhatsApp</a> · <a href="tel:{{PHONE_E164}}">{{PHONE_DISPLAY}}</a></div>
+  <div class="copy">© {{YEAR}} {{BUSINESS_NAME}}. Toate drepturile rezervate.</div>
+  <div class="demo-note">Propunere de website — demonstrație realizată de {{AGENCY_NAME}} · WhatsApp {{AGENCY_PHONE}}. Acest site nu este publicat oficial.</div>
+</footer>
+
+<nav class="sticky-bar" aria-label="Acțiuni rapide">
+  <a class="wa" href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>WhatsApp</a>
+  <a href="tel:{{PHONE_E164}}"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>Sună</a>
+  <a href="{{MAPS_DIRECTIONS_URL}}"><svg viewBox="0 0 24 24"><path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4zM13 14.5V12h-3v3H8v-4a1 1 0 0 1 1-1h4V7.5l3.5 3.5z"/></svg>Traseu</a>
+</nav>
+
+</body>
+</html>
