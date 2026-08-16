@@ -19,17 +19,145 @@ initial · whether photos exist on the listing · services inferred from
 category, reviews, and photos. If any of these are missing, fetch them from
 the Maps listing before building — do not invent them.
 
-## Build procedure
+## Standing build process (mandatory, every mockup, effective 2026-08-16)
 
-1. Copy `assets/template.html` to a working file named `{slug}.html`
-   (slug = lowercase business name, hyphens, no diacritics).
+Every mockup build — this one and every future one — follows these three
+steps **in order**. After finishing a step, stop completely and wait for
+Calin to say "done" before starting the next one. Do not combine steps,
+do not get ahead of the current step, and do not summarize or preview a
+later step while working on the current one. This is a standing process
+rule, not a one-off instruction for a single lead.
+
+### Step 1 — Logo and hero image prompts (image generation, human-in-the-loop)
+
+Do not use built-in/native image generation for these — output quality is
+not sufficient for client-facing work. Instead:
+
+1. Research the business's real trade, category, and locality from
+   `data/pipeline.csv` and any facts already verified for that lead.
+2. Write two separate, detailed image-generation prompts, ready to paste
+   directly into ChatGPT:
+   - **LOGO PROMPT** — grounded in the real trade and the category shell's
+     palette, if a dedicated shell already exists for that category (see
+     "Sector palette system" below); otherwise a sensible palette for the
+     trade, clearly flagged as not-yet-a-shell.
+   - **HERO IMAGE PROMPT** — a large, atmospheric, full-bleed-appropriate
+     background image grounded in the real trade (workshop, yard,
+     storefront, materials — whatever fits this specific business), not
+     generic stock imagery.
+3. Show both prompts, clearly labeled "LOGO PROMPT" and "HERO IMAGE
+   PROMPT," and nothing else. No HTML, no building, no moving to another
+   step.
+4. Stop and wait.
+
+Calin runs both prompts through ChatGPT manually, then sends back the
+resulting images plus the business's slug. Save them into the lead's own
+mockup folder (see "Folder structure" below), with this exact naming
+convention:
+
+- `mockups/{slug}/logo.png`
+- `mockups/{slug}/hero.png`
+
+(extension matches whatever format the source image actually is —
+`.png`, `.jpg`, `.webp` — the name stays `logo`/`hero`, not the format.)
+
+Confirm both files are saved correctly, then stop again and wait for
+"done" before Step 2.
+
+### Step 2 — Structure from references
+
+Calin provides 2–3 reference screenshots. These do not need to match this
+business's industry — they are for structural and compositional
+inspiration only.
+
+Copy from the references: layout structure, spacing rhythm, section
+composition, hero treatment (e.g. full-bleed background image with
+overlaid text), motion restraint.
+
+Do not copy from the references: typography style, color mood, or any
+content-specific stylistic choice tied to the reference's own industry.
+Typography and color stay grounded in this business's actual category
+shell, decided independently of what the reference used.
+
+Confirm the references have been reviewed and describe, in a few
+sentences, exactly which structural elements are being taken from them.
+Then stop and wait for "done" before Step 3.
+
+### Step 3 — Full build
+
+Only now, build the complete mockup, applying all of the following
+together:
+
+- The frontend-design skill
+  (github.com/anthropics/skills/tree/main/skills/frontend-design), read
+  this session if not already read.
+- Tailwind CSS via CDN, no build step — see "Build mechanics" below.
+- Every shared/general rule in this file: mobile header/hamburger pattern,
+  WhatsApp icon-only on constrained mobile width, watermark treatment, map
+  iframe fallback ("Deschide harta"), `text-wrap: balance` on multi-line
+  copy, full alignment scan across mobile and desktop.
+- Scroll-triggered reveal on every major section, and hover states on
+  every interactive element — see the standalone rule in "Shared/general
+  mockup rules" below.
+- The logo and hero image from Step 1, placed correctly: logo prominent in
+  the hero, hero image as the full-bleed background per Step 2's
+  structural direction.
+- Real content only — verified facts, real reviews if available; omit
+  rather than invent, per "Integrity rules" below.
+- The full QA checklist below: no leftover placeholder tokens, 360px
+  mobile pass with no horizontal scroll, `wa.me` and `tel:` links correct,
+  diacritics render, noindex + footer disclaimer present, alignment
+  consistent everywhere.
+
+Show the finished result — screenshots on both desktop and mobile — and
+stop. Do not update `data/pipeline.csv`; Calin confirms and updates it
+himself after reviewing.
+
+## Folder structure (standing convention, effective 2026-08-16)
+
+Every mockup is self-contained in its own folder — nothing about a lead's
+build lives loose at the top level of `mockups/`. For a lead with slug
+`{slug}`:
+
+```
+mockups/{slug}/index.html          the mockup itself
+mockups/{slug}/logo.png            Step 1 logo, watermarked, as used on the page
+mockups/{slug}/hero.png            Step 1 hero image, as used on the page
+mockups/{slug}/assets/             real photos, Places API JSON, the
+                                    un-watermarked source logo, any other
+                                    source material
+mockups/{slug}/screenshots/        QA/debug screenshots — desktop, mobile,
+                                    alignment checks, etc.
+```
+
+Build straight into this structure from the start — create the folder and
+its `assets/`/`screenshots/` subfolders as step one of the build, and never
+build a flat `{slug}.html` to be reorganized afterward.
+
+The live URL for a finished mockup is
+`https://calinbotean.github.io/prospector-mockups/mockups/{slug}/` — no
+`.html`, since GitHub Pages serves `index.html` for the directory
+automatically. Use this exact form (trailing slash, no filename) in
+`mockup_url`.
+
+This replaced the earlier flat layout (`mockups/{slug}.html` plus shared
+`mockups/logos/` and `mockups/hero/` folders) on 2026-08-16, when the two
+existing mockups at that point (agrofarm-marius, sabo-itp-service) were
+reorganized into it and their `mockup_url` values updated accordingly.
+
+## Build mechanics (used inside Step 3)
+
+1. Create `mockups/{slug}/` with `assets/` and `screenshots/` subfolders
+   inside it (slug = lowercase business name, hyphens, no diacritics).
+   Copy `assets/template.html` to `mockups/{slug}/index.html` as the
+   working file.
 2. Load Tailwind CSS by CDN in the page head, after Google Fonts and before
    the custom `<style>` block. No build step, account, package install, or
    framework setup is needed.
 3. Pick the sector palette from the table below and replace the `:root`
    palette block (the template marks it clearly).
 4. Replace every `{{TOKEN}}` in the file. Then verify none remain:
-   `grep -o '{{[A-Z_0-9]*}}' {slug}.html` must return nothing.
+   `grep -o '{{[A-Z_0-9]*}}' mockups/{slug}/index.html` must return nothing.
 5. Write the Romanian copy per the copy rules below.
 6. Run the QA checklist. Deliver the file and the deployment note.
 
@@ -66,23 +194,47 @@ legible. Do not shrink a generated or reconstructed logo into the small header
 as the main brand moment. On mobile, center the hero logo and align it
 deliberately with the hero headline/content stack.
 
-**Logo creation is out of scope for the mockup builder.** Calin generates the
-logo separately, outside this pipeline, using an external image tool (e.g.
-ChatGPT image generation) from a written brief matching the lead's category
-shell (palette + typeface feel). The builder (Codex/Claude Code) never
-designs, generates, or improvises a logo itself — its job starts only once a
-source logo file has been supplied, and is limited to two steps: apply the
-watermark (below) and place the result in the hero per the placement rule
-above. If no source logo file has been supplied for a lead, do not invent
-one and do not proceed without it as if it were optional — build without a
-logo, flag its absence clearly in the delivery notes, and note that a
-ChatGPT-generated source image is needed before the mockup is complete.
+**Logo and hero image creation are out of scope for the mockup builder.**
+Calin generates both separately, outside this pipeline, using an external
+image tool (ChatGPT image generation), from written prompts produced in
+Step 1 of the standing build process above. The builder (Codex/Claude Code)
+never designs, generates, or improvises a logo or hero image itself — its
+job starts only once the source files have been supplied at
+`mockups/{slug}/logo.png` and `mockups/{slug}/hero.png`, and is
+limited to: apply the watermark to the logo (below), and place both per
+the placement rules above and Step 2/3's structural direction. If a source
+file is missing for a lead, do not invent one and do not proceed without it
+as if it were optional — build without it, flag its absence clearly in the
+delivery notes, and note that the ChatGPT-generated source image is needed
+before the mockup is complete.
 
 If a free mockup uses a newly generated logo, apply a visible `DEMO` watermark
 to the logo asset with Python's Pillow library before inserting it in the page.
 The watermark must stay visible, but make it visually restrained: prefer a
 small corner ribbon or reduced-opacity stamp. Never remove it from a free
 mockup, and never make it so heavy-handed that the logo looks ugly or unusable.
+
+**Scroll-triggered reveal (mandatory, every build).** Every major section
+below the hero — services/products grid, "de ce noi"/trust pillars, reviews,
+contact/map, footer — reveals on scroll with a fade-in combined with a subtle
+slide-up (translateY roughly 16–24px to 0), duration 200–300ms, ease-out
+timing, triggered via `IntersectionObserver` (or an equivalent lightweight
+reveal-on-scroll approach) at roughly a 10–20% visibility threshold. The hero
+itself is exempt — it must already be visible on load, not waiting on a
+scroll trigger. Never use bounce, elastic, or overshoot easing, and never
+delay a reveal so long that content feels sluggish at a normal scroll speed.
+This stays consistent with the "no parallax, no heavy JavaScript" rule below
+— a small IntersectionObserver-based reveal script is the one motion pattern
+allowed.
+
+**Hover states (mandatory, every build).** Every interactive element —
+buttons, CTA links, service/product cards, review cards, nav items — gets a
+hover state built from a subtle lift/shadow/scale: pick one or two of
+`translateY(-2px to -4px)`, a soft shadow increase, or `scale(1.02–1.03)`
+per element type, consistently, rather than stacking all three at once.
+Transition duration 200–300ms, ease-out timing, no bounce or elastic easing.
+This is additional detail on top of, not a replacement for, the 0.2s
+hover-transition rule in "Sector palette system" below.
 
 The hero section must own the full dark/background treatment for every hero
 child on every breakpoint. Root cause of the Agrofarm mobile bug: late-stacked
@@ -239,7 +391,8 @@ never the leading action in the design.
   after the client signs.
 - If a lead has zero real listing photos, generic atmospheric imagery for the
   trade is acceptable as decorative mood-setting content (for example feed
-  sacks, fields, workshop materials, or tools). It must never be captioned or
+  sacks, fields, workshop materials, or tools) — this includes the Step 1
+  AI-generated hero background image. It must never be captioned or
   implied as the specific business's shop, team, premises, products, proof, or
   customer work. Label it as decorative when a caption is needed, and treat
   this with the same integrity line as fabricated reviews: decorative is fine,
@@ -271,11 +424,17 @@ never the leading action in the design.
 8. Desktop and 360px mobile alignment scan passed across header, hero,
    services/products, trust, reviews, contact/map, sticky bar, and footer.
 9. Footer disclaimer + noindex meta present.
+10. Scroll-triggered reveal fires on every major section below the hero;
+    hover states present on every interactive element; both match the timing/
+    easing rules above (no bounce/elastic, 200–300ms, ease-out).
 
 ## Output
 
-Deliver `{slug}.html`, state the chosen palette and any facts you could not
-verify (and therefore omitted), give the deployment step (drag the file into
-Netlify Drop or upload to the demo subdomain), and instruct: update the
-pipeline row to `status=BUILT` with the `mockup_url`, then run
+Deliver `mockups/{slug}/index.html` (plus its `logo.png`, `hero.png`,
+`assets/`, and `screenshots/` per "Folder structure" above), state the
+chosen palette and any facts you could not verify (and therefore omitted),
+give the deployment step (push to the mockups repo's `main` branch — GitHub
+Pages deploys automatically), and instruct: update the pipeline row to
+`status=BUILT` with `mockup_url` set to
+`https://calinbotean.github.io/prospector-mockups/mockups/{slug}/`, then run
 prospector-outreach.
