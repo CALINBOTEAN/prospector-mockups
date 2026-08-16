@@ -11,7 +11,7 @@ allowed next step, not an exception to apologize for.
 
 ## Always start here
 
-At the start of every session, read `skills/prospector-pipeline/SKILL.md`
+At the start of every session, read `skills/prospector-pipeline/prospector-pipeline.md`
 first and follow its session-start gate: open `data/pipeline.csv`, report
 status counts, list anything due today, and confirm today's focus before
 doing anything else.
@@ -72,7 +72,7 @@ reply/close numbers — none of the below should be implemented before then:
 - Consider a paid diagnostic/audit-first model instead of a free mockup as
   the primary Offer A hook, if reply rates underperform.
 - Consider raising the retainer price floor above the current €25–40/month
-  range (see `skills/prospector-gbp/SKILL.md`) once there are 2–3 real case
+  range (see `skills/prospector-gbp/prospector-gbp.md`) once there are 2–3 real case
   studies to justify it.
 - Consider adding a light negative or neutral rubric weight in
   `prospector-qualify` for categories that are already heavily represented
@@ -126,12 +126,39 @@ billing or API access looks broken.
 - Do not set `ANTHROPIC_API_KEY` in this environment — Claude Code should
   authenticate with the Pro subscription login, not API billing.
 
+## Deploying changes from a Cowork session (PowerShell)
+
+Cowork sessions reach this repo only through the desktop bridge: file
+read/write, no shell, no network, no git. A Cowork session cannot commit or
+push. When a Cowork session says changes are staged and ready, finish the
+deploy locally in PowerShell:
+
+```powershell
+cd "C:\Users\calin\OneDrive\Desktop\PROSPECTOR\prospector"
+git status
+git commit -m "<message the session gave you>"
+git push
+```
+
+GitHub Pages deploys `main` automatically — no separate build/deploy step.
+
+**Known gotcha:** the desktop bridge can rename files but cannot delete
+them (no `unlink` permission on the mount). Git locks (`.git/index.lock`)
+briefly created during `git add`/`git status` from a Cowork session can be
+left behind because of this — the session moves any stray lock it creates
+into a `_to_delete/` folder at the repo root instead of removing it. If any
+git command errors with `Unable to create '.git/index.lock': File exists`,
+check `_to_delete/` first, delete the real `.git\index.lock` yourself, then
+retry.
+
 ## Session log
 
 Most recent first. Add a new dated entry at the end of any session with
 meaningful progress or a real discovered issue — a few lines, key lessons
 only, not a full transcript.
 
+- **2026-08-16** — Discovered the desktop bridge used by Cowork sessions can rename files but not delete them (no unlink permission on the mount). Running `git add`/`git status` through it leaves a stale `.git/index.lock` behind after every call, which would block all local git commands until removed. Fix pattern going forward: Cowork sessions move any stray lock into `_to_delete/` instead of trying to delete it, and hand off `git commit`/`git push` to PowerShell locally — see "Deploying changes from a Cowork session (PowerShell)" above.
+- **2026-08-16** — Added the standing three-step, stop-after-each-step mockup build process (image-generation prompts → structural reference → full build) and a standalone scroll-reveal/hover-state rule to `skills/prospector-mockup/prospector-mockup.md`. While verifying the update, found `skills/prospector-mockup/SKILL.md` only exists inside the stale `skills.zip` bundle (2026-08-06 snapshot, missing weeks of accumulated fixes) — the live skill files on disk are all named `<foldername>.md`, not `SKILL.md`. Rebuilt `skills.zip` from the current on-disk files and fixed the stale `SKILL.md` filename references in this file (session-start gate, GBP pricing note, Jekyll note).
 - **2026-08-14** — Hero-lockup alignment bug on the Sabo ITP & SERVICE
   mockup: after switching `hero-lockup`'s `align-items` from `center` to
   `flex-start` so the logo/H1/subline/buttons would left-align, the kicker
@@ -147,7 +174,7 @@ only, not a full transcript.
   "Google Cloud console — org gotcha" above). Learned GitHub Pages needs
   either a `.nojekyll` file or a plain static-deploy Actions workflow, not
   "Deploy from a branch" with Jekyll — Jekyll processing breaks on
-  `{{TOKEN}}` placeholders in SKILL.md files. WhatsApp outreach still on
+  `{{TOKEN}}` placeholders in skill `.md` files. WhatsApp outreach still on
   the UK number as a stopgap; Romanian number migration still pending (see
   "Later" above). `data/pipeline.csv` briefly existed in the public GitHub
   repo's commit history before `.gitignore` was added — decision was to
