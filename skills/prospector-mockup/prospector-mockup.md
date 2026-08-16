@@ -50,6 +50,13 @@ not sufficient for client-facing work. Instead:
    step.
 4. Stop and wait.
 
+**Formatting (standing rule, effective 2026-08-16): every prompt meant to
+be copied into an external tool — the LOGO PROMPT, the HERO IMAGE PROMPT,
+and any future prompt of this kind — is delivered inside its own fenced
+code block, always, never as inline paragraph text.** This makes it a
+one-click copy for Calin. Each prompt gets its own block; do not merge the
+two into a single block.
+
 Calin runs both prompts through ChatGPT manually, then sends back the
 resulting images plus the business's slug. Save them into the lead's own
 mockup folder (see "Folder structure" below), with this exact naming
@@ -69,6 +76,19 @@ Confirm both files are saved correctly, then stop again and wait for
 Calin provides 2–3 reference screenshots. These do not need to match this
 business's industry — they are for structural and compositional
 inspiration only.
+
+Save them into the lead's own mockup folder (see "Folder structure"
+below), named in order:
+
+- `mockups/{slug}/references/ref-1.png`
+- `mockups/{slug}/references/ref-2.png`
+- `mockups/{slug}/references/ref-3.png`
+
+(extension matches the source format if not `.png`; keep the `ref-N`
+numbering.) Create the `references/` subfolder as part of Step 1/2, the
+same way `assets/` and `screenshots/` are created at the start of the
+build — see "Folder structure" below. Confirm the files are saved before
+describing what's being taken from them.
 
 Copy from the references: layout structure, spacing rhythm, section
 composition, hero treatment (e.g. full-bleed background image with
@@ -128,6 +148,10 @@ mockups/{slug}/assets/             real photos, Places API JSON, the
                                     source material
 mockups/{slug}/screenshots/        QA/debug screenshots — desktop, mobile,
                                     alignment checks, etc.
+mockups/{slug}/references/         Step 2 structural reference screenshots
+                                    (ref-1.png, ref-2.png, ref-3.png) —
+                                    inspiration only, never shipped/linked
+                                    from the live page
 ```
 
 Build straight into this structure from the start — create the folder and
@@ -147,10 +171,10 @@ reorganized into it and their `mockup_url` values updated accordingly.
 
 ## Build mechanics (used inside Step 3)
 
-1. Create `mockups/{slug}/` with `assets/` and `screenshots/` subfolders
-   inside it (slug = lowercase business name, hyphens, no diacritics).
-   Copy `assets/template.html` to `mockups/{slug}/index.html` as the
-   working file.
+1. Create `mockups/{slug}/` with `assets/`, `screenshots/`, and
+   `references/` subfolders inside it (slug = lowercase business name,
+   hyphens, no diacritics). Copy `assets/template.html` to
+   `mockups/{slug}/index.html` as the working file.
 2. Load Tailwind CSS by CDN in the page head, after Google Fonts and before
    the custom `<style>` block. No build step, account, package install, or
    framework setup is needed.
