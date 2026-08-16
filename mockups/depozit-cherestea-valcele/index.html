@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- DEMO ONLY: never remove noindex before the client signs -->
+<meta name="robots" content="noindex,nofollow">
+<title>Depozit Cherestea Vâlcele — Propunere de website</title>
+
+<!--
+  PROSPECTOR — official Step 3 build (2026-08-16)
+  Lead: Depozit Cherestea Vâlcele (place_id ChIJF8l2agATSUcR371ywvO58Kg)
+  Category: tamplarie lemn — no bespoke shell exists yet, so this build
+  follows the frontend-design skill directly (per the standing three-step
+  process), grounded in the palette explored in the 2026-08-15
+  frontend-design-skill experiment for this same lead (heartwood/pine/
+  loader-orange, pulled from the real listing photo), plus the Step 1
+  AI-generated logo/hero assets and the Step 2 structural direction taken
+  from the BW Construction reference (full-bleed photographic hero with an
+  overlaid text card; heading+intro row above a card carousel; alternating
+  image/copy block; dark multi-column footer). Typography/color are NOT
+  taken from that reference — they stay grounded in this trade.
+
+  Verified facts (address, hours, coordinates, the three review quotes)
+  trace to the 2026-08-15 experiment's live Maps/Facebook verification —
+  see experiments/frontend-design-skill-test/EXPERIMENT.md. A same-named,
+  unrelated business in Cluj-Napoca city (51 reviews) was ruled out there:
+  different phone, different address. Nothing here was invented.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // NOTE: custom colors must be RGB triplets consumed via rgb(var(--x) / <alpha-value>)
+  // for Tailwind's bg-x/NN opacity modifiers to work — plain hex CSS vars silently
+  // fail here (documented bug hit in the 2026-08-15 experiment on this same lead).
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          bark: 'rgb(var(--c-bark-rgb) / <alpha-value>)',
+          pine: 'rgb(var(--c-pine-rgb) / <alpha-value>)',
+          loader: 'rgb(var(--c-loader-rgb) / <alpha-value>)',
+          stone: 'rgb(var(--c-stone-rgb) / <alpha-value>)',
+          paper: 'rgb(var(--c-paper-rgb) / <alpha-value>)',
+          paper2: 'rgb(var(--c-paper2-rgb) / <alpha-value>)',
+          ink: 'rgb(var(--c-text-rgb) / <alpha-value>)',
+          whatsapp: 'rgb(var(--c-whatsapp-rgb) / <alpha-value>)'
+        },
+        fontFamily: {
+          display: ['Anton', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+          stamp: ['"Space Mono"', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  :root{
+    --c-bark:#2E2117;
+    --c-pine:#E0A94A;
+    --c-loader:#D9691E;
+    --c-stone:#A9A395;
+    --c-paper:#F4EFE4;
+    --c-paper2:#EAE2D2;
+    --c-text:#2A2019;
+    --c-whatsapp:#25D366;
+    --radius:5px;
+    --c-bark-rgb:46 33 23;
+    --c-pine-rgb:224 169 74;
+    --c-loader-rgb:217 105 30;
+    --c-stone-rgb:169 163 149;
+    --c-paper-rgb:244 239 228;
+    --c-paper2-rgb:234 226 210;
+    --c-text-rgb:42 32 25;
+    --c-whatsapp-rgb:37 211 102;
+  }
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{background:var(--c-paper);color:var(--c-text);font-family:'Inter',sans-serif;overflow-x:hidden}
+  h1,h2,h3,.display{font-family:'Anton',sans-serif;letter-spacing:0.01em;text-transform:uppercase}
+  .font-stamp{font-family:'Space Mono',monospace}
+  h1,h2,.balance,p,.card p,.review p{text-wrap:balance}
+
+  .hero{background:var(--c-bark);color:var(--c-paper);position:relative;overflow:hidden}
+  .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero-content{position:relative;z-index:10}
+  .hero-card{background:rgba(46,33,23,0.90);backdrop-filter:blur(2px)}
+
+  .stamp{
+    font-family:'Space Mono',monospace;font-weight:700;font-size:12px;
+    letter-spacing:0.06em;text-transform:uppercase;color:var(--c-pine);
+    border:1.5px solid var(--c-pine);box-shadow:0 0 0 3px rgba(224,169,74,0.15) inset;
+    padding:6px 10px;border-radius:3px;display:inline-flex;align-items:center;gap:6px;
+    white-space:nowrap;line-height:1;
+  }
+  .stamp.on-light{color:var(--c-bark);border-color:var(--c-bark)}
+  .stamp-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
+
+  .btn{border-radius:var(--radius);font-weight:700;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .btn-wa{background:var(--c-whatsapp);border:2px solid var(--c-whatsapp);color:#fff}
+  .btn-wa:hover{filter:brightness(1.06);transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,0.28)}
+  .btn-outline{border:2px solid var(--c-paper);color:var(--c-paper);background:transparent}
+  .btn-outline:hover{background:rgba(244,239,228,0.10);transform:translateY(-2px)}
+  .btn-outline-dark{border:2px solid var(--c-bark);color:var(--c-bark);background:transparent}
+  .btn-outline-dark:hover{background:rgba(46,33,23,0.06);transform:translateY(-2px)}
+
+  .eyebrow{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-loader);font-weight:700}
+
+  .card{background:var(--c-paper);border:1.5px solid var(--c-stone);border-radius:var(--radius);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(46,33,23,0.14);border-color:var(--c-pine)}
+  .card-alt{background:var(--c-paper2);border:1.5px solid var(--c-stone);border-radius:var(--radius);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .card-alt:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(46,33,23,0.14);border-color:var(--c-pine)}
+  .svc-card{scroll-snap-align:start;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .svc-card:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 14px 28px rgba(46,33,23,0.14);border-color:var(--c-pine)}
+
+  .hairline{border-top:1.5px solid var(--c-stone)}
+  .sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--c-bark);border-top:2px solid var(--c-pine)}
+
+  .no-scrollbar{scrollbar-width:none;-ms-overflow-style:none}
+  .no-scrollbar::-webkit-scrollbar{display:none}
+
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--c-stone);transition:background .25s ease,transform .25s ease}
+  .dot.active{background:var(--c-loader);transform:scale(1.25)}
+
+  /* Scroll-triggered reveal — vertical (default) and horizontal (trust pillars, this build only) */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .28s ease-out,transform .28s ease-out}
+  .reveal.is-visible{opacity:1;transform:translateY(0)}
+  .reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .3s ease-out,transform .3s ease-out}
+  .reveal-left.is-visible{opacity:1;transform:translateX(0)}
+  .reveal-right{opacity:0;transform:translateX(28px);transition:opacity .3s ease-out,transform .3s ease-out}
+  .reveal-right.is-visible{opacity:1;transform:translateX(0)}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important}
+    .reveal,.reveal-left,.reveal-right{opacity:1 !important;transform:none !important}
+  }
+</style>
+</head>
+<body class="pb-[72px] md:pb-0">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-50 bg-bark/95 backdrop-blur border-b-2 border-pine">
+  <div class="mx-auto max-w-[1180px] px-4 md:px-6 flex items-center justify-between h-16">
+    <a href="#top" class="font-display text-paper text-base md:text-xl tracking-wide leading-tight">DEPOZIT CHERESTEA <span class="text-pine">VÂLCELE</span></a>
+
+    <nav class="hidden md:flex items-center gap-7 font-body text-sm font-semibold text-paper/90">
+      <a href="#produse" class="hover:text-pine transition-colors duration-200">Produse</a>
+      <a href="#despre" class="hover:text-pine transition-colors duration-200">Despre noi</a>
+      <a href="#recenzii" class="hover:text-pine transition-colors duration-200">Recenzii</a>
+      <a href="#contact" class="hover:text-pine transition-colors duration-200">Contact &amp; Program</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele."
+         class="btn btn-wa hidden md:inline-flex px-4 text-sm" aria-label="Scrie pe WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele."
+         class="btn btn-wa md:hidden w-11 h-11 !p-0" aria-label="Scrie pe WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+      </a>
+      <button id="menuBtn" class="md:hidden w-11 h-11 flex items-center justify-center text-paper" aria-label="Deschide meniul" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav id="mobileMenu" class="hidden md:hidden bg-bark border-t border-pine/30 px-4 py-3 flex flex-col gap-1 font-body text-sm font-semibold text-paper/90">
+    <a href="#produse" class="py-2">Produse</a>
+    <a href="#despre" class="py-2">Despre noi</a>
+    <a href="#recenzii" class="py-2">Recenzii</a>
+    <a href="#contact" class="py-2">Contact &amp; Program</a>
+  </nav>
+</header>
+
+<!-- HERO: full-bleed photo + overlaid card (Step 2 structural direction) -->
+<section id="top" class="hero min-h-[560px] md:min-h-[640px] flex items-center px-4 md:px-6 py-14 md:py-0">
+  <img src="hero.png" alt="Depozitul de cherestea la apus — stive de cherestea proaspăt tăiată" class="hero-photo">
+
+  <div class="hero-content mx-auto max-w-[1180px] w-full">
+    <div class="hero-card max-w-[560px] rounded-[var(--radius)] border border-pine/30 px-6 py-8 md:px-9 md:py-10 flex flex-col items-start">
+      <img src="logo.png" alt="Depozit Cherestea Vâlcele — siglă" class="w-[92px] h-[92px] md:w-[112px] md:h-[112px] mb-5 select-none" draggable="false">
+
+      <p class="eyebrow mb-3">Depozit de cherestea · Vâlcele, comuna Mociu</p>
+      <h1 class="text-[11vw] leading-[0.94] sm:text-5xl md:text-[3.6vw] md:leading-[0.95] text-paper balance">
+        DEPOZIT CHERESTEA <span class="text-pine">VÂLCELE</span>
+      </h1>
+      <p class="font-body text-paper/85 text-base md:text-lg mt-5 max-w-[42ch] balance">
+        Cherestea dimensionată la comandă, direct din depozitul nostru din Vâlcele, comuna Mociu.
+      </p>
+
+      <div class="mt-7 flex flex-wrap items-center gap-3">
+        <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele."
+           class="btn btn-wa px-6 text-base">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+          Scrie pe WhatsApp
+        </a>
+        <a href="#produse" class="btn btn-outline px-6 text-base">Vezi produsele</a>
+      </div>
+
+      <div class="mt-7 flex flex-wrap gap-3">
+        <span class="stamp"><span class="stamp-dot"></span>Dimensionată</span>
+        <span class="stamp"><span class="stamp-dot"></span>Livrare rapidă</span>
+        <span class="stamp"><span class="stamp-dot"></span>Prețuri corecte</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST PILLARS — side-entrance reveal (this build only, per Calin's request) -->
+<section class="px-4 md:px-6 py-14 md:py-20">
+  <div class="mx-auto max-w-[1180px]">
+    <p class="eyebrow mb-3 reveal">De ce noi</p>
+    <h2 class="text-3xl md:text-4xl text-ink mb-10 max-w-[24ch] balance reveal">Un depozit local, cu răspuns rapid</h2>
+
+    <div class="grid sm:grid-cols-3 gap-5">
+      <div class="card p-6 reveal-left">
+        <div class="flex items-center gap-1 mb-3 text-pine">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <span class="font-display text-2xl text-ink">5,0</span>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed">Calificativ 5,0 din 5 pe Google, din 5 recenzii — de la clienți din Vâlcele și împrejurimi.</p>
+      </div>
+      <div class="card p-6 reveal-right">
+        <div class="mb-3 text-loader">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed">În Vâlcele, comuna Mociu — aproape de dumneavoastră, în județul Cluj.</p>
+      </div>
+      <div class="card p-6 reveal-left">
+        <div class="mb-3 text-loader">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed">Program Luni–Vineri, 08:00–17:00 — cherestea pregătită pentru ridicare sau livrare.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — heading+intro row, then horizontal scroll-snap carousel (Step 2 structural direction) -->
+<section id="produse" class="py-14 md:py-20" style="background:var(--c-paper2)">
+  <div class="mx-auto max-w-[1180px] px-4 md:px-6">
+    <div class="md:flex md:items-end md:justify-between md:gap-10 mb-10">
+      <div class="reveal">
+        <p class="eyebrow mb-3">Ce oferim</p>
+        <h2 class="text-3xl md:text-4xl text-ink max-w-[20ch] balance">Cherestea pregătită exact cum aveți nevoie</h2>
+      </div>
+      <p class="font-body text-[15px] leading-relaxed max-w-[38ch] mt-4 md:mt-0 reveal">Din depozitul din Vâlcele, comuna Mociu, pregătim materialul potrivit pentru fiecare comandă — de la dimensionare până la livrare.</p>
+    </div>
+  </div>
+
+  <div id="svcTrack" class="reveal no-scrollbar flex gap-5 overflow-x-auto snap-x snap-mandatory px-4 md:px-6 pb-2 mx-auto max-w-[1180px]" style="scroll-padding-left:1rem">
+    <div class="svc-card card flex-none w-[78vw] sm:w-[320px] p-6">
+      <span class="stamp on-light mb-4"><span class="stamp-dot"></span>01</span>
+      <h3 class="font-display text-lg text-ink mt-4 mb-2 normal-case">Cherestea dimensionată</h3>
+      <p class="font-body text-[14.5px] leading-relaxed">Tăiată și dimensionată conform comenzii dumneavoastră, la cerere.</p>
+    </div>
+    <div class="svc-card card flex-none w-[78vw] sm:w-[320px] p-6">
+      <span class="stamp on-light mb-4"><span class="stamp-dot"></span>02</span>
+      <h3 class="font-display text-lg text-ink mt-4 mb-2 normal-case">Livrare rapidă</h3>
+      <p class="font-body text-[14.5px] leading-relaxed">Livrare la depozit sau direct pe șantier, în cel mai scurt timp posibil.</p>
+    </div>
+    <div class="svc-card card flex-none w-[78vw] sm:w-[320px] p-6">
+      <span class="stamp on-light mb-4"><span class="stamp-dot"></span>03</span>
+      <h3 class="font-display text-lg text-ink mt-4 mb-2 normal-case">Consiliere la alegere</h3>
+      <p class="font-body text-[14.5px] leading-relaxed">Personalul vă ajută cu răbdare să alegeți exact ce vă trebuie.</p>
+    </div>
+    <div class="svc-card card flex-none w-[78vw] sm:w-[320px] p-6">
+      <span class="stamp on-light mb-4"><span class="stamp-dot"></span>04</span>
+      <h3 class="font-display text-lg text-ink mt-4 mb-2 normal-case">Stoc pregătit</h3>
+      <p class="font-body text-[14.5px] leading-relaxed">Stoc verificat și pregătit, gata de ridicare direct din depozit.</p>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center gap-2 mt-6" id="svcDots"></div>
+</section>
+
+<!-- ABOUT — alternating image/copy block (Step 2 structural direction) -->
+<section id="despre" class="px-4 md:px-6 py-14 md:py-20">
+  <div class="mx-auto max-w-[1180px] grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+    <div class="rounded-[var(--radius)] overflow-hidden border-2 border-pine/30 shadow-xl reveal-left order-2 md:order-1">
+      <img src="hero.png" alt="" role="presentation" class="w-full h-[280px] md:h-[380px] object-cover" style="object-position:80% 55%">
+    </div>
+    <div class="order-1 md:order-2 reveal-right">
+      <p class="eyebrow mb-3">Cum lucrăm</p>
+      <h2 class="text-3xl md:text-4xl text-ink mb-6 max-w-[16ch] balance">Cherestea pregătită, nu doar scoasă din stivă</h2>
+      <p class="font-body text-[15px] leading-relaxed mb-4">La Depozit Cherestea Vâlcele, materialul este dimensionat la comandă — grinzi, scânduri și dulapi pregătiți exact pentru proiectul dumneavoastră, nu doar livrați ca atare din stivă.</p>
+      <p class="font-body text-[15px] leading-relaxed mb-7">Personalul ajută la alegerea variantei potrivite, iar livrarea se face rapid — la depozit sau direct pe șantier, în funcție de comandă.</p>
+      <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele."
+         class="btn btn-outline-dark px-6 text-base">Scrie pe WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="recenzii" class="px-4 md:px-6 py-14 md:py-20" style="background:var(--c-paper2)">
+  <div class="mx-auto max-w-[1180px]">
+    <p class="eyebrow mb-3 reveal">Recenzii</p>
+    <h2 class="text-3xl md:text-4xl text-ink mb-10 max-w-[24ch] balance reveal">Ce spun clienții noștri</h2>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card p-6 flex flex-col reveal">
+        <div class="flex gap-1 mb-4 text-pine">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed flex-1 balance">„Servicii de calitate și seriozitate maximă. Recomand cu încredere! 🌳”</p>
+        <p class="font-stamp text-[12px] text-ink/60 mt-4">— Nicu C., Google</p>
+      </div>
+      <div class="card p-6 flex flex-col reveal">
+        <div class="flex gap-1 mb-4 text-pine">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed flex-1 balance">„Prețuri bune, cherestea dimensionată de calitate. Livrare rapidă ☎️”</p>
+        <p class="font-stamp text-[12px] text-ink/60 mt-4">— Rareș L., Google</p>
+      </div>
+      <div class="card p-6 flex flex-col reveal">
+        <div class="flex gap-1 mb-4 text-pine">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#E0A94A"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed flex-1 balance">„Am fost foarte mulțumit de experiența avută. Produsele sunt de foarte bună calitate, iar cheresteaua este bine pregătită și la prețuri corecte. Personalul este amabil, profesionist și te ajută cu răbdare să alegi exact ceea ce ai nevoie.”</p>
+        <p class="font-stamp text-[12px] text-ink/60 mt-4">— Andrei C.P., Google</p>
+      </div>
+    </div>
+    <p class="font-stamp text-[11px] text-ink/45 mt-6 reveal">Recenzii reale, preluate din profilul Google al depozitului. Google marchează recenziile ca neconfirmate.</p>
+  </div>
+</section>
+
+<!-- CONTACT / MAP / CTA -->
+<section id="contact" class="hero px-4 md:px-6 py-14 md:py-20">
+  <div class="mx-auto max-w-[1180px] relative grid md:grid-cols-2 gap-10">
+    <div class="reveal">
+      <p class="eyebrow mb-3">Contact &amp; program</p>
+      <h2 class="text-3xl md:text-4xl text-paper mb-8 max-w-[20ch] balance">Aveți nevoie de cherestea?</h2>
+
+      <div class="space-y-5 font-body text-paper/90">
+        <div class="flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0A94A" stroke-width="2" class="mt-0.5 flex-none"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <div><strong class="block text-paper">Adresă</strong><span>407274 Vâlcele, comuna Mociu, județul Cluj</span></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0A94A" stroke-width="2" class="mt-0.5 flex-none"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <div><strong class="block text-paper">Program</strong><span>Luni – Vineri: 08:00 – 17:00 · Sâmbătă – Duminică: închis</span></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366" class="mt-0.5 flex-none"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+          <div><strong class="block text-paper">WhatsApp</strong><span><a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele." class="underline hover:text-pine transition-colors duration-200">0747 470 637</a></span></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E0A94A" stroke-width="2" class="mt-0.5 flex-none"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <div><strong class="block text-paper">Facebook</strong><span><a href="https://www.facebook.com/share/183Fa1wkxB/" class="underline hover:text-pine transition-colors duration-200" target="_blank" rel="noopener">Depozit Cherestea Vâlcele</a></span></div>
+        </div>
+      </div>
+
+      <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele."
+         class="btn btn-wa px-6 text-base mt-8">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+        Scrie pe WhatsApp
+      </a>
+    </div>
+
+    <div class="reveal">
+      <div class="rounded-[var(--radius)] overflow-hidden border-2 border-pine/40 aspect-[4/3] md:aspect-auto md:h-full min-h-[280px] relative bg-paper2">
+        <iframe
+          id="mapFrame"
+          src="https://maps.google.com/maps?q=46.6828737,23.6365535&hl=ro&z=15&output=embed"
+          class="w-full h-full absolute inset-0 border-0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Harta — Depozit Cherestea Vâlcele"
+          onerror="document.getElementById('mapFallback').classList.remove('hidden')">
+        </iframe>
+      </div>
+      <div id="mapFallback" class="hidden mt-2">
+        <a href="https://www.google.com/maps/place/Depozit+Cherestea+V%C3%A2lcele/@46.6828737,23.6365535,17z/data=!3m1!4b1!4m6!3m5!1s0x474913006a76c917:0xa8f0b9f3c272bddf!8m2!3d46.6828737!4d23.6365535!16s%2Fg%2F11zh91csj3" target="_blank" rel="noopener" class="underline text-pine font-body text-sm">Deschide harta</a>
+      </div>
+      <a href="https://www.google.com/maps/place/Depozit+Cherestea+V%C3%A2lcele/@46.6828737,23.6365535,17z/data=!3m1!4b1!4m6!3m5!1s0x474913006a76c917:0xa8f0b9f3c272bddf!8m2!3d46.6828737!4d23.6365535!16s%2Fg%2F11zh91csj3" target="_blank" rel="noopener" class="inline-block mt-3 font-body text-sm underline text-paper/80 hover:text-pine transition-colors duration-200">Deschide harta în Google Maps ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-4 md:px-6 py-10 text-center" style="background:var(--c-bark)">
+  <div class="mx-auto max-w-[760px] text-paper/70 font-body text-sm balance">
+    <div>407274 Vâlcele, comuna Mociu, județul Cluj · <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele." class="underline hover:text-pine transition-colors duration-200">WhatsApp</a> · <a href="tel:+40747470637" class="underline hover:text-pine transition-colors duration-200">0747 470 637</a></div>
+    <div class="mt-4 inline-block max-w-[640px] rounded-[var(--radius)] border border-dashed border-pine/60 px-4 py-3 text-[13px] text-pine/90 balance">Propunere de website — demonstrație realizată de Calin Botean · WhatsApp +44 7577 464619. Acest site nu este publicat oficial.</div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-bar md:hidden px-4 py-2.5 flex items-center gap-3">
+  <a class="btn btn-wa flex-1 text-sm" href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele.">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+    WhatsApp
+  </a>
+  <a class="w-11 h-11 flex-none flex items-center justify-center rounded-[var(--radius)] border-2 border-pine text-pine transition-transform duration-200" href="tel:+40747470637" aria-label="Sună">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
+  </a>
+</div>
+
+<script>
+  // Mobile menu
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', function(){
+    var isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(function(a){
+    a.addEventListener('click', function(){ mobileMenu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); });
+  });
+
+  // Map iframe fallback: if it fails to load or stays blank, reveal the "Deschide harta" link.
+  (function(){
+    var frame = document.getElementById('mapFrame');
+    var fallback = document.getElementById('mapFallback');
+    var loaded = false;
+    frame.addEventListener('load', function(){ loaded = true; });
+    setTimeout(function(){ if(!loaded){ fallback.classList.remove('hidden'); } }, 3500);
+  })();
+
+  // Scroll-triggered reveal: vertical fade+slide-up by default, horizontal for
+  // .reveal-left/.reveal-right (trust-pillars only, this build).
+  (function(){
+    var targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    if(!('IntersectionObserver' in window)){
+      targets.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    targets.forEach(function(el){ io.observe(el); });
+  })();
+
+  // Services carousel: dot pagination synced to horizontal scroll position.
+  (function(){
+    var track = document.getElementById('svcTrack');
+    var dotsWrap = document.getElementById('svcDots');
+    var cards = Array.prototype.slice.call(track.querySelectorAll('.svc-card'));
+    cards.forEach(function(_, i){
+      var d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Produs ' + (i + 1));
+      d.addEventListener('click', function(){
+        cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      });
+      dotsWrap.appendChild(d);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+    var ticking = false;
+    track.addEventListener('scroll', function(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        var trackLeft = track.getBoundingClientRect().left;
+        var closest = 0, closestDist = Infinity;
+        cards.forEach(function(c, i){
+          var dist = Math.abs(c.getBoundingClientRect().left - trackLeft);
+          if(dist < closestDist){ closestDist = dist; closest = i; }
+        });
+        dots.forEach(function(d, i){ d.classList.toggle('active', i === closest); });
+        ticking = false;
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
