@@ -157,6 +157,35 @@ Most recent first. Add a new dated entry at the end of any session with
 meaningful progress or a real discovered issue — a few lines, key lessons
 only, not a full transcript.
 
+- **2026-08-17** — Diagnosed the reported 404s on Agrofarm Marius and Sabo
+  ITP & SERVICE: from the Cowork cloud sandbox, all three live mockup URLs
+  (`https://calinbotean.github.io/prospector-mockups/mockups/<slug>/`)
+  return 200 right now; only legacy/incorrect forms (`.html`-suffixed paths,
+  or the slug at the repo root instead of under `mockups/`) 404. Likely a
+  stale/incorrect link on Calin's side rather than a live deploy problem --
+  flagged for him to confirm the exact URL he used. Corrected a
+  ledger/reality mismatch found while checking this: `data/pipeline.csv`
+  still listed Depozit Cherestea Vâlcele as QUALIFIED with no `mockup_url`,
+  even though the mockup was already built and live in
+  `mockups/depozit-cherestea-valcele/` -- updated to BUILT with the live
+  URL and a dated note; `next_action_date` cleared pending the design
+  revision Calin is about to request. Diagnosed the "sounds very AI"
+  complaint about mockup copy: the old `## Copy rules (Romanian)` section in
+  `skills/prospector-mockup/prospector-mockup.md` mandated blanket formal
+  `dumneavoastră` and an identical rating/address/hours "De ce noi" triad on
+  every build, producing near-interchangeable copy across three unrelated
+  businesses, plus calqued English section headers ("semne clare",
+  "cuvântul clientului"). Wrote
+  `skills/prospector-mockup/romanian-copywriting-style.md` (grounded in the
+  actual flagged lines from all three live mockups) and updated the copy
+  rules section to point to it instead of mandating the fixed formula. Also
+  confirmed `mcp__remote-devices__device_bash` gives a live read-write mount
+  of this repo (not just the older stage/commit-file bridge) -- `git
+  status`/`diff`/`log` and direct file edits work straight from a Cowork
+  session now, though push still needs no network and stays a
+  PowerShell/local step; the known `.git/index.lock` gotcha still applies
+  the same way (move it into `_to_delete/`, don't try to delete it).
+
 - **2026-08-16** — Discovered the desktop bridge used by Cowork sessions can rename files but not delete them (no unlink permission on the mount). Running `git add`/`git status` through it leaves a stale `.git/index.lock` behind after every call, which would block all local git commands until removed. Fix pattern going forward: Cowork sessions move any stray lock into `_to_delete/` instead of trying to delete it, and hand off `git commit`/`git push` to PowerShell locally — see "Deploying changes from a Cowork session (PowerShell)" above.
 - **2026-08-16** — Added the standing three-step, stop-after-each-step mockup build process (image-generation prompts → structural reference → full build) and a standalone scroll-reveal/hover-state rule to `skills/prospector-mockup/prospector-mockup.md`. While verifying the update, found `skills/prospector-mockup/SKILL.md` only exists inside the stale `skills.zip` bundle (2026-08-06 snapshot, missing weeks of accumulated fixes) — the live skill files on disk are all named `<foldername>.md`, not `SKILL.md`. Rebuilt `skills.zip` from the current on-disk files and fixed the stale `SKILL.md` filename references in this file (session-start gate, GBP pricing note, Jekyll note).
 - **2026-08-14** — Hero-lockup alignment bug on the Sabo ITP & SERVICE
@@ -179,3 +208,26 @@ only, not a full transcript.
   "Later" above). `data/pipeline.csv` briefly existed in the public GitHub
   repo's commit history before `.gitignore` was added — decision was to
   leave it as-is, not scrub history.
+- **2026-08-17** — Revised only the Depozit Cherestea Vâlcele hero: removed
+  the opaque text card, added a left-side legibility scrim plus local
+  text/button shadows, and increased the mobile hero height while shifting
+  the crop right to retain the lumber stacks. The browser QA surface blocks
+  direct local-file URLs, so its required desktop/mobile page screenshots
+  remain pending a permitted local-page rendering route.
+- **2026-08-17** — Increased the Depozit Cherestea Vâlcele hero logo from
+  92/112px to 112/132px (mobile/desktop) and set the main heading into an
+  explicit two-line lockup, with VÂLCELE centered beneath DEPOZIT CHERESTEA.
+- **2026-08-17** — Centered the Depozit Cherestea Vâlcele hero lockup,
+  including the buttons and stamp badges, and retuned the hero scrim from
+  left-biased to centered radial coverage so the white/amber type remains
+  legible at desktop and 360px mobile widths. Shortened the third pillar to
+  the supplied wording, removing the unsupported “gata de ridicare” claim.
+- **2026-08-17** — Shifted the Depozit Cherestea Vâlcele hero lockup a
+  restrained 7% left only from the desktop breakpoint while preserving its
+  internally centered mobile composition; moved the desktop radial scrim to
+  follow. Replaced the supplied trust/contact copy only; pillar 3 remains
+  unchanged.
+- **2026-08-17** — Updated only the requested services-card and “Cum
+  lucrăm” copy for Depozit Cherestea Vâlcele. The shorter about copy needs
+  no layout padding adjustment: its existing desktop grid uses
+  `items-center`, keeping the text column balanced with the adjacent photo.

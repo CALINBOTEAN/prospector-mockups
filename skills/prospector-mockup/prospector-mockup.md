@@ -378,16 +378,33 @@ no parallax, no heavy JavaScript; hover transitions 0.2s only.
 
 ## Copy rules (Romanian)
 
+**Read `romanian-copywriting-style.md` in this folder before writing any
+copy.** It documents, with real examples from the first three builds, why
+the copy read as AI-translated and what to do instead — mandatory reading,
+not optional background.
+
 - Correct diacritics everywhere: ă â î ș ț. Test them in the H1.
-- Register: formal `dumneavoastră` in body copy; imperative singular on
-  buttons ("Scrie pe WhatsApp", "Cere ofertă").
+- Register: match the trade and locality — a rural village depot can read
+  plainer/warmer than a Cluj-Napoca service business. Use formal
+  `dumneavoastră` where it fits, but do not force it into every sentence;
+  imperative singular on buttons ("Scrie pe WhatsApp", "Cere ofertă"). Read
+  the copy aloud — if it sounds like a call-center script, cut the
+  formality.
 - Hero H1 = business name. Hero subline = one concrete sentence naming the
-  locality and the core service. No slogans, no marketing abstractions.
+  locality and the core service. No slogans, no marketing abstractions, no
+  calqued English idioms (see the style file for banned patterns like
+  "semne clare" / "cuvântul clientului").
 - Services grid: 4–6 cards, each a real service the business plausibly offers
   based on category and reviews. Plain nouns, one-line descriptions.
-- "De ce noi" pillars: exactly 3, grounded in verifiable facts (e.g. "Peste
-  {N} recenzii de 5 stele pe Google", "În {locality} — aproape de
-  dumneavoastră", "Program {hours}").
+- "De ce noi" pillars: exactly 3, grounded in verifiable facts, but the
+  **fact chosen for each pillar and its phrasing must be specific to this
+  business** — never reuse the same rating/address/hours triad verbatim
+  from another mockup. If a pillar could be swapped with another business's
+  pillar unnoticed, rewrite it.
+- CTA line above the WhatsApp button: written specific to this business's
+  actual customer pattern (per its reviews/category) — do not default to
+  the same "Aveți nevoie de X? Scrieți pe WhatsApp..." formula on every
+  build.
 - Reviews section: only **real Google reviews**, quoted faithfully, max 3,
   author as "Ion M." Never fabricate or embellish a review.
 
