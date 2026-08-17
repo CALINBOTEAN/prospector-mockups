@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- DEMO ONLY: never remove noindex before the client signs -->
+  <meta name="robots" content="noindex,nofollow">
+  <title>Depozit Cherestea Vâlcele — Propunere de website</title>
+
+  <!--
+    EXPERIMENT V2 — frontend-design skill brainstorm / two-pass review
+
+    SUBJECT + JOB
+    Depozit Cherestea Vâlcele is a rural timber depot in Vâlcele, comuna
+    Mociu. A visitor should recognise the actual yard, locate the business,
+    and start a WhatsApp conversation without mistaking the page for a
+    generic construction-company template.
+
+    PASS 1 — grounded token system
+    Color:
+      pine-shadow   #223E36  deep, greened timber end-grain for headlines
+      fresh-larch   #D9922E  timber/loader gold, used only as a decisive mark
+      chalk         #F6F4ED  sunlit sawdust-paper for the header and copy cards
+      gravel        #D8D2C5  aggregate-yard neutral for quiet structural fields
+      charcoal      #1D2522  restrained footer / readable map surround
+      whatsapp      #25D366  fixed action colour
+    Type:
+      Barlow Condensed 700/800 — compact, upright, utilitarian display;
+      Manrope 400–700 — calm, highly legible reading and actions;
+      IBM Plex Mono — labels/captions that evoke a yard tally rather than
+      decorative “luxury” typography.
+    Layout:
+      [white working header]
+      [full-bleed real yard photograph]
+      [anchored pale information slip at left]
+      [portrait Facebook promotion + direct action]
+      [asymmetric depot introduction + documentary contact sheet]
+      [one broad pull quote, two differing review strips]
+      [contact/map]
+    Signature:
+      The hero’s "yard order slip" is a translucent chalk panel placed over
+      the unfiltered real yard photograph. Its green type and cut-in orange
+      rule resemble a physical order note clipped to a stack of lumber. It
+      makes the actual location—not an abstract feature list—the thesis.
+
+    PASS 2 — layout-risk critique and revision
+    The v1 plan was headed down the common hero → benefits-card grid →
+    services-card grid → equal review-card row path. V2 explicitly rejects
+    that sequence: no bordered icon cards are used; the post-hero promotion
+    is an editorial, portrait-led band; the central section is a two-column
+    statement followed by documentary crops; reviews vary in scale and
+    surface rather than repeating three boxes. This is structurally tied to
+    the depot’s available evidence (one real yard image and one labelled
+    Facebook promotion), not a reskinned general-purpose layout.
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pine: 'rgb(var(--pine-rgb) / <alpha-value>)',
+            larch: 'rgb(var(--larch-rgb) / <alpha-value>)',
+            chalk: 'rgb(var(--chalk-rgb) / <alpha-value>)',
+            gravel: 'rgb(var(--gravel-rgb) / <alpha-value>)',
+            charcoal: 'rgb(var(--charcoal-rgb) / <alpha-value>)',
+            whatsapp: 'rgb(var(--whatsapp-rgb) / <alpha-value>)'
+          },
+          fontFamily: {
+            display: ['"Barlow Condensed"', 'sans-serif'],
+            body: ['Manrope', 'sans-serif'],
+            utility: ['"IBM Plex Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      --pine: #223E36;
+      --larch: #D9922E;
+      --chalk: #F6F4ED;
+      --gravel: #D8D2C5;
+      --charcoal: #1D2522;
+      --whatsapp: #25D366;
+      /* Space-separated RGB values keep Tailwind's /opacity custom utilities valid. */
+      --pine-rgb: 34 62 54;
+      --larch-rgb: 217 146 46;
+      --chalk-rgb: 246 244 237;
+      --gravel-rgb: 216 210 197;
+      --charcoal-rgb: 29 37 34;
+      --whatsapp-rgb: 37 211 102;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--chalk); color: var(--pine); font-family: Manrope, sans-serif; overflow-x: hidden; }
+    a { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--larch); outline-offset: 4px; }
+    .display { font-family: "Barlow Condensed", sans-serif; font-weight: 800; letter-spacing: -0.025em; text-transform: uppercase; }
+    .utility { font-family: "IBM Plex Mono", monospace; }
+    .section-anchor { scroll-margin-top: 24px; }
+
+    .header-rule::after { content: ""; display: block; height: 3px; background: var(--larch); transform: scaleX(0.72); transform-origin: left; margin-top: 10px; }
+    .btn { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 800; letter-spacing: -0.01em; transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-wa { background: var(--whatsapp); color: #fff; box-shadow: 0 8px 18px rgba(20, 116, 61, 0.18); }
+    .btn-wa:hover { background: #20c661; box-shadow: 0 10px 22px rgba(20, 116, 61, 0.27); }
+    .btn-dark { background: var(--pine); color: var(--chalk); }
+    .btn-dark:hover { background: #182e28; }
+
+    .hero { min-height: min(720px, calc(100svh - 74px)); position: relative; display: flex; align-items: stretch; isolation: isolate; }
+    .hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: url('experiment-frontend-skill-test-yard.jpg'); background-size: cover; background-position: center center; }
+    /* A localized vignette protects the order slip only; the photo remains bright and unwashed. */
+    .hero::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: min(48%, 670px); z-index: -1; background: linear-gradient(90deg, rgba(246,244,237,0.16), rgba(246,244,237,0)); pointer-events: none; }
+    .hero-slip { align-self: center; width: min(100%, 520px); background: rgba(246,244,237,0.94); padding: clamp(28px, 4vw, 52px); box-shadow: 18px 20px 0 rgba(34,62,54,0.22); }
+    .hero-logo { display: block; width: clamp(320px, 33vw, 480px); max-width: 100%; height: auto; margin-bottom: clamp(17px, 2vw, 25px); filter: drop-shadow(0 8px 10px rgba(34,62,54,0.12)); }
+    .hero-caption { position: absolute; right: 22px; bottom: 18px; color: rgba(246,244,237,0.86); font-size: 10px; letter-spacing: 0.045em; text-shadow: 0 1px 4px rgba(0,0,0,0.45); }
+
+    .promo-poster { width: min(100%, 285px); height: auto; display: block; box-shadow: 14px 14px 0 var(--larch); }
+    .documentary-image { width: 100%; height: 100%; min-height: 210px; object-fit: cover; display: block; filter: saturate(0.93) contrast(1.03); }
+    .documentary-image.loader { object-position: 10% 54%; }
+    .documentary-image.stacks { object-position: 88% 54%; }
+    .cut-label { position: absolute; left: 14px; bottom: 12px; background: var(--chalk); color: var(--pine); padding: 7px 9px; font-size: 10px; letter-spacing: 0.04em; }
+
+    .quote-mark { font-family: Georgia, serif; font-size: clamp(80px, 11vw, 145px); font-weight: bold; line-height: .5; color: var(--larch); }
+    .review-band { border-left: 7px solid var(--larch); }
+    .map-shell { min-height: 370px; position: relative; background: var(--gravel); }
+    .map-shell iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .mobile-wa { position: fixed; z-index: 60; bottom: 0; left: 0; right: 0; display: none; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--chalk); box-shadow: 0 -8px 28px rgba(29,37,34,0.15); }
+
+    @media (max-width: 767px) {
+      body { padding-bottom: 76px; }
+      .desktop-nav, .desktop-phone, .desktop-cta { display: none; }
+      .hero { min-height: 605px; }
+      .hero::before { background-position: 56% center; }
+      .hero::after { width: 100%; background: linear-gradient(90deg, rgba(246,244,237,0.25), rgba(246,244,237,0.04)); }
+      .hero-slip { align-self: flex-end; margin-bottom: 42px; width: calc(100% - 32px); padding: 25px; box-shadow: 10px 12px 0 rgba(34,62,54,0.22); }
+      .hero-logo { width: min(100%, 440px); margin-bottom: 19px; }
+      .hero-caption { right: 16px; bottom: 16px; max-width: 220px; text-align: right; }
+      .mobile-wa { display: block; }
+      .promo-poster { width: min(100%, 250px); }
+    }
+    @media (min-width: 768px) { .mobile-tools, .mobile-nav, .mobile-wa { display: none; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <!-- Header is intentionally a light working strip directly on top of the yard image. -->
+  <header class="relative z-50 bg-chalk">
+    <div class="mx-auto flex h-[74px] max-w-[1280px] items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="#top" class="display shrink-0 text-[23px] leading-[0.86] text-pine" aria-label="Depozit Cherestea Vâlcele, început">
+        Depozit Cherestea<br><span class="text-larch">Vâlcele</span>
+      </a>
+
+      <nav class="desktop-nav ml-auto mr-7 flex items-center gap-7 text-sm font-bold text-pine" aria-label="Navigare principală">
+        <a href="#depozit" class="hover:text-larch">Despre depozit</a>
+        <a href="#recenzii" class="hover:text-larch">Recenzii</a>
+        <a href="#contact" class="hover:text-larch">Contact</a>
+      </nav>
+      <span class="desktop-phone mr-5 whitespace-nowrap text-sm font-extrabold text-pine">0747 470 637</span>
+      <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele." class="desktop-cta btn btn-dark px-5 text-sm" aria-label="Scrie pe WhatsApp">Scrie pe WhatsApp</a>
+
+      <div class="mobile-tools ml-auto flex items-center gap-1">
+        <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele." class="flex h-11 w-11 items-center justify-center bg-whatsapp text-white" aria-label="Scrie pe WhatsApp">
+          <svg aria-hidden="true" width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+        </a>
+        <button id="menuBtn" class="flex h-11 w-11 items-center justify-center text-pine" type="button" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu">
+          <svg aria-hidden="true" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobileMenu" class="mobile-nav hidden border-t border-pine/15 bg-chalk px-4 py-3 text-sm font-bold text-pine" aria-label="Navigare mobilă">
+      <a class="block min-h-[44px] py-3" href="#depozit">Despre depozit</a>
+      <a class="block min-h-[44px] py-3" href="#recenzii">Recenzii</a>
+      <a class="block min-h-[44px] py-3" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="top" class="hero px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto flex w-full max-w-[1280px] items-stretch">
+        <article class="hero-slip">
+          <img src="depozit-cherestea-valcele-logo-demo.png" class="hero-logo" alt="Logo demonstrativ Depozit Cherestea Vâlcele, marcat DEMO" decoding="async">
+          <p class="utility mb-4 text-[10px] font-medium uppercase tracking-[0.1em] text-pine/70">407274 Vâlcele · comuna Mociu · Cluj</p>
+          <h1 class="display text-[clamp(50px,6.3vw,88px)] leading-[0.82] text-pine">Cherestea<br>în Vâlcele</h1>
+          <p class="mt-6 max-w-[34ch] text-[15px] leading-7 text-pine/85">Pentru informații despre cherestea, luați legătura direct cu depozitul pe WhatsApp.</p>
+          <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele." class="btn btn-wa mt-7 px-5 text-[15px]"> 
+            <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+            Scrie pe WhatsApp
+          </a>
+        </article>
+      </div>
+      <p class="utility hero-caption">Fotografie reală din curtea depozitului</p>
+    </section>
+
+    <!-- The portrait remains uncropped: this is identified as promotion, never presented as documentary yard imagery. -->
+    <section class="bg-gravel px-4 py-14 sm:px-6 md:py-20 lg:px-8">
+      <div class="mx-auto grid max-w-[1100px] items-center gap-12 md:grid-cols-[minmax(230px,0.75fr)_1.25fr] md:gap-20">
+        <figure class="mx-auto w-full max-w-[285px]">
+          <img class="promo-poster" src="experiment-frontend-skill-test-v2-fb-promo.jpg" alt="Material promoțional Depozit Cherestea Vâlcele, publicat pe Facebook">
+          <figcaption class="utility mt-5 text-[10px] leading-5 text-pine/70">Din materialele de promovare Depozit Cherestea Vâlcele, publicate pe Facebook.</figcaption>
+        </figure>
+        <div>
+          <p class="utility mb-4 text-[10px] font-medium uppercase tracking-[0.12em] text-pine/65">Din comunicarea depozitului</p>
+          <h2 class="display text-[clamp(42px,5vw,68px)] leading-[0.85] text-pine">Calitatea ne reprezintă.</h2>
+          <p class="mt-6 max-w-[43ch] text-[16px] leading-8 text-pine/85">Pentru întrebări despre cherestea, puteți trimite un mesaj direct către Depozit Cherestea Vâlcele.</p>
+          <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele." class="btn btn-dark mt-7 px-5 text-[15px]">Scrie pe WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="depozit" class="section-anchor bg-chalk px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+      <div class="mx-auto max-w-[1280px]">
+        <div class="grid gap-10 md:grid-cols-[1.15fr_0.85fr] md:items-end md:gap-20">
+          <div>
+            <p class="utility mb-5 text-[10px] font-medium uppercase tracking-[0.12em] text-larch">Depozit local</p>
+            <h2 class="display text-[clamp(48px,5.6vw,82px)] leading-[0.83] text-pine">Cherestea, în curtea din Vâlcele.</h2>
+          </div>
+          <div class="pb-1">
+            <p class="text-[16px] leading-8 text-pine/85">Depozit Cherestea Vâlcele se află în 407274 Vâlcele, comuna Mociu, județul Cluj. Program: Luni–Vineri 08:00–17:00; Sâmbătă–Duminică închis.</p>
+            <p class="utility mt-7 text-[11px] tracking-[0.04em] text-pine/60">5,0 din 5 · din 5 recenzii Google</p>
+          </div>
+        </div>
+
+        <div class="mt-14 grid gap-3 md:grid-cols-[1.25fr_0.88fr_0.87fr]">
+          <figure class="relative overflow-hidden bg-gravel">
+            <img class="documentary-image loader" src="experiment-frontend-skill-test-yard.jpg" alt="Utilaj de încărcare și stive de cherestea în curtea depozitului din Vâlcele">
+            <figcaption class="utility cut-label">CURTEA DEPOZITULUI</figcaption>
+          </figure>
+          <figure class="relative overflow-hidden bg-gravel">
+            <img class="documentary-image stacks" src="experiment-frontend-skill-test-yard.jpg" alt="Stive de cherestea în curtea depozitului din Vâlcele">
+            <figcaption class="utility cut-label">FOTOGRAFIE REALĂ</figcaption>
+          </figure>
+          <aside class="flex min-h-[210px] flex-col justify-between bg-pine p-7 text-chalk">
+            <span class="utility text-[10px] tracking-[0.11em] text-larch">DIN RECENZII GOOGLE</span>
+            <p class="display max-w-[13ch] text-[31px] leading-[0.89]">„Prețuri bune, cherestea dimensionată de calitate.”</p>
+            <span class="utility text-[11px] text-chalk/65">— Rareș L.</span>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="recenzii" class="section-anchor bg-pine px-4 py-16 text-chalk sm:px-6 md:py-24 lg:px-8">
+      <div class="mx-auto max-w-[1280px]">
+        <div class="flex flex-col justify-between gap-7 md:flex-row md:items-end">
+          <div>
+            <p class="utility mb-4 text-[10px] font-medium uppercase tracking-[0.12em] text-larch">Recenzii Google</p>
+            <h2 class="display text-[clamp(48px,5.7vw,82px)] leading-[0.83]">Cuvintele clienților.</h2>
+          </div>
+          <p class="utility max-w-[30ch] text-[11px] leading-5 text-chalk/65">5,0 din 5, din 5 recenzii Google</p>
+        </div>
+
+        <article class="mt-14 bg-chalk px-7 py-10 text-pine sm:px-10 md:grid md:grid-cols-[120px_1fr] md:items-center md:gap-8 md:px-14 md:py-14">
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <div>
+            <blockquote class="display max-w-[24ch] text-[clamp(32px,4.5vw,62px)] leading-[0.9]">„Am fost foarte mulțumit de experiența avută. Produsele sunt de foarte bună calitate, iar cheresteaua este bine pregătită și la prețuri corecte. Personalul este amabil, profesionist și te ajută cu răbdare să alegi exact ceea ce ai nevoie.”</blockquote>
+            <p class="utility mt-8 text-[11px] tracking-[0.05em] text-pine/65">— Andrei C.P., Google</p>
+          </div>
+        </article>
+
+        <div class="mt-4 grid gap-4 md:grid-cols-[0.86fr_1.14fr]">
+          <article class="bg-larch p-8 text-pine md:p-10">
+            <p class="utility text-[10px] tracking-[0.11em] text-pine/65">GOOGLE</p>
+            <blockquote class="display mt-10 max-w-[13ch] text-[clamp(31px,3.2vw,48px)] leading-[0.9]">„Servicii de calitate și seriozitate maximă. Recomand cu încredere! 🌳”</blockquote>
+            <p class="utility mt-8 text-[11px] text-pine/70">— Nicu C.</p>
+          </article>
+          <article class="review-band flex flex-col justify-between bg-charcoal p-8 md:p-10">
+            <p class="utility text-[10px] tracking-[0.11em] text-larch">GOOGLE</p>
+            <blockquote class="display mt-10 max-w-[20ch] text-[clamp(31px,3.5vw,52px)] leading-[0.9] text-chalk">„Prețuri bune, cherestea dimensionată de calitate. Livrare rapidă ☎️”</blockquote>
+            <p class="utility mt-8 text-[11px] text-chalk/60">— Rareș L.</p>
+          </article>
+        </div>
+        <p class="utility mt-6 text-[10px] leading-5 text-chalk/55">Recenzii reale, preluate din profilul Google al depozitului.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="section-anchor bg-gravel px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+      <div class="mx-auto grid max-w-[1280px] gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:gap-20">
+        <div>
+          <p class="utility mb-5 text-[10px] font-medium uppercase tracking-[0.12em] text-larch">Contact &amp; program</p>
+          <h2 class="display text-[clamp(48px,5.5vw,76px)] leading-[0.83] text-pine">Luați legătura cu depozitul.</h2>
+
+          <dl class="mt-12 space-y-8 text-pine">
+            <div>
+              <dt class="utility text-[10px] font-medium uppercase tracking-[0.1em] text-pine/55">Adresă</dt>
+              <dd class="mt-2 text-[16px] font-semibold leading-7">407274 Vâlcele, comuna Mociu, județul Cluj</dd>
+            </div>
+            <div>
+              <dt class="utility text-[10px] font-medium uppercase tracking-[0.1em] text-pine/55">Program</dt>
+              <dd class="mt-2 text-[16px] font-semibold leading-7">Luni–Vineri 08:00–17:00<br>Sâmbătă–Duminică închis</dd>
+            </div>
+            <div>
+              <dt class="utility text-[10px] font-medium uppercase tracking-[0.1em] text-pine/55">Telefon</dt>
+              <dd class="mt-2"><a href="tel:+40747470637" class="text-[18px] font-extrabold underline decoration-larch decoration-2 underline-offset-4 hover:text-larch">0747 470 637</a></dd>
+            </div>
+            <div>
+              <dt class="utility text-[10px] font-medium uppercase tracking-[0.1em] text-pine/55">Facebook</dt>
+              <dd class="mt-2"><a href="https://www.facebook.com/share/183Fa1wkxB/" class="font-extrabold underline decoration-larch decoration-2 underline-offset-4 hover:text-larch" target="_blank" rel="noopener">Depozit Cherestea Vâlcele ↗</a></dd>
+            </div>
+          </dl>
+
+          <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele." class="btn btn-wa mt-10 px-5 text-[15px]">
+            <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+            Scrie pe WhatsApp
+          </a>
+        </div>
+
+        <div class="lg:pt-2">
+          <div class="map-shell">
+            <iframe id="mapFrame" src="https://maps.google.com/maps?q=46.6828737,23.6365535&hl=ro&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Harta — Depozit Cherestea Vâlcele"></iframe>
+          </div>
+          <a id="mapFallback" href="https://www.google.com/maps/place/Depozit+Cherestea+V%C3%A2lcele/@46.6828737,23.6365535,17z/data=!3m1!4b1!4m6!3m5!1s0x474913006a76c917:0xa8f0b9f3c272bddf!8m2!3d46.6828737!4d23.6365535!16s%2Fg%2F11zh91csj3" target="_blank" rel="noopener" class="mt-5 inline-flex min-h-[44px] items-center font-extrabold text-pine underline decoration-larch decoration-2 underline-offset-4 hover:text-larch">Deschide harta ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-charcoal px-4 py-10 text-center text-chalk sm:px-6">
+    <div class="mx-auto max-w-[860px]">
+      <p class="text-sm text-chalk/75">407274 Vâlcele, comuna Mociu, județul Cluj · <a href="tel:+40747470637" class="underline hover:text-larch">0747 470 637</a> · <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele." class="underline hover:text-larch">WhatsApp</a></p>
+      <p class="mt-5 text-[13px] leading-6 text-chalk/65">Propunere de website — demonstrație realizată de Calin Botean · WhatsApp +40 741 181 795. Acest site nu este publicat oficial.</p>
+    </div>
+  </footer>
+
+  <div class="mobile-wa">
+    <a href="https://wa.me/40747470637?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20cherestea%20de%20la%20Depozit%20Cherestea%20V%C3%A2lcele." class="btn btn-wa w-full text-[15px]" aria-label="Scrie pe WhatsApp">
+      <svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+      Scrie pe WhatsApp
+    </a>
+  </div>
+
+  <script>
+    (function () {
+      var button = document.getElementById('menuBtn');
+      var menu = document.getElementById('mobileMenu');
+      button.addEventListener('click', function () {
+        var opening = menu.classList.contains('hidden');
+        menu.classList.toggle('hidden');
+        button.setAttribute('aria-expanded', opening ? 'true' : 'false');
+      });
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.add('hidden');
+          button.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }());
+  </script>
+</body>
+</html>
