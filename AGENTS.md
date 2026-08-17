@@ -11,10 +11,18 @@ allowed next step, not an exception to apologize for.
 
 ## Always start here
 
-At the start of every session, read `skills/prospector-pipeline/prospector-pipeline.md`
-first and follow its session-start gate: open `data/pipeline.csv`, report
-status counts, list anything due today, and confirm today's focus before
-doing anything else.
+At the start of every session, read `STATUS.md` first — it is a short,
+always-current snapshot of where the last session left off and what to do
+next, overwritten (not appended to) at the end of every session. Then read
+`skills/prospector-pipeline/prospector-pipeline.md` and follow its
+session-start gate: open `data/pipeline.csv`, report status counts, list
+anything due today, and confirm today's focus before doing anything else.
+
+**End every session by rewriting `STATUS.md`** (not this file's session
+log below) with a fresh "Where we left off" / "Next session starts here" —
+the moment Calin says he needs to go, or naturally at a stopping point.
+This is what lets him open a brand-new chat and continue without pasting
+anything.
 
 ## Two offers, one ledger
 
