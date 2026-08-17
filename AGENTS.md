@@ -80,6 +80,13 @@ reply/close numbers — none of the below should be implemented before then:
 
 ## Later
 
+- **Next session priority (set 2026-08-17):** switch WhatsApp outreach from
+  the UK stopgap number to the Romanian number, then send the first
+  outreach messages — Depozit Cherestea Vâlcele, Agrofarm Marius, and Sabo
+  ITP & SERVICE are all BUILT, live, and design/copy-approved (see session
+  log below); none has been contacted yet. Read
+  `skills/prospector-outreach/prospector-outreach.md` for the WhatsApp-first,
+  text-only script before sending anything.
 - WhatsApp outreach currently uses a UK number as a stopgap. Set up WhatsApp
   Business on the Romanian number before scaling outreach volume — same
   phone is fine (regular WhatsApp + WhatsApp Business can coexist as
@@ -320,3 +327,14 @@ only, not a full transcript.
   header surface uses a var-based opacity background and that the brand and
   all four navigation labels remain present. Fresh visual captures remain
   blocked by the in-app browser's local-file URL policy.
+
+- **2026-08-17** — Pushed the Agrofarm Marius and Sabo ITP & SERVICE
+  Depozit-template rebuilds to GitHub (commit `04fbf9e`) and independently
+  verified both live via curl: last-modified today, and each page's
+  distinctive new markup/copy present (`hero-scrim`/`hero.png` and
+  "Sfaturi corecte" on Agrofarm; `hero-scrim`/`site-header`/"ITP rapid" on
+  Sabo). All three mockups (Depozit, Agrofarm, Sabo) are now BUILT, live,
+  and on the shared Depozit architecture — none has been contacted yet.
+  Calin's plan for next session: switch WhatsApp outreach to the Romanian
+  number (see "Later" above) and send the first outreach messages for
+  these three leads.
