@@ -108,26 +108,49 @@ Then stop and wait for "done" before Step 3.
 Only now, build the complete mockup, applying all of the following
 together:
 
+- **Start from `skills/prospector-mockup/assets/template.html` (effective
+  2026-08-17) — this IS the standing architecture, not just a starting
+  point to redesign.** It ships as a full-bleed hero photo with a
+  legibility scrim (no box/card overlay ever), a centered-then-left-biased
+  hero lockup, a horizontal scroll-snap services carousel with dot
+  pagination, scroll-reveal (including side-entrance `reveal-left`/
+  `reveal-right`), a resilient map fallback, and a mobile sticky
+  WhatsApp/call bar — all pre-wired and already QA'd across three live
+  builds. Do not rebuild these mechanics from scratch or invent a
+  different hero/carousel pattern per lead; replace tokens and the sector
+  palette, keep the mechanics. Step 2's references are for anything this
+  template doesn't already cover (section order variations, a signature
+  visual motif for a new category shell), not for the hero/carousel/reveal
+  pattern itself.
 - The frontend-design skill
   (github.com/anthropics/skills/tree/main/skills/frontend-design), read
   this session if not already read.
-- Tailwind CSS via CDN, no build step — see "Build mechanics" below.
+- Tailwind CSS via CDN — already wired in the template, including the
+  RGB-triplet color config the `/NN` opacity classes depend on. See the
+  template's own inline comments and "Shared/general mockup rules" below
+  before changing anything in that config block.
 - Every shared/general rule in this file: mobile header/hamburger pattern,
   WhatsApp icon-only on constrained mobile width, watermark treatment, map
   iframe fallback ("Deschide harta"), `text-wrap: balance` on multi-line
-  copy, full alignment scan across mobile and desktop.
+  copy, full alignment scan across mobile and desktop, the hero-scrim
+  color rule, and the dark-logo contrast check — all in "Shared/general
+  mockup rules" below.
 - Scroll-triggered reveal on every major section, and hover states on
   every interactive element — see the standalone rule in "Shared/general
   mockup rules" below.
 - The logo and hero image from Step 1, placed correctly: logo prominent in
-  the hero, hero image as the full-bleed background per Step 2's
-  structural direction.
+  the hero at `logo.png`, hero image as the full-bleed background at
+  `hero.png` — both paths already wired in the template, no path changes
+  needed. Check the logo's actual contrast against the (usually dark) hero
+  photo and add the template's `logo-plate` class if it's too dark to read
+  directly on the photo — see "Shared/general mockup rules" below.
 - Real content only — verified facts, real reviews if available; omit
   rather than invent, per "Integrity rules" below.
 - The full QA checklist below: no leftover placeholder tokens, 360px
   mobile pass with no horizontal scroll, `wa.me` and `tel:` links correct,
   diacritics render, noindex + footer disclaimer present, alignment
-  consistent everywhere.
+  consistent everywhere, carousel/scrim/logo/header checks per the
+  template's specific failure modes.
 
 Show the finished result — screenshots on both desktop and mobile — and
 stop. Do not update `data/pipeline.csv`; Calin confirms and updates it
@@ -289,7 +312,60 @@ block or fail iframe content more aggressively than Chrome/Safari. Pair the
 iframe with a visible `Deschide harta` link/button to the Google Maps listing,
 and show that fallback if the iframe fails, is blocked, or remains blank after a
 short timeout. Use `Vezi harta` / `Deschide harta` wording unless the link truly
-opens turn-by-turn directions.
+opens turn-by-turn directions. `assets/template.html` already wires this exact
+pattern (a 3.5-second load timeout, `#mapFrame`/`#mapFallback`) — reuse it as-is.
+
+**Hero scrim color (mandatory, every build — this exact mistake has shipped
+twice).** The hero's legibility scrim (the gradient overlay that darkens the
+full-bleed photo enough for white text to read) must always be a literal
+neutral warm near-black, `rgba(20,14,9,X)` at whatever opacity stops the
+template already uses — never a brand-color CSS var (`--c-primary`,
+`--c-primary-dark`, or similar), even when that var happens to look dark.
+Using a brand var tints the entire photo that hue instead of just darkening
+it — this shipped as a visible green cast on one build and would have shipped
+worse on others. The template's `.hero-scrim` rule is already correct;
+the only thing to tune per lead is the radial gradient's position/size (not
+its color) so the darkest point sits behind the text column and the visible
+side of the photo shows its actual subject clearly — expect to retune this
+on every lead, since every hero photo composes differently.
+
+**Dark-logo contrast check (mandatory, every build).** Before shipping,
+actually check the generated logo's contrast against the hero photo it will
+sit on — do not assume a logo that reads fine on a white chat-window
+background will also read fine directly on a dark, textured photo. If it
+won't (a dark wordmark, low-contrast colors), add `class="logo-plate"` to
+the hero logo `<img>` — the template already ships this class, a compact
+light backing chip sized to the logo. If the logo is already light/pale, no
+plate is needed; the template ships with no plate by default.
+
+**Tailwind opacity-modifier pitfall (read before touching the Tailwind
+config or any `bg-x/NN`, `text-x/NN`, `border-x/NN` class).** A Tailwind
+color used with a `/NN` opacity modifier (e.g. `bg-primary/95`,
+`text-accent/60`) only renders correctly if that color is defined in
+`tailwind.config` as `rgb(var(--x-rgb) / <alpha-value>)` — an RGB triplet.
+If it's defined as a plain hex or `var(--x)` reference instead, the `/NN`
+class silently renders with no background/color at all (no console error,
+no warning — it just doesn't paint). This shipped as a fully transparent,
+illegible header on a real mockup. `assets/template.html`'s Tailwind config
+and `:root` block already do this correctly for every sector-palette color —
+keep every `-rgb` companion var in sync with its hex var if you change a
+palette color, and do not add a new `/NN`-modified class on a color that
+doesn't have an `-rgb` companion defined. For the header and mobile-menu
+background specifically, the template avoids the whole risk by using a
+plain custom CSS class (`.site-header`, `.site-mobile-menu`) with a literal
+`rgb(var(--x-rgb) / N)` value instead of a Tailwind utility class — keep
+using those classes rather than swapping in a Tailwind `bg-*/NN` utility on
+the header.
+
+**Services carousel (mandatory, every build).** The services/products
+section is a horizontal scroll-snap carousel (`#svcTrack` holding 4-6
+`.svc-card` elements, `#svcDots` for pagination), not a static grid. Reuse
+`assets/template.html`'s carousel markup and its dot-pagination JavaScript
+verbatim — do not rebuild this per lead, it needs to feel identical and
+reliably smooth across every mockup. The JS reads however many `.svc-card`
+elements exist at load time, so add or remove cards freely without touching
+the script. QA it by scrolling with touch/drag and by clicking dots — both
+must move the track and keep the dots in sync.
 
 Before a mockup is finished, run an alignment scan across the whole page on
 desktop and 360px mobile: header, hero, services/products grid, trust section,
@@ -369,6 +445,31 @@ mechanical service, not a parts shop or dezmembrări yard).
 | Construction / trades / metal | #1F2A33 | #E8A020 | #C8860A | #F2F0EB | #E7E4DC | Oswald |
 | Carpentry / furniture | #3B2A1D | #B5762A | #D99A45 | #F6F1E8 | #ECE3D4 | Playfair Display |
 | Vet / salon / services | #234A3F | #C8860A | #2D6A4F | #F4F1EA | #E9E4D8 | Playfair Display |
+
+**RGB triplets and font query strings (effective 2026-08-17) — required by
+`assets/template.html`'s Tailwind config.** Every hex color above needs a
+matching `--x-rgb` value in the template's `:root` block, or its Tailwind
+`/NN` opacity classes silently break (see the Tailwind opacity-modifier
+pitfall in "Shared/general mockup rules"). `--c-primary-dark` isn't in the
+table above because it's a per-shell judgment call (a darker shade of
+`--c-primary`, used for the footer and hero-adjacent dark sections) — the
+values below for shells not yet built are estimated; confirm/adjust visually
+the first time that shell is actually used, the same way Magazin furaje's
+and Auto's were confirmed on Agrofarm Marius and Sabo ITP & SERVICE.
+
+| Sector | --c-primary-rgb | --c-primary-dark (hex → rgb) | --c-accent-rgb | --c-accent-2-rgb | --c-bg-rgb | --c-bg-alt-rgb | Google Fonts query |
+|---|---|---|---|---|---|---|---|
+| Magazin furaje | 18 63 54 | #0C2B25 → 12 43 37 | 215 167 46 | 167 66 50 | 231 238 232 | 214 224 216 | `Roboto+Slab:wght@600;700` |
+| Agri / feed / food producers | 92 26 26 | #3E1111 → 62 17 17 | 200 134 10 | 232 160 32 | 245 236 215 | 237 224 196 | `Playfair+Display:wght@700;800` |
+| Auto (dezmembrări, service, vulcanizare) | 22 24 29 | #0C0D10 → 12 13 16 | 230 59 46 | 242 163 60 | 244 244 242 | 233 233 229 | `Oswald:wght@500;600;700` |
+| Construction / trades / metal | 31 42 51 | #141C22 → 20 28 34 | 232 160 32 | 200 134 10 | 242 240 235 | 231 228 220 | `Oswald:wght@500;600;700` |
+| Carpentry / furniture | 59 42 29 | #281C13 → 40 28 19 | 181 118 42 | 217 154 69 | 246 241 232 | 236 227 212 | `Playfair+Display:wght@700;800` |
+| Vet / salon / services | 35 74 63 | #17332B → 23 51 43 | 200 134 10 | 45 106 79 | 244 241 234 | 233 228 216 | `Playfair+Display:wght@700;800` |
+
+`{{FONT_DISPLAY_CSS}}` in the template is just the font name on its own
+(`'Roboto Slab'`, `'Oswald'`, `'Playfair Display'`) for the Tailwind
+`fontFamily.display` array; `{{FONT_DISPLAY_GOOGLE}}` is the query string
+column above for the Google Fonts `<link>`.
 
 Rules carried over from the proven system: page background is never pure
 white; primary colour only on dark sections (header, hero, owner strip,
@@ -468,6 +569,16 @@ never the leading action in the design.
 10. Scroll-triggered reveal fires on every major section below the hero;
     hover states present on every interactive element; both match the timing/
     easing rules above (no bounce/elastic, 200–300ms, ease-out).
+11. Hero scrim has no color cast — confirm it darkens the photo without
+    tinting it any hue, and that the photo's actual subject is still clearly
+    visible on the un-scrimmed side.
+12. Hero logo is legible against the photo — added `logo-plate` if it
+    needed one, confirmed no plate if it didn't.
+13. Header and mobile-menu backgrounds are solid/opaque, not transparent —
+    open the mobile menu and check it too, not just the header at rest.
+14. Services carousel scrolls smoothly by touch/drag AND by clicking a dot;
+    dots stay in sync with scroll position; no horizontal overflow anywhere
+    on the page (check this at 360px specifically, not just desktop).
 
 ## Output
 

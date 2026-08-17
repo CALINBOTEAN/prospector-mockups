@@ -6,291 +6,556 @@
 <!-- DEMO ONLY: never remove noindex before the client signs -->
 <meta name="robots" content="noindex,nofollow">
 <title>{{BUSINESS_NAME}} — {{LOCALITY}}</title>
+
+<!--
+  PROSPECTOR STANDING TEMPLATE — effective 2026-08-17.
+  This is the Depozit Cherestea Vâlcele architecture, tokenized. Every new
+  mockup starts here, not from an older lead's file. It carries:
+  full-bleed hero photo + neutral legibility scrim (no box overlay), a
+  centered-then-left-biased hero lockup, a horizontal scroll-snap services
+  carousel with dot pagination, scroll-triggered reveal (including
+  reveal-left/reveal-right for side-entrance sections), a resilient map
+  iframe fallback, and a mobile sticky WhatsApp/call bar.
+
+  Read skills/prospector-mockup/prospector-mockup.md in full before using
+  this file — it explains every token below, the sector palette to drop
+  into :root, the hero-scrim color rule (always literal neutral rgba,
+  never a brand-color var — this caused two real bugs), the dark-logo
+  contrast check, and the Tailwind RGB-triplet requirement that makes the
+  bg-x/NN opacity classes below actually work (a plain hex CSS var here
+  causes a silently-transparent header — a real bug that shipped once).
+-->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Oswald:wght@500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family={{FONT_DISPLAY_GOOGLE}}&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // IMPORTANT: colors are RGB triplets consumed via rgb(var(--x-rgb) / <alpha-value>).
+  // This is required for Tailwind's bg-x/NN, text-x/NN, border-x/NN opacity
+  // modifiers to work at all -- a plain hex/var color here makes any /NN
+  // class on it silently render with NO background/color (not an error, just
+  // invisible). If you ever add a color that doesn't need an opacity
+  // modifier anywhere, a plain var() is fine for that one -- but everything
+  // in this table is used with /NN somewhere in the page below, so keep the
+  // rgb(var(--x-rgb) / <alpha-value>) form for all of them.
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: 'rgb(var(--c-primary-rgb) / <alpha-value>)',
+          primaryDark: 'rgb(var(--c-primary-dark-rgb) / <alpha-value>)',
+          accent: 'rgb(var(--c-accent-rgb) / <alpha-value>)',
+          accent2: 'rgb(var(--c-accent2-rgb) / <alpha-value>)',
+          bg: 'rgb(var(--c-bg-rgb) / <alpha-value>)',
+          bgAlt: 'rgb(var(--c-bg-alt-rgb) / <alpha-value>)',
+          ink: 'rgb(var(--c-text-rgb) / <alpha-value>)',
+          whatsapp: 'rgb(var(--c-whatsapp-rgb) / <alpha-value>)'
+        },
+        fontFamily: {
+          display: ['{{FONT_DISPLAY_CSS}}', 'sans-serif'],
+          body: ['Inter', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+
 <style>
-/* =====================================================================
-   PALETTE — replace this :root block with the sector palette (SKILL.md).
-   Ready-to-paste variants:
+  /* =====================================================================
+     PALETTE -- replace this whole block with the sector palette from
+     prospector-mockup.md's "Sector palette system" table, which now lists
+     both the hex value AND its RGB triplet for each shell (compute a new
+     shell's RGB triplet once and add it to that table for reuse). Every
+     hex color below needs its "-rgb" companion kept in sync -- if you
+     change --c-primary you MUST also update --c-primary-rgb to match, or
+     every /NN opacity class silently breaks (see the note above).
+     ===================================================================== */
+  :root{
+    --c-primary:#123F36;
+    --c-primary-dark:#0C2B25;
+    --c-accent:#D7A72E;
+    --c-accent2:#A74232;
+    --c-bg:#E7EEE8;
+    --c-bg-alt:#D6E0D8;
+    --c-text:#25312A;
+    --c-text-muted:#5C6B62;
+    --c-border:#C9D6CC;
+    --c-whatsapp:#25D366;
+    --radius:6px;
+    --c-primary-rgb:18 63 54;
+    --c-primary-dark-rgb:12 43 37;
+    --c-accent-rgb:215 167 46;
+    --c-accent2-rgb:167 66 50;
+    --c-bg-rgb:231 238 232;
+    --c-bg-alt-rgb:214 224 216;
+    --c-text-rgb:37 49 42;
+    --c-whatsapp-rgb:37 211 102;
+  }
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{background:var(--c-bg);color:var(--c-text);font-family:'Inter',sans-serif;overflow-x:hidden}
+  h1,h2,h3,.display{font-family:var(--font-display,'Inter'),sans-serif;letter-spacing:0.01em;text-transform:uppercase}
+  h1,h2,.balance,p,.card p,.review p{text-wrap:balance}
 
-   AGRI / FEED / FOOD      : primary #5C1A1A  accent #C8860A  accent2 #E8A020  bg #F5ECD7  bg-alt #EDE0C4  display 'Playfair Display'
-   AUTO                    : primary #16181D  accent #E63B2E  accent2 #F2A33C  bg #F4F4F2  bg-alt #E9E9E5  display 'Oswald'
-   CONSTRUCTION / METAL    : primary #1F2A33  accent #E8A020  accent2 #C8860A  bg #F2F0EB  bg-alt #E7E4DC  display 'Oswald'
-   CARPENTRY / FURNITURE   : primary #3B2A1D  accent #B5762A  accent2 #D99A45  bg #F6F1E8  bg-alt #ECE3D4  display 'Playfair Display'
-   VET / SALON / SERVICES  : primary #234A3F  accent #C8860A  accent2 #2D6A4F  bg #F4F1EA  bg-alt #E9E4D8  display 'Playfair Display'
-   ===================================================================== */
-:root{
-  --c-primary:#5C1A1A;
-  --c-primary-dark:#3E1111;
-  --c-accent:#C8860A;
-  --c-accent-2:#E8A020;
-  --c-bg:#F5ECD7;
-  --c-bg-alt:#EDE0C4;
-  --c-text:#2C1810;
-  --c-text-muted:#7A5C4E;
-  --c-border:#D4B896;
-  --c-whatsapp:#25D366;
-  --font-display:'Playfair Display',Georgia,serif;
-  --font-body:'Inter','Helvetica Neue',Arial,sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:var(--font-body);color:var(--c-text);background:var(--c-bg);font-size:16px;line-height:1.6}
-img{max-width:100%;display:block}
-a{text-decoration:none;color:inherit}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-h1,h2,h3{font-family:var(--font-display);line-height:1.2;letter-spacing:.01em}
-h2{font-size:32px;color:var(--c-primary);text-align:center}
-.rule{width:60px;height:3px;background:linear-gradient(90deg,var(--c-accent),var(--c-accent-2));margin:16px auto 40px}
-section{padding:64px 0}
-.divider{height:4px;background:linear-gradient(90deg,var(--c-primary),var(--c-accent),var(--c-accent-2),var(--c-accent),var(--c-primary))}
+  /* HERO -- full-bleed photo + a literal neutral scrim, never a brand color.
+     This exact mistake shipped twice: using --c-primary/--c-primary-dark
+     (or any brand-hued var) for the scrim tints the whole photo that color
+     instead of just darkening it for legibility. rgba(20,14,9,X) is a
+     fixed warm near-black -- keep it literal, do not swap in a var here. */
+  .hero{background:var(--c-primary);color:var(--c-bg);position:relative;overflow:hidden}
+  .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 58% 76% at 38% 48%,rgba(20,14,9,.82) 0%,rgba(20,14,9,.62) 48%,rgba(20,14,9,.32) 72%,rgba(20,14,9,0) 100%),linear-gradient(90deg,rgba(20,14,9,.16) 0%,rgba(20,14,9,0) 34%,rgba(20,14,9,0) 100%)}
+  .hero-content{position:relative;z-index:2}
+  .hero-lockup h1,.hero-lockup .hero-subtext,.hero-lockup .eyebrow{text-shadow:0 2px 12px rgba(0,0,0,.55)}
+  .hero-lockup .btn-outline{text-shadow:0 1px 8px rgba(0,0,0,.6);box-shadow:0 3px 14px rgba(0,0,0,.48)}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;gap:10px;border-radius:4px;padding:14px 28px;font:700 16px var(--font-body);letter-spacing:.03em;text-transform:uppercase;transition:background .2s,border-color .2s;cursor:pointer}
-.btn-wa{background:var(--c-whatsapp);color:#fff;border:2px solid var(--c-whatsapp)}
-.btn-wa:hover{filter:brightness(.93)}
-.btn-secondary{background:transparent;color:#fff;border:2px solid var(--c-accent)}
-.btn-secondary:hover{background:rgba(255,255,255,.08);border-color:var(--c-accent-2)}
-.btn svg{width:18px;height:18px;fill:currentColor;flex:none}
+  /* Adjust the radial position/size (not the color) per-lead once you see
+     the actual hero photo: the darkest point of the ellipse should sit
+     behind the text column, and the visible/clear side of the photo
+     should show its actual subject unobstructed. This needed retuning on
+     every lead built so far -- expect to tune it here every time too. */
+  @media (max-width:767px){
+    .hero-photo{object-position:50% 50%}
+    .hero-scrim{background:radial-gradient(ellipse 108% 68% at 50% 42%,rgba(20,14,9,.88) 0%,rgba(20,14,9,.72) 52%,rgba(20,14,9,.38) 78%,rgba(20,14,9,0) 100%),linear-gradient(0deg,rgba(20,14,9,.30) 0%,rgba(20,14,9,0) 60%)}
+  }
 
-/* Header */
-header{position:sticky;top:0;z-index:100;background:var(--c-primary);color:#fff;box-shadow:0 2px 10px rgba(0,0,0,.15)}
-.header-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
-.brand{font-family:var(--font-display);font-size:20px;font-weight:700}
-.header-wa{display:flex;align-items:center;gap:8px;color:#fff;background:var(--c-whatsapp);border-radius:4px;padding:8px 14px;font-weight:700;font-size:14px;white-space:nowrap}
-.header-wa svg{width:16px;height:16px;fill:#fff}
+  /* Logo backing plate -- OPTIONAL, add the "logo-plate" class to the hero
+     logo <img> only if the generated logo is dark/low-contrast against a
+     dark hero photo (check this every time -- it is not obvious from
+     looking at the logo alone on a white background in a chat window). A
+     light/pale logo can sit directly on the photo with no plate, like this
+     template ships by default. */
+  .logo-plate{background:rgba(244,244,242,.94);border-radius:10px;padding:10px 14px;box-shadow:0 10px 24px rgba(0,0,0,.35)}
 
-/* Hero */
-.hero{background:var(--c-primary);color:#fff;text-align:center;padding:88px 0 72px}
+  .stamp{
+    font-weight:700;font-size:12px;
+    letter-spacing:0.06em;text-transform:uppercase;color:var(--c-accent);
+    border:1.5px solid var(--c-accent);box-shadow:0 0 0 3px rgb(var(--c-accent-rgb) / .15) inset;
+    padding:6px 10px;border-radius:3px;display:inline-flex;align-items:center;gap:6px;
+    white-space:nowrap;line-height:1;
+  }
+  .stamp.on-light{color:var(--c-primary);border-color:var(--c-primary)}
+  .stamp-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
 
-/* hero-lockup groups the logo (optional) + eyebrow + H1 + rule as one unit.
-   ALIGNMENT RULE — do not violate: the PARENT (.hero-lockup here, or the
-   copy column wrapping it in a two-column hero-with-photo variant) is the
-   only thing that sets alignment, via align-items — center by default
-   below, flex-start if a shell switches to a left-aligned two-column
-   layout (with its own mobile-breakpoint override back to center for the
-   stacked layout). Never give a hero-lockup CHILD (logo plate, eyebrow,
-   etc.) its own margin:auto or other self-centering rule — a child's own
-   auto-margin silently overrides the parent's align-items and re-centers
-   just that one element even when the parent says flex-start. This is not
-   theoretical: it shipped on a real mockup (hero-kicker's margin:0 auto
-   fighting hero-lockup's align-items:flex-start) and cost a whole revision
-   pass to track down. */
-.hero-lockup{display:flex;flex-direction:column;align-items:center;max-width:100%}
-.hero-logo-plate{display:inline-block;background:#fff;padding:12px 18px;border-radius:4px;box-shadow:0 16px 34px rgba(0,0,0,.28);margin-bottom:16px}
-.hero-logo{display:block;height:auto;max-width:220px}
-.hero .eyebrow{display:inline-block;font:600 13px var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--c-accent-2);margin-bottom:14px}
-.hero h1{font-size:44px;color:#fff}
-.hero .rule{margin:20px auto 22px}
-.hero p{font-size:19px;color:var(--c-bg);max-width:640px;margin:0 auto 32px}
-.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:34px}
-.badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid var(--c-accent);border-radius:4px;padding:8px 16px;font:600 14px var(--font-body);color:#fff}
-.badge .star{color:var(--c-accent-2)}
+  .btn{border-radius:var(--radius);font-weight:700;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .btn-wa{background:var(--c-whatsapp);border:2px solid var(--c-whatsapp);color:#fff}
+  .btn-wa:hover{filter:brightness(1.06);transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,0.28)}
+  .btn-outline{border:2px solid var(--c-bg);color:var(--c-bg);background:transparent}
+  .btn-outline:hover{background:rgb(var(--c-bg-rgb) / .10);transform:translateY(-2px)}
+  .btn-outline-dark{border:2px solid var(--c-primary);color:var(--c-primary);background:transparent}
+  .btn-outline-dark:hover{background:rgb(var(--c-primary-rgb) / .06);transform:translateY(-2px)}
 
-/* Services */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.card{background:#fff;border:1px solid var(--c-border);border-top:3px solid var(--c-accent);border-radius:6px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.05);transition:box-shadow .2s,transform .2s}
-.card:hover{box-shadow:0 6px 24px rgba(0,0,0,.10);transform:translateY(-2px)}
-.card h3{font-size:21px;margin-bottom:8px}
-.card p{color:var(--c-text-muted);font-size:15px}
+  .eyebrow{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-accent2);font-weight:700}
 
-/* Pillars */
-.alt{background:var(--c-bg-alt)}
-.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;text-align:center}
-.pillar h3{font-size:20px;margin:10px 0 8px;color:var(--c-primary)}
-.pillar p{color:var(--c-text-muted);font-size:15px}
-.pillar .ico{width:46px;height:46px;margin:0 auto;border:2px solid var(--c-accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--c-accent);font-family:var(--font-display);font-size:20px;font-weight:700}
+  .card{background:var(--c-bg);border:1.5px solid var(--c-border);border-radius:var(--radius);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgb(var(--c-primary-rgb) / .14);border-color:var(--c-accent)}
+  .svc-card{scroll-snap-align:start;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+  .svc-card:hover{transform:translateY(-4px) scale(1.015);box-shadow:0 14px 28px rgb(var(--c-primary-rgb) / .14);border-color:var(--c-accent)}
 
-/* About / owner strip */
-.about{background:var(--c-primary);color:#fff;text-align:center}
-.about h2{color:#fff}
-.about p{max-width:680px;margin:0 auto;color:var(--c-bg);font-size:17px}
+  .sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--c-primary);border-top:2px solid var(--c-accent)}
 
-/* Reviews */
-.review{background:#fff;border:1px solid var(--c-border);border-radius:6px;padding:24px}
-.review .stars{color:var(--c-accent-2);letter-spacing:3px;margin-bottom:10px}
-.review p{font-size:15px;font-style:italic}
-.review .author{margin-top:12px;font-style:normal;font-weight:600;color:var(--c-text-muted);font-size:14px}
-.reviews-src{text-align:center;color:var(--c-text-muted);font-size:13px;margin-top:22px}
+  .no-scrollbar{scrollbar-width:none;-ms-overflow-style:none}
+  .no-scrollbar::-webkit-scrollbar{display:none}
 
-/* CTA strip */
-.cta{background:var(--c-primary);color:#fff;text-align:center}
-.cta h2{color:#fff;margin-bottom:8px}
-.cta p{color:var(--c-bg);margin-bottom:26px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--c-border);transition:background .25s ease,transform .25s ease}
+  .dot.active{background:var(--c-accent2);transform:scale(1.25)}
 
-/* Contact */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-.contact-item{display:flex;gap:12px;margin-bottom:18px}
-.contact-item svg{width:20px;height:20px;fill:var(--c-accent);flex:none;margin-top:3px}
-.contact-item strong{display:block;font-size:15px}
-.contact-item span{color:var(--c-text-muted);font-size:15px}
-.map{border:1px solid var(--c-border);border-radius:6px;overflow:hidden;min-height:300px}
-.map iframe{width:100%;height:100%;min-height:300px;border:0;display:block}
+  /* Header/mobile-menu background -- a plain rgba() custom class, not a
+     Tailwind bg-x/NN opacity utility. Keeping it as literal CSS here
+     removes any dependency on the RGB-triplet Tailwind config above for
+     this specific element, which is the single most likely place to get
+     this wrong under time pressure (it did, once, on a real mockup: a
+     bg-[var(--c-primary)]/95 class silently rendered no background at
+     all, making the header text invisible). */
+  .site-header{background:rgb(var(--c-primary-rgb) / .97)}
+  .site-mobile-menu{background:rgb(var(--c-primary-dark-rgb) / .98)}
 
-/* Footer */
-footer{background:var(--c-primary-dark);color:var(--c-bg);text-align:center;padding:36px 20px 110px;border-top:4px solid var(--c-accent)}
-footer .fbrand{font-family:var(--font-display);font-size:19px;font-weight:700;color:#fff;margin-bottom:6px}
-footer .copy{font-size:13px;color:var(--c-text-muted);margin-top:14px}
-.demo-note{margin-top:18px;padding:12px 16px;border:1px dashed var(--c-accent);border-radius:4px;display:inline-block;font-size:13px;color:var(--c-accent-2)}
+  /* Scroll-triggered reveal -- vertical (default) and horizontal
+     (reveal-left/reveal-right, for side-entrance sections like trust
+     pillars). Mandatory on every major section below the hero. */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .28s ease-out,transform .28s ease-out}
+  .reveal.is-visible{opacity:1;transform:translateY(0)}
+  .reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .3s ease-out,transform .3s ease-out}
+  .reveal-left.is-visible{opacity:1;transform:translateX(0)}
+  .reveal-right{opacity:0;transform:translateX(28px);transition:opacity .3s ease-out,transform .3s ease-out}
+  .reveal-right.is-visible{opacity:1;transform:translateX(0)}
 
-/* Mobile sticky bar — WhatsApp primary, phone + directions secondary */
-.sticky-bar{position:fixed;bottom:0;left:0;right:0;z-index:200;display:flex;background:var(--c-primary);height:62px;box-shadow:0 -2px 12px rgba(0,0,0,.25)}
-.sticky-bar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#fff;font:600 12px var(--font-body);border-right:1px solid rgba(255,255,255,.12)}
-.sticky-bar a:last-child{border-right:none}
-.sticky-bar svg{width:20px;height:20px;fill:var(--c-accent-2)}
-.sticky-bar .wa{background:var(--c-whatsapp)}
-.sticky-bar .wa svg{fill:#fff}
-
-@media(min-width:768px){
-  .hero h1{font-size:58px}
-  h2{font-size:38px}
-  .sticky-bar{display:none}
-  footer{padding-bottom:36px}
-}
-@media(max-width:767px){
-  section{padding:52px 0}
-  .hero{padding:64px 0 56px}
-  .contact-grid{grid-template-columns:1fr}
-}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important}
+    .reveal,.reveal-left,.reveal-right{opacity:1 !important;transform:none !important}
+  }
 </style>
 </head>
-<body>
+<body class="pb-[72px] md:pb-0">
 
-<header>
-  <div class="wrap header-in">
-    <div class="brand">{{BUSINESS_NAME}}</div>
-    <a class="header-wa" href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}" aria-label="Scrie pe WhatsApp">
-      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
-      WhatsApp
-    </a>
+<!-- HEADER -->
+<header class="site-header sticky top-0 z-50 backdrop-blur border-b-2 border-accent">
+  <div class="mx-auto max-w-[1180px] px-4 md:px-6 flex items-center justify-between h-16">
+    <a href="#top" class="font-display text-bg text-base md:text-xl tracking-wide leading-tight">{{BUSINESS_NAME}}</a>
+
+    <nav class="hidden md:flex items-center gap-7 font-body text-sm font-semibold text-bg/90">
+      <a href="#servicii" class="hover:text-accent transition-colors duration-200">Servicii</a>
+      <a href="#de-ce-noi" class="hover:text-accent transition-colors duration-200">De ce noi</a>
+      <a href="#recenzii" class="hover:text-accent transition-colors duration-200">Recenzii</a>
+      <a href="#contact" class="hover:text-accent transition-colors duration-200">Contact &amp; Program</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}"
+         class="btn btn-wa hidden md:inline-flex px-4 text-sm" aria-label="Scrie pe WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}"
+         class="btn btn-wa md:hidden w-11 h-11 !p-0" aria-label="Scrie pe WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+      </a>
+      <button id="menuBtn" class="md:hidden w-11 h-11 flex items-center justify-center text-bg" aria-label="Deschide meniul" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
   </div>
+  <nav id="mobileMenu" class="site-mobile-menu hidden md:hidden border-t border-accent/30 px-4 py-3 flex flex-col gap-1 font-body text-sm font-semibold text-bg/90">
+    <a href="#servicii" class="py-2">Servicii</a>
+    <a href="#de-ce-noi" class="py-2">De ce noi</a>
+    <a href="#recenzii" class="py-2">Recenzii</a>
+    <a href="#contact" class="py-2">Contact &amp; Program</a>
+  </nav>
 </header>
 
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-lockup">
-      <!-- OPTIONAL: only include this logo plate if a watermarked source
-           logo was supplied for this lead (see SKILL.md's logo-ownership
-           rule — never generate one yourself). If none, delete this
-           commented block entirely; do not invent a logo. -->
-      <!--
-      <span class="hero-logo-plate">
-        <img class="hero-logo" src="logos/{{SLUG}}-logo-demo.png" alt="{{BUSINESS_NAME}} logo demonstrativ" decoding="async">
-      </span>
-      -->
-      <span class="eyebrow">{{CATEGORY_LABEL}} · {{LOCALITY}}</span>
-      <h1>{{BUSINESS_NAME}}</h1>
-      <div class="rule"></div>
+<!-- HERO: full-bleed photo + legibility scrim (see the CSS notes above
+     before touching this section's color -- scrim color is literal,
+     never a brand var). Add class="logo-plate" to the logo <img> below
+     only if the logo is dark -- check its actual contrast against a dark
+     photo, don't assume. -->
+<section id="top" class="hero min-h-[720px] md:min-h-[640px] flex items-start px-4 md:px-6 py-12 md:py-16">
+  <img src="hero.png" alt="{{HERO_ALT_TEXT}}" class="hero-photo">
+  <div class="hero-scrim" aria-hidden="true"></div>
+
+  <div class="hero-content mx-auto max-w-[1180px] w-full">
+    <div class="hero-lockup max-w-[560px] mx-auto md:mr-auto md:ml-[7%] flex flex-col items-center text-center">
+      <img src="logo.png" alt="{{BUSINESS_NAME}} — siglă" class="w-[112px] h-[112px] md:w-[132px] md:h-[132px] mb-5 select-none" draggable="false">
+
+      <p class="eyebrow mb-3">{{CATEGORY_LABEL}} · {{LOCALITY}}</p>
+      <h1 class="w-full text-[11vw] leading-[0.94] sm:text-5xl md:text-[3.6vw] md:leading-[0.95] text-bg balance">
+        {{BUSINESS_NAME}}
+      </h1>
+      <p class="hero-subtext font-body text-bg/85 text-base md:text-lg mt-5 max-w-[42ch] balance">
+        {{HERO_SUBTEXT}}
+      </p>
+
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+        <a href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}"
+           class="btn btn-wa px-6 text-base">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+          Scrie pe WhatsApp
+        </a>
+        <a href="#servicii" class="btn btn-outline px-6 text-base">Vezi serviciile</a>
+      </div>
+
+      <div class="mt-7 flex flex-wrap justify-center gap-3">
+        <span class="stamp"><span class="stamp-dot"></span>{{HERO_STAMP_1}}</span>
+        <span class="stamp"><span class="stamp-dot"></span>{{HERO_STAMP_2}}</span>
+        <span class="stamp"><span class="stamp-dot"></span>{{HERO_STAMP_3}}</span>
+      </div>
     </div>
-    <p>{{TAGLINE}}</p>
-    <div class="hero-cta">
-      <a class="btn btn-wa" href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}">
-        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+  </div>
+</section>
+
+<!-- TRUST PILLARS — side-entrance reveal (reveal-left / reveal-right alternating).
+     Exactly 3, each grounded in a real, distinct fact about THIS business
+     (rating, locality, hours, or whatever actually matters for this trade)
+     -- never the same fact triad worded the same way as another mockup. -->
+<section id="de-ce-noi" class="px-4 md:px-6 py-14 md:py-20">
+  <div class="mx-auto max-w-[1180px]">
+    <p class="eyebrow mb-3 reveal">De ce noi</p>
+    <h2 class="text-3xl md:text-4xl text-ink mb-10 max-w-[24ch] balance reveal">{{PILLARS_HEADLINE}}</h2>
+
+    <div class="grid sm:grid-cols-3 gap-5">
+      <div class="card p-6 reveal-left">
+        <div class="flex items-center gap-1 mb-3 text-accent">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <span class="font-display text-2xl text-ink">{{RATING}}</span>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed">{{PILLAR_1_TEXT}}</p>
+      </div>
+      <div class="card p-6 reveal-right">
+        <div class="mb-3 text-accent2">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed">{{PILLAR_2_TEXT}}</p>
+      </div>
+      <div class="card p-6 reveal-left">
+        <div class="mb-3 text-accent2">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed">{{PILLAR_3_TEXT}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — heading+intro row, then a horizontal scroll-snap carousel.
+     This carousel behavior (svcTrack/svcDots + the JS at the bottom of
+     this file) needs to be smooth and consistent across every future
+     mockup -- do not rebuild it differently per lead. 4-6 svc-card blocks
+     is the normal range; add or remove cards inside #svcTrack as needed,
+     the dot-pagination JS re-reads however many .svc-card elements exist
+     at load time, no other change required. -->
+<section id="servicii" class="py-14 md:py-20" style="background:var(--c-bg-alt)">
+  <div class="mx-auto max-w-[1180px] px-4 md:px-6">
+    <div class="md:flex md:items-end md:justify-between md:gap-10 mb-10">
+      <div class="reveal">
+        <p class="eyebrow mb-3">{{SERVICES_KICKER}}</p>
+        <h2 class="text-3xl md:text-4xl text-ink max-w-[20ch] balance">{{SERVICES_HEADLINE}}</h2>
+      </div>
+      <p class="font-body text-[15px] leading-relaxed max-w-[38ch] mt-4 md:mt-0 reveal">{{SERVICES_INTRO}}</p>
+    </div>
+  </div>
+
+  <div id="svcTrack" class="reveal no-scrollbar flex gap-5 overflow-x-auto snap-x snap-mandatory px-4 md:px-6 pb-2 mx-auto max-w-[1180px]" style="scroll-padding-left:1rem">
+    <div class="svc-card card flex-none w-[78vw] sm:w-[320px] p-6">
+      <span class="stamp on-light mb-4"><span class="stamp-dot"></span>01</span>
+      <h3 class="font-display text-lg text-ink mt-4 mb-2 normal-case">{{SERVICE_1_TITLE}}</h3>
+      <p class="font-body text-[14.5px] leading-relaxed">{{SERVICE_1_DESC}}</p>
+    </div>
+    <div class="svc-card card flex-none w-[78vw] sm:w-[320px] p-6">
+      <span class="stamp on-light mb-4"><span class="stamp-dot"></span>02</span>
+      <h3 class="font-display text-lg text-ink mt-4 mb-2 normal-case">{{SERVICE_2_TITLE}}</h3>
+      <p class="font-body text-[14.5px] leading-relaxed">{{SERVICE_2_DESC}}</p>
+    </div>
+    <div class="svc-card card flex-none w-[78vw] sm:w-[320px] p-6">
+      <span class="stamp on-light mb-4"><span class="stamp-dot"></span>03</span>
+      <h3 class="font-display text-lg text-ink mt-4 mb-2 normal-case">{{SERVICE_3_TITLE}}</h3>
+      <p class="font-body text-[14.5px] leading-relaxed">{{SERVICE_3_DESC}}</p>
+    </div>
+    <div class="svc-card card flex-none w-[78vw] sm:w-[320px] p-6">
+      <span class="stamp on-light mb-4"><span class="stamp-dot"></span>04</span>
+      <h3 class="font-display text-lg text-ink mt-4 mb-2 normal-case">{{SERVICE_4_TITLE}}</h3>
+      <p class="font-body text-[14.5px] leading-relaxed">{{SERVICE_4_DESC}}</p>
+    </div>
+    <!-- add SERVICE_5 / SERVICE_6 cards here the same way if the business needs 5-6 -->
+  </div>
+
+  <div class="flex items-center justify-center gap-2 mt-6" id="svcDots"></div>
+</section>
+
+<!-- ABOUT — alternating image/copy block. Reuse the hero photo (role=
+     "presentation", no caption) unless a genuine second real photo exists
+     for this lead. -->
+<section id="despre" class="px-4 md:px-6 py-14 md:py-20">
+  <div class="mx-auto max-w-[1180px] grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+    <div class="rounded-[var(--radius)] overflow-hidden border-2 border-accent/30 shadow-xl reveal-left order-2 md:order-1">
+      <img src="hero.png" alt="" role="presentation" class="w-full h-[280px] md:h-[380px] object-cover">
+    </div>
+    <div class="order-1 md:order-2 reveal-right">
+      <p class="eyebrow mb-3">Cum lucrăm</p>
+      <h2 class="text-3xl md:text-4xl text-ink mb-6 max-w-[16ch] balance">{{ABOUT_HEADLINE}}</h2>
+      <p class="font-body text-[15px] leading-relaxed mb-4">{{ABOUT_TEXT_1}}</p>
+      <p class="font-body text-[15px] leading-relaxed mb-7">{{ABOUT_TEXT_2}}</p>
+      <a href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}"
+         class="btn btn-outline-dark px-6 text-base">Scrie pe WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="recenzii" class="px-4 md:px-6 py-14 md:py-20" style="background:var(--c-bg-alt)">
+  <div class="mx-auto max-w-[1180px]">
+    <p class="eyebrow mb-3 reveal">Recenzii</p>
+    <h2 class="text-3xl md:text-4xl text-ink mb-10 max-w-[24ch] balance reveal">Ce spun clienții</h2>
+
+    <div class="grid md:grid-cols-3 gap-5">
+      <div class="card p-6 flex flex-col reveal">
+        <div class="flex gap-1 mb-4 text-accent">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed flex-1 balance">„{{REVIEW_1_TEXT}}"</p>
+        <p class="font-body text-[12px] text-ink/60 mt-4">— {{REVIEW_1_AUTHOR}}, Google</p>
+      </div>
+      <div class="card p-6 flex flex-col reveal">
+        <div class="flex gap-1 mb-4 text-accent">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed flex-1 balance">„{{REVIEW_2_TEXT}}"</p>
+        <p class="font-body text-[12px] text-ink/60 mt-4">— {{REVIEW_2_AUTHOR}}, Google</p>
+      </div>
+      <div class="card p-6 flex flex-col reveal">
+        <div class="flex gap-1 mb-4 text-accent">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        </div>
+        <p class="font-body text-[15px] leading-relaxed flex-1 balance">„{{REVIEW_3_TEXT}}"</p>
+        <p class="font-body text-[12px] text-ink/60 mt-4">— {{REVIEW_3_AUTHOR}}, Google</p>
+      </div>
+    </div>
+    <p class="font-body text-[11px] text-ink/45 mt-6 reveal">Recenzii reale, preluate din profilul Google al firmei. Google marchează recenziile ca neconfirmate.</p>
+  </div>
+</section>
+
+<!-- CONTACT / MAP / CTA -->
+<section id="contact" class="hero px-4 md:px-6 py-14 md:py-20">
+  <div class="mx-auto max-w-[1180px] relative grid md:grid-cols-2 gap-10">
+    <div class="reveal">
+      <p class="eyebrow mb-3">Contact &amp; program</p>
+      <h2 class="text-3xl md:text-4xl text-bg mb-8 max-w-[20ch] balance">{{CONTACT_HEADLINE}}</h2>
+
+      <div class="space-y-5 font-body text-bg/90">
+        <div class="flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent2 mt-0.5 flex-none" stroke-width="2"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <div><strong class="block text-bg">Adresă</strong><span>{{ADDRESS}}</span></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent2 mt-0.5 flex-none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <div><strong class="block text-bg">Program</strong><span>{{HOURS}}</span></div>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#25D366" class="mt-0.5 flex-none"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+          <div><strong class="block text-bg">WhatsApp</strong><span><a href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}" class="underline hover:text-accent transition-colors duration-200">{{PHONE_DISPLAY}}</a></span></div>
+        </div>
+        <!-- OPTIONAL: only include this block if the lead has a real, confirmed Facebook page -->
+        <!--
+        <div class="flex items-start gap-3">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-accent2 mt-0.5 flex-none" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <div><strong class="block text-bg">Facebook</strong><span><a href="{{FACEBOOK_URL}}" class="underline hover:text-accent transition-colors duration-200" target="_blank" rel="noopener">{{BUSINESS_NAME}}</a></span></div>
+        </div>
+        -->
+      </div>
+
+      <a href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}"
+         class="btn btn-wa px-6 text-base mt-8">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
         Scrie pe WhatsApp
       </a>
-      <a class="btn btn-secondary" href="tel:{{PHONE_E164}}">
-        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-        {{PHONE_DISPLAY}}
-      </a>
     </div>
-    <div class="badges">
-      <span class="badge"><span class="star">★</span> {{RATING}} / 5 · {{REVIEW_COUNT}} recenzii Google</span>
-      <span class="badge">📍 {{LOCALITY}}</span>
-      <span class="badge">🕐 {{HOURS_SHORT}}</span>
-    </div>
-  </div>
-</section>
 
-<div class="divider"></div>
-
-<section id="servicii">
-  <div class="wrap">
-    <h2>{{SERVICES_TITLE}}</h2>
-    <div class="rule"></div>
-    <div class="grid">
-      <div class="card"><h3>{{SERVICE_1_TITLE}}</h3><p>{{SERVICE_1_DESC}}</p></div>
-      <div class="card"><h3>{{SERVICE_2_TITLE}}</h3><p>{{SERVICE_2_DESC}}</p></div>
-      <div class="card"><h3>{{SERVICE_3_TITLE}}</h3><p>{{SERVICE_3_DESC}}</p></div>
-      <div class="card"><h3>{{SERVICE_4_TITLE}}</h3><p>{{SERVICE_4_DESC}}</p></div>
-      <div class="card"><h3>{{SERVICE_5_TITLE}}</h3><p>{{SERVICE_5_DESC}}</p></div>
-      <div class="card"><h3>{{SERVICE_6_TITLE}}</h3><p>{{SERVICE_6_DESC}}</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap">
-    <h2>De ce {{BUSINESS_NAME}}?</h2>
-    <div class="rule"></div>
-    <div class="pillars">
-      <div class="pillar"><div class="ico">1</div><h3>{{PILLAR_1_TITLE}}</h3><p>{{PILLAR_1_DESC}}</p></div>
-      <div class="pillar"><div class="ico">2</div><h3>{{PILLAR_2_TITLE}}</h3><p>{{PILLAR_2_DESC}}</p></div>
-      <div class="pillar"><div class="ico">3</div><h3>{{PILLAR_3_TITLE}}</h3><p>{{PILLAR_3_DESC}}</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="about">
-  <div class="wrap">
-    <h2>{{ABOUT_TITLE}}</h2>
-    <div class="rule"></div>
-    <p>{{ABOUT_TEXT}}</p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <h2>Ce spun clienții</h2>
-    <div class="rule"></div>
-    <div class="grid">
-      <div class="review"><div class="stars">★★★★★</div><p>„{{REVIEW_1_TEXT}}"</p><div class="author">— {{REVIEW_1_AUTHOR}}</div></div>
-      <div class="review"><div class="stars">★★★★★</div><p>„{{REVIEW_2_TEXT}}"</p><div class="author">— {{REVIEW_2_AUTHOR}}</div></div>
-      <div class="review"><div class="stars">★★★★★</div><p>„{{REVIEW_3_TEXT}}"</p><div class="author">— {{REVIEW_3_AUTHOR}}</div></div>
-    </div>
-    <p class="reviews-src">Recenzii reale preluate de pe profilul Google al firmei.</p>
-  </div>
-</section>
-
-<section class="cta">
-  <div class="wrap">
-    <h2>Aveți nevoie de {{CATEGORY_LABEL_LOWER}}?</h2>
-    <p>Scrieți-ne pe WhatsApp — răspundem rapid.</p>
-    <div class="hero-cta">
-      <a class="btn btn-wa" href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}">Scrie pe WhatsApp</a>
-      <a class="btn btn-secondary" href="tel:{{PHONE_E164}}">Sună acum</a>
-    </div>
-  </div>
-</section>
-
-<section class="alt" id="contact">
-  <div class="wrap">
-    <h2>Contact & Locație</h2>
-    <div class="rule"></div>
-    <div class="contact-grid">
-      <div>
-        <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg><div><strong>Adresă</strong><span>{{ADDRESS}}</span></div></div>
-        <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg><div><strong>WhatsApp</strong><span><a href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}">{{PHONE_DISPLAY}}</a></span></div></div>
-        <div class="contact-item"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4 11h-5V6h2v5h3z"/></svg><div><strong>Program</strong><span>{{HOURS}}</span></div></div>
+    <div class="reveal">
+      <div class="rounded-[var(--radius)] overflow-hidden border-2 border-accent/40 aspect-[4/3] md:aspect-auto md:h-full min-h-[280px] relative" style="background:var(--c-bg-alt)">
+        <iframe
+          id="mapFrame"
+          src="{{MAPS_EMBED_URL}}"
+          class="w-full h-full absolute inset-0 border-0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Harta — {{BUSINESS_NAME}}"
+          onerror="document.getElementById('mapFallback').classList.remove('hidden')">
+        </iframe>
       </div>
-      <div class="map"><iframe src="{{MAPS_EMBED_URL}}" loading="lazy" title="Hartă {{BUSINESS_NAME}}" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div id="mapFallback" class="hidden mt-2">
+        <a href="{{MAPS_DIRECTIONS_URL}}" target="_blank" rel="noopener" class="underline text-accent font-body text-sm">Deschide harta</a>
+      </div>
+      <a href="{{MAPS_DIRECTIONS_URL}}" target="_blank" rel="noopener" class="inline-block mt-3 font-body text-sm underline text-bg/80 hover:text-accent transition-colors duration-200">Deschide harta în Google Maps ↗</a>
     </div>
   </div>
 </section>
 
-<footer>
-  <div class="fbrand">{{BUSINESS_NAME}}</div>
-  <div>{{ADDRESS}} · <a href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}">WhatsApp</a> · <a href="tel:{{PHONE_E164}}">{{PHONE_DISPLAY}}</a></div>
-  <div class="copy">© {{YEAR}} {{BUSINESS_NAME}}. Toate drepturile rezervate.</div>
-  <div class="demo-note">Propunere de website — demonstrație realizată de {{AGENCY_NAME}} · WhatsApp {{AGENCY_PHONE}}. Acest site nu este publicat oficial.</div>
+<!-- FOOTER -->
+<footer class="px-4 md:px-6 py-10 text-center" style="background:var(--c-primary-dark)">
+  <div class="mx-auto max-w-[760px] text-bg/70 font-body text-sm balance">
+    <div>{{ADDRESS}} · <a href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}" class="underline hover:text-accent transition-colors duration-200">WhatsApp</a> · <a href="tel:{{PHONE_E164}}" class="underline hover:text-accent transition-colors duration-200">{{PHONE_DISPLAY}}</a></div>
+    <div class="mt-4 inline-block max-w-[640px] rounded-[var(--radius)] border border-dashed border-accent/60 px-4 py-3 text-[13px] text-accent2 balance">Propunere de website — demonstrație realizată de {{AGENCY_NAME}} · WhatsApp {{AGENCY_PHONE}}. Acest site nu este publicat oficial.</div>
+  </div>
 </footer>
 
-<nav class="sticky-bar" aria-label="Acțiuni rapide">
-  <a class="wa" href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>WhatsApp</a>
-  <a href="tel:{{PHONE_E164}}"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>Sună</a>
-  <a href="{{MAPS_DIRECTIONS_URL}}"><svg viewBox="0 0 24 24"><path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4zM13 14.5V12h-3v3H8v-4a1 1 0 0 1 1-1h4V7.5l3.5 3.5z"/></svg>Traseu</a>
-</nav>
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-bar md:hidden px-4 py-2.5 flex items-center gap-3">
+  <a class="btn btn-wa flex-1 text-sm" href="https://wa.me/{{WHATSAPP_E164}}?text={{WA_MESSAGE}}">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
+    WhatsApp
+  </a>
+  <a class="w-11 h-11 flex-none flex items-center justify-center rounded-[var(--radius)] border-2 border-accent text-accent transition-transform duration-200" href="tel:{{PHONE_E164}}" aria-label="Sună">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>
+  </a>
+</div>
+
+<script>
+  // Mobile menu
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', function(){
+    var isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(function(a){
+    a.addEventListener('click', function(){ mobileMenu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); });
+  });
+
+  // Map iframe fallback: if it fails to load or stays blank, reveal the "Deschide harta" link.
+  (function(){
+    var frame = document.getElementById('mapFrame');
+    var fallback = document.getElementById('mapFallback');
+    var loaded = false;
+    frame.addEventListener('load', function(){ loaded = true; });
+    setTimeout(function(){ if(!loaded){ fallback.classList.remove('hidden'); } }, 3500);
+  })();
+
+  // Scroll-triggered reveal: vertical fade+slide-up by default, horizontal for
+  // .reveal-left/.reveal-right (trust pillars, about section).
+  (function(){
+    var targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    if(!('IntersectionObserver' in window)){
+      targets.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    targets.forEach(function(el){ io.observe(el); });
+  })();
+
+  // Services carousel: dot pagination synced to horizontal scroll position.
+  // Reads however many .svc-card elements exist -- add/remove cards in
+  // #svcTrack freely, no change needed here.
+  (function(){
+    var track = document.getElementById('svcTrack');
+    var dotsWrap = document.getElementById('svcDots');
+    var cards = Array.prototype.slice.call(track.querySelectorAll('.svc-card'));
+    cards.forEach(function(_, i){
+      var d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Serviciu ' + (i + 1));
+      d.addEventListener('click', function(){
+        cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      });
+      dotsWrap.appendChild(d);
+    });
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+    var ticking = false;
+    track.addEventListener('scroll', function(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        var trackLeft = track.getBoundingClientRect().left;
+        var closest = 0, closestDist = Infinity;
+        cards.forEach(function(c, i){
+          var dist = Math.abs(c.getBoundingClientRect().left - trackLeft);
+          if(dist < closestDist){ closestDist = dist; closest = i; }
+        });
+        dots.forEach(function(d, i){ d.classList.toggle('active', i === closest); });
+        ticking = false;
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
