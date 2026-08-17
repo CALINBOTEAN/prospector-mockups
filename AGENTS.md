@@ -172,6 +172,47 @@ Most recent first. Add a new dated entry at the end of any session with
 meaningful progress or a real discovered issue — a few lines, key lessons
 only, not a full transcript.
 
+- **2026-08-17** — Switched agency WhatsApp outreach from the UK stopgap
+  number (+44 7577 464619) to the Romanian number (+40 741 181 795) across
+  all three live mockups, two stray experiment HTML files, and disclaimer
+  text; verified zero remaining references repo-wide. Sent the first three
+  Offer A outreach messages (Template 1, WhatsApp, by hand) to Depozit
+  Cherestea Vâlcele, Agrofarm Marius, and Sabo ITP & SERVICE — Agrofarm
+  replied same-day ("Ma uit consult si daca doresc revin multumesc" —
+  soft-positive holding reply, not yet a meeting ask); Depozit and Sabo
+  silent so far. Logged all three in `data/pipeline.csv` as CONTACTED,
+  `date_contacted`=2026-08-17, `next_action_date`=2026-08-20 (Template 2
+  follow-up window). Pilot count: 3 of ~30 first contacts done.
+- **2026-08-17** — Found and fixed a real privacy gap: `data/pipeline.csv`
+  (lead names, phone numbers, outreach notes) had been committed to this
+  *public* repo once, before the `.gitignore` rule for it existed — that
+  rule only blocks brand-new files, it does not retroactively untrack a
+  file already committed, so it had kept being tracked and re-uploaded on
+  every push since. Because the Pages workflow uploads the whole repo as
+  the site (`path: '.'`), the leads file was being served live and directly
+  downloadable at
+  `https://calinbotean.github.io/prospector-mockups/data/pipeline.csv` —
+  confirmed by fetching it. Fixed with `git rm --cached data/pipeline.csv`
+  (kept on disk, stopped tracking going forward) and pushed; re-confirmed
+  the URL now 404s. **Lesson: adding a `.gitignore` rule for a file that
+  was already committed does nothing by itself — it also needs
+  `git rm --cached`, or it silently keeps shipping every push.** Per the
+  2026-08-14 decision, old copies possibly still in repo history were not
+  scrubbed, only stopped from continuing.
+- **2026-08-17** — Diagnosed a "Deploy static content to Pages" workflow
+  failure Calin got emailed about as a live, ongoing GitHub-wide outage
+  (confirmed via githubstatus.com: Actions/API/Webhooks/PRs/Issues all
+  degraded, incident ran roughly 13:40–19:00 UTC that day), not a repo
+  problem — workflow YAML, permissions, and Pages source were all
+  unaffected; `codeload.github.com` and GitHub's own Pages deployment API
+  were returning 502/503 mid-run. The three live mockups stayed up (200 OK)
+  through every failed deploy, since Pages keeps serving the last
+  successful build regardless of a failed one. Retried via empty commits as
+  GitHub's status page showed progressive mitigation; the 5th retry
+  succeeded. No `gh` CLI is installed on this machine — used the public
+  GitHub REST API (unauthenticated, works fine for public repos) plus the
+  in-app browser against the Actions UI as a fallback when the API itself
+  was rate-limited/timing out from the same outage.
 - **2026-08-17** — Diagnosed the reported 404s on Agrofarm Marius and Sabo
   ITP & SERVICE: from the Cowork cloud sandbox, all three live mockup URLs
   (`https://calinbotean.github.io/prospector-mockups/mockups/<slug>/`)

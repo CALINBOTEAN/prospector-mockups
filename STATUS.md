@@ -14,41 +14,53 @@ paste anything to continue.
 
 ## Where we left off
 
-- All three mockups built so far are **BUILT, live, and on the same
-  standing architecture** (full-bleed hero + neutral scrim, services
-  carousel, scroll-reveal, sticky mobile bar): Depozit Cherestea Vâlcele,
-  Agrofarm Marius, Sabo ITP & SERVICE. **None has been contacted yet.**
-- Live URLs:
-  - https://calinbotean.github.io/prospector-mockups/mockups/depozit-cherestea-valcele/
-  - https://calinbotean.github.io/prospector-mockups/mockups/agrofarm-marius/
-  - https://calinbotean.github.io/prospector-mockups/mockups/sabo-itp-service/
-- The standing mockup template (`skills/prospector-mockup/assets/template.html`)
-  was rewritten today to match Depozit's proven architecture, and
-  `prospector-mockup.md` now documents it as mandatory (hero-scrim color
-  rule, dark-logo contrast check, the Tailwind RGB-triplet opacity
-  pitfall, the services carousel as a reusable component). The next new
-  lead's mockup should need far less iteration than these three did.
-- A new `romanian-copywriting-style.md` guide now governs mockup copy —
-  read it before writing any Romanian copy, it replaced the old rules that
-  were producing AI-sounding, templated text.
-- Repo housekeeping done: fixed a corrupted (UTF-16) `.gitignore`,
-  completed a half-finished skills-file rename (`SKILL.md` →
-  `prospector-*.md`), untracked personal Claude Code settings that had no
-  business being in a publicly-deployed repo.
-- Everything above is committed and pushed to `main` (latest commit
-  `47d3e28` at end of session — check `git log` if this file is stale).
+- **First outreach is done.** The WhatsApp number switch to +40 741 181 795
+  is complete and verified everywhere. Calin sent Template 1 (first
+  contact) by hand, via WhatsApp, to all three built leads:
+  - **Depozit Cherestea Vâlcele** (0747 470 637) — sent, no reply yet.
+  - **Agrofarm Marius** (0770 202 324) — sent, **replied same-day**: "Ma uit
+    consult si daca doresc revin multumesc" (will look it over, consult,
+    come back if interested). Soft-positive, not a rejection, not yet a
+    meeting ask. No call made or offered — per house rules a call is now an
+    allowed next step for this lead only if *they* initiate or invite one.
+  - **Sabo ITP & SERVICE** (0756 221 704) — sent, no reply yet.
+  - All three logged in `data/pipeline.csv`: `status=CONTACTED`,
+    `date_contacted=2026-08-17`, `next_action_date=2026-08-20` (the
+    Template 2 / +3 day follow-up window).
+  - Pilot count: **3 of ~30** Offer A first contacts done (see CLAUDE.md's
+    "Current phase — PILOT" section).
+- **Fixed a real privacy gap.** `data/pipeline.csv` (lead names, phone
+  numbers, outreach notes) had been silently tracked in this *public* repo
+  since before its `.gitignore` rule existed, and was being served live and
+  directly downloadable via GitHub Pages. Untracked it properly
+  (`git rm --cached`, kept on disk) and confirmed the URL now 404s. Full
+  detail and the lesson (a `.gitignore` rule alone doesn't untrack an
+  already-committed file) is in CLAUDE.md's session log, 2026-08-17.
+- **GitHub had a multi-hour outage tonight** (confirmed via
+  githubstatus.com, roughly 13:40–19:00 UTC) that broke the "Deploy static
+  content to Pages" workflow for several pushes in a row — not a repo
+  problem, nothing needed to change in the workflow file or settings. The
+  three live mockups stayed up (200 OK) throughout every failed deploy
+  regardless. Retried until it succeeded; confirmed working by end of
+  session.
+- Everything from tonight is committed and pushed to `main` (latest commit
+  `dd225a3` — a successful Pages deploy — at end of session; check
+  `git log` if this file is stale).
 
 ## Next session starts here
 
-1. **Switch WhatsApp outreach to the Romanian number** (see "Later" in
-   CLAUDE.md for the how — dual-SIM/eSIM/temporary swap for the one-time
-   WhatsApp Business verification step, same phone is fine).
-2. **Send the first outreach messages** for Depozit, Agrofarm, and Sabo.
-   Read `skills/prospector-outreach/prospector-outreach.md` first — this
-   pipeline is WhatsApp-first, text-only, no cold calls.
-3. Then resume the normal weekly rhythm: read
-   `skills/prospector-pipeline/prospector-pipeline.md`'s session-start
-   gate for what's due and the current WIP status.
+1. **Check for replies** on Depozit and Sabo — nothing needed if they've
+   replied; if still silent by **2026-08-20**, that's the Template 2
+   follow-up date logged in `data/pipeline.csv` for all three leads
+   (including Agrofarm, as a safety net in case they don't come back on
+   their own as promised).
+2. If Agrofarm circles back first, read `skills/prospector-outreach/prospector-outreach.md`'s
+   objection-handling section before replying — stay text-only unless
+   Agrofarm invites a call.
+3. Otherwise, resume the normal weekly rhythm: read
+   `skills/prospector-pipeline/prospector-pipeline.md`'s session-start gate
+   for what's due and current WIP status. No new mockups need building
+   right now — all three built leads are already contacted.
 
 ## Open items / need Calin's input
 
