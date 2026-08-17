@@ -5,10 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- DEMO ONLY: never remove noindex before the client signs -->
 <meta name="robots" content="noindex,nofollow">
-<title>Sabo ITP & SERVICE — Apahida</title>
+<title>Sabo ITP &amp; SERVICE — Apahida</title>
+<meta name="description" content="Sabo ITP &amp; SERVICE, Apahida — ITP, diagnoză auto, frâne, schimb ulei și reparații mecanice.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <script>
 window.tailwind = window.tailwind || {};
 tailwind.config = {
@@ -64,382 +65,235 @@ tailwind.config = {
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
 body{font-family:var(--font-body);color:var(--c-text);background:var(--c-bg);font-size:16px;line-height:1.6;max-width:100%;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-section[id],article[id]{scroll-margin-top:96px}
-body h1,body h2,body h3{font-family:var(--font-display);line-height:1.15;letter-spacing:.01em;text-transform:uppercase}
-body h1{font-size:44px;color:#fff;font-weight:700}
-body h2{font-size:32px;color:var(--c-primary);font-weight:700;text-align:center}
-body h3{font-size:19px;font-weight:600;text-transform:none}
-p,blockquote,.balance-copy,.service-card p,.pillar p,.review p,.contact-item span,.cta p,.reviews-src,.demo-note,footer div{text-wrap:balance}
-.rule{width:70px;height:4px;background:var(--accent-line);margin:16px auto 38px;border-radius:999px}
-.section-kicker{display:block;margin:0 auto 10px;width:100%;max-width:100%;text-align:center;font:600 13px var(--font-display);letter-spacing:.1em;text-transform:uppercase;color:var(--c-accent)}
-.alt{background:var(--c-bg-alt)}
+img{display:block;max-width:100%}a{color:inherit;text-decoration:none}section[id]{scroll-margin-top:96px}
+body h1,body h2,body h3,.font-display{font-family:var(--font-display);line-height:1.15;letter-spacing:.01em;text-transform:uppercase}
+body h1{font-weight:700}body h2{font-weight:700}body h3{font-weight:600}
+h1,h2,.balance,p,.card p,.review p,footer div{text-wrap:balance}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;border-radius:var(--radius);padding:13px 24px;font:700 15px var(--font-body);letter-spacing:.02em;box-shadow:0 10px 22px rgba(0,0,0,.14);transition:background .2s,border-color .2s,color .2s,filter .2s}
-.btn svg{width:18px;height:18px;fill:currentColor;flex:none}
-.btn-wa{background:var(--c-whatsapp);border:2px solid var(--c-whatsapp);color:#fff}
-.btn-wa:hover{filter:brightness(.94)}
-.btn-secondary{background:transparent;border:2px solid var(--c-accent);color:#fff}
-.btn-secondary:hover{background:var(--c-accent);color:#fff}
-
-header:after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--accent-line)}
-.brand{font-family:var(--font-display);text-transform:uppercase;letter-spacing:.01em}
-.top-nav a{border-radius:var(--radius);padding:8px 10px;color:#D7D8DA;font:600 13px var(--font-body);text-transform:uppercase;letter-spacing:.03em;transition:background .2s,color .2s}
-.top-nav a:hover,.top-nav a:focus-visible{background:rgba(255,255,255,.08);color:#fff;outline:none}
-.menu-toggle{border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);background:rgba(255,255,255,.07);cursor:pointer;transition:background .2s,border-color .2s}
-.menu-toggle:hover,.menu-toggle:focus-visible{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.34);outline:none}
-.menu-toggle span{display:block;width:18px;height:2px;border-radius:999px;background:#fff;transition:transform .2s,opacity .2s}
-.menu-toggle span+span{margin-left:-18px}
-.menu-toggle span:nth-child(1){transform:translateY(-6px)}
-.menu-toggle span:nth-child(3){transform:translateY(6px)}
-header.menu-open .menu-toggle span:nth-child(1){transform:rotate(45deg)}
-header.menu-open .menu-toggle span:nth-child(2){opacity:0}
-header.menu-open .menu-toggle span:nth-child(3){transform:rotate(-45deg)}
-.header-wa svg{width:16px;height:16px;fill:#fff}
-
-.hero{background:var(--c-primary);color:#fff;isolation:isolate;overflow:hidden}
-.hero-grid{grid-template-areas:"copy photo"}
-.hero-copy{grid-area:copy;display:flex;flex-direction:column;max-width:560px}
-.hero-lockup{display:flex;max-width:100%;flex-direction:column;align-items:flex-start;margin-bottom:30px}
-.hero-logo-plate{display:inline-block;background:#fff;padding:12px 18px;border-radius:var(--radius);box-shadow:0 16px 34px rgba(0,0,0,.32);margin-bottom:16px}
-.hero-logo{display:block;height:auto}
-.hero-kicker{display:inline-flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;max-width:100%;line-height:1.25;margin:0 0 14px;font:600 15px var(--font-display);letter-spacing:.08em;text-transform:uppercase;color:var(--c-accent-2)}
-
-.hero-photo{grid-area:photo;border-radius:var(--radius);overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.30);border:1px solid rgba(255,255,255,.10)}
-.photo-frame{position:relative;aspect-ratio:4/5;overflow:hidden}
-.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:78% 46%;display:block}
-.photo-caption{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;background:var(--c-panel);color:var(--c-text-muted);font-size:12px}
-.photo-caption strong{color:var(--c-primary)}
-
-/* Panou de boxa -- signature element: bay-status tag with a diagonal corner flag */
-.bay-tag{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:40px;background:#22252B;border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:var(--radius);padding:9px 20px 9px 16px;font:600 14px var(--font-display);letter-spacing:.08em;text-transform:uppercase;overflow:hidden;box-shadow:0 8px 16px rgba(0,0,0,.22);transition:transform .2s,box-shadow .2s,background .2s}
-.bay-tag:after{content:"";position:absolute;top:0;right:0;width:0;height:0;border-style:solid;border-width:0 22px 22px 0;border-color:transparent var(--flag,var(--c-accent)) transparent transparent}
-.bay-tag:hover{transform:translateY(-2px);box-shadow:0 12px 22px rgba(0,0,0,.28);background:#2A2E35}
-.bay-tag:focus-visible{outline:2px solid var(--c-accent);outline-offset:3px}
-.bay-tag.flag-amber{--flag:var(--c-accent-2)}
-
-.badges{display:flex;gap:12px;justify-content:flex-start;flex-wrap:wrap}
-.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:9px 16px;font:600 14px var(--font-body);color:#fff}
-.badge .star{color:var(--c-accent-2)}
-
-.divider{background:var(--accent-line)}
-.service-card,.review{transition:box-shadow .2s,transform .2s}
-.service-card:hover,.review:hover{box-shadow:var(--shadow-card-hover);transform:translateY(-2px)}
-.service-card:before{content:attr(data-code);display:inline-block;margin-bottom:14px;border:1px solid var(--c-border);border-radius:var(--radius);background:var(--c-bg);padding:4px 10px;font:600 13px var(--font-display);letter-spacing:.06em;color:var(--c-primary)}
-.service-card h3{margin-bottom:8px;color:var(--c-primary)}
-.service-card p,.pillar p,.review p,.contact-item span{color:var(--c-text-muted);font-size:15px}
-
-.pillar .ico{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-bottom:14px;border-radius:var(--radius);background:var(--c-primary);color:var(--c-accent-2);font:700 18px var(--font-display)}
-.pillar h3{margin-bottom:8px;color:var(--c-primary)}
-
-.proof-moment{position:relative}
-.proof-moment:before{content:"ITP DIAGNOZĂ FRÂNE ULEI";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);white-space:nowrap;font:700 clamp(60px,12vw,160px) var(--font-display);letter-spacing:.04em;color:#fff;opacity:.045}
-.proof-moment .wrap{position:relative}
-.proof-quote h2{color:#fff;font-size:clamp(28px,4.4vw,50px)}
-.proof-quote blockquote{margin:24px auto 18px;color:#F2F2F0;font-family:var(--font-display);font-weight:500;font-size:clamp(21px,2.8vw,32px);line-height:1.3;text-transform:none}
-.proof-quote cite{display:block;color:var(--c-accent-2);font-style:normal;font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:14px}
-
-.review .stars{color:var(--c-accent-2);letter-spacing:2px;margin-bottom:10px;font-size:15px}
-.review p{font-style:italic}
-.review .author{margin-top:13px;color:var(--c-primary);font-weight:700;font-size:14px}
-.reviews-src{text-align:center;margin-top:22px;color:var(--c-text-muted);font-size:13px}
-
-.cta h2{color:#fff;margin-bottom:8px}
-
-.contact-item{margin-bottom:18px}
-.contact-item:last-child{margin-bottom:0}
-.contact-item svg{width:20px;height:20px;fill:var(--c-accent);flex:none;margin-top:3px}
-.contact-item strong{display:block;color:var(--c-primary);font-size:15px}
-.contact-item a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
-.map{grid-template-rows:minmax(320px,1fr) auto}
-.map iframe{width:100%;height:100%;min-height:320px;border:0;display:block;background:var(--c-bg-alt)}
-.map-fallback strong{display:block;color:var(--c-primary);font-size:15px}
-.map-fallback span{display:block;color:var(--c-text-muted);font-size:13px}
-.map-open{display:inline-flex;align-items:center;justify-content:center;min-height:42px;border-radius:var(--radius);background:var(--c-primary);color:#fff;padding:10px 16px;font-weight:700;white-space:nowrap;box-shadow:0 8px 18px rgba(22,24,29,.20)}
-
-footer{border-top:4px solid transparent;border-image:var(--accent-line) 1}
-footer .fbrand{font-family:var(--font-display);font-size:19px;font-weight:700;text-transform:uppercase;color:#fff;margin-bottom:6px}
-footer .copy{font-size:13px;color:#9A9DA3;margin-top:14px}
-.demo-note{margin-top:18px;color:var(--c-accent-2);font-size:13px}
-
-.sticky-bar a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:#fff;font:700 12px var(--font-body);border-right:1px solid rgba(255,255,255,.14)}
-.sticky-bar a:last-child{border-right:none}
-.sticky-bar svg{width:20px;height:20px;fill:var(--c-accent-2)}
-.sticky-bar .wa{background:var(--c-whatsapp)}
-.sticky-bar .wa svg{fill:#fff}
-.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
-.js .reveal.is-visible{opacity:1;transform:none}
-
-@media(min-width:768px){
-  body h1{font-size:68px}
-  body h2{font-size:40px}
+/* Canonical full-bleed hero treatment — photo, separate neutral scrim, then lockup. */
+.hero{background:var(--c-primary);color:var(--c-bg);position:relative;overflow:hidden}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 58% 76% at 38% 48%,rgba(20,14,9,.82) 0%,rgba(20,14,9,.62) 48%,rgba(20,14,9,.32) 72%,rgba(20,14,9,0) 100%),linear-gradient(90deg,rgba(20,14,9,.16) 0%,rgba(20,14,9,0) 34%,rgba(20,14,9,0) 100%)}
+.hero-content{position:relative;z-index:2}
+.hero-lockup h1,.hero-lockup .hero-subtext,.hero-lockup .eyebrow{text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.hero-lockup .btn-outline{text-shadow:0 1px 8px rgba(0,0,0,.6);box-shadow:0 3px 14px rgba(0,0,0,.48)}
+.hero-logo-plate{display:inline-block;padding:10px 14px;border-radius:10px;background:rgba(244,244,242,.94);box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.hero-logo{width:112px;height:112px;object-fit:contain}
+.site-header{background:rgba(22,24,29,.97)}
+.mobile-menu{background:rgba(12,13,16,.98)}
+@media (min-width:768px){.hero-logo{width:132px;height:132px}}
+@media (max-width:767px){
+  .hero-photo{object-position:78% 52%}
+  .hero-scrim{background:radial-gradient(ellipse 108% 68% at 50% 42%,rgba(20,14,9,.88) 0%,rgba(20,14,9,.72) 52%,rgba(20,14,9,.38) 78%,rgba(20,14,9,0) 100%),linear-gradient(0deg,rgba(20,14,9,.30) 0%,rgba(20,14,9,0) 60%)}
 }
-@media(max-width:980px){
-  .top-nav a{font-size:12px;padding:8px 7px}
-}
-@media(max-width:860px){
-  .hero-grid{grid-template-areas:"copy" "photo"}
-  .hero-copy{max-width:none}
-  .photo-frame{aspect-ratio:16/9}
-}
-@media(max-width:767px){
-  body h1{font-size:42px}
-  body h2{font-size:29px}
-  .hero-copy{text-align:center;align-items:center}
-  .hero-lockup{align-items:center}
-  .photo-frame{aspect-ratio:4/3}
-  section[id],article[id]{scroll-margin-top:88px}
-  .mobile-menu{background:var(--c-primary);border-top:1px solid rgba(255,255,255,.10);box-shadow:0 16px 28px rgba(0,0,0,.22)}
-  header.menu-open .mobile-menu{display:grid}
-  .mobile-menu a{display:block;border-radius:var(--radius);padding:11px 20px;color:#EDEDEC;font:600 14px var(--font-body);text-transform:uppercase;letter-spacing:.03em;text-align:center;background:rgba(255,255,255,.06)}
-  .mobile-menu a:hover,.mobile-menu a:focus-visible{background:rgba(255,255,255,.12);color:#fff;outline:none}
-  .bay-tag{width:100%;padding:9px 10px;text-align:center}
-  .map{grid-template-rows:minmax(280px,auto) auto}
-  .map iframe{min-height:280px}
-  .map-open{width:100%}
-}
-@media(max-width:420px){
-  .header-wa{width:44px;padding:0;justify-content:center;flex:none}
-  .header-wa span{display:none}
-  .header-wa svg{display:block;width:20px;height:20px}
-  .brand{font-size:18px}
-}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .js .reveal{opacity:1;transform:none;transition:none}
-  .service-card:hover,.review:hover,.bay-tag:hover{transform:none}
-}
+
+/* Canonical badges, cards, carousel, motion and CTA mechanics. */
+.stamp{font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:.075em;text-transform:uppercase;color:var(--c-accent-2);border:1.5px solid var(--c-accent-2);box-shadow:0 0 0 3px rgba(242,163,60,.15) inset;padding:7px 11px;border-radius:3px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;line-height:1}
+.stamp.on-light{color:var(--c-primary);border-color:var(--c-primary)}
+.stamp-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
+.btn{border-radius:var(--radius);font-weight:700;transition:transform .25s ease,box-shadow .25s ease,filter .25s ease,background .25s ease;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.btn-wa{background:var(--c-whatsapp);border:2px solid var(--c-whatsapp);color:#fff}.btn-wa:hover{filter:brightness(1.06);transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,211,102,.28)}
+.btn-outline{border:2px solid var(--c-panel);color:var(--c-panel);background:transparent}.btn-outline:hover{background:rgba(244,244,242,.10);transform:translateY(-2px)}
+.btn-outline-dark{border:2px solid var(--c-primary);color:var(--c-primary);background:transparent}.btn-outline-dark:hover{background:rgba(22,24,29,.06);transform:translateY(-2px)}
+.eyebrow{font-family:var(--font-display);font-size:13px;letter-spacing:.13em;text-transform:uppercase;color:var(--c-accent);font-weight:700}
+.card{background:var(--c-panel);border:1.5px solid var(--c-border);border-radius:var(--radius);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card-hover);border-color:var(--c-accent-2)}
+.svc-card{scroll-snap-align:start;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}.svc-card:hover{transform:translateY(-4px) scale(1.015);box-shadow:var(--shadow-card-hover);border-color:var(--c-accent-2)}
+.no-scrollbar{scrollbar-width:none;-ms-overflow-style:none}.no-scrollbar::-webkit-scrollbar{display:none}
+.dot{width:8px;height:8px;border:0;border-radius:50%;background:var(--c-border);transition:background .25s ease,transform .25s ease;cursor:pointer}.dot:hover,.dot:focus-visible{background:var(--c-accent);outline:none}.dot.active{background:var(--c-accent);transform:scale(1.25)}
+.sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--c-primary);border-top:2px solid var(--c-accent-2)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .28s ease-out,transform .28s ease-out}.reveal.is-visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .3s ease-out,transform .3s ease-out}.reveal-left.is-visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(28px);transition:opacity .3s ease-out,transform .3s ease-out}.reveal-right.is-visible{opacity:1;transform:translateX(0)}
+.top-nav a{transition:color .2s ease,transform .2s ease}.top-nav a:hover,.top-nav a:focus-visible{color:var(--c-accent-2);transform:translateY(-2px);outline:none}.mobile-menu a{transition:background .2s ease,color .2s ease}.mobile-menu a:hover,.mobile-menu a:focus-visible{background:rgba(255,255,255,.08);color:#fff;outline:none}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none !important}.reveal,.reveal-left,.reveal-right{opacity:1 !important;transform:none !important}}
 </style>
 </head>
-<body class="bg-[var(--c-bg)] text-[var(--c-text)] antialiased">
+<body class="pb-[72px] md:pb-0">
 
-<header class="sticky top-0 z-[100] bg-[var(--c-primary)] text-white shadow-[0_4px_16px_rgba(22,24,29,.22)]">
-  <div class="wrap header-in mx-auto flex max-w-[1120px] items-center justify-between gap-[18px] px-5 py-[13px] max-md:flex-nowrap max-md:gap-3 max-md:px-[18px] max-md:py-2.5">
-    <div class="brand whitespace-nowrap text-xl font-bold">Sabo ITP &amp; SERVICE</div>
-    <div class="header-actions ml-auto flex min-w-0 items-center justify-end gap-4 max-[980px]:gap-2.5 max-md:w-auto max-md:gap-2">
-      <nav class="top-nav flex items-center gap-1 max-md:hidden" aria-label="Navigare pagină">
-        <a href="#servicii">Servicii</a>
-        <a href="#de-ce-noi">De ce noi</a>
-        <a href="#recenzii">Recenzii</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="menu-toggle hidden h-[42px] w-[42px] flex-none items-center justify-center max-md:inline-flex" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Deschide meniul">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
-      <a class="header-wa inline-flex min-h-[42px] items-center gap-2 whitespace-nowrap rounded-[var(--radius)] bg-[var(--c-whatsapp)] px-3.5 py-2 text-sm font-bold" href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE." aria-label="Scrie pe WhatsApp">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
-        <span>WhatsApp</span>
+<!-- HEADER -->
+<header class="site-header sticky top-0 z-50 border-b-2 border-[var(--c-accent-2)] text-white backdrop-blur">
+  <div class="mx-auto flex h-16 max-w-[1180px] items-center justify-between gap-3 px-4 md:px-6">
+    <a href="#top" class="font-display text-base leading-tight tracking-wide text-[var(--c-panel)] md:text-xl">SABO <span class="text-[var(--c-accent-2)]">ITP &amp; SERVICE</span></a>
+    <nav class="top-nav hidden items-center gap-7 font-body text-sm font-semibold text-white/90 md:flex" aria-label="Navigare principală">
+      <a href="#servicii">Servicii</a><a href="#despre">Cum lucrăm</a><a href="#recenzii">Recenzii</a><a href="#contact">Contact &amp; Program</a>
+    </nav>
+    <div class="flex items-center gap-2 md:gap-3">
+      <a href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE." class="btn btn-wa hidden px-4 text-sm md:inline-flex" aria-label="Scrie pe WhatsApp">WhatsApp</a>
+      <a href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE." class="btn btn-wa h-11 w-11 !p-0 md:hidden" aria-label="Scrie pe WhatsApp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
       </a>
+      <button id="menuBtn" class="flex h-11 w-11 items-center justify-center text-[var(--c-panel)] md:hidden" aria-label="Deschide meniul" aria-expanded="false" aria-controls="mobileMenu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     </div>
   </div>
-  <nav class="mobile-menu hidden max-md:absolute max-md:left-0 max-md:right-0 max-md:top-full max-md:grid-cols-1 max-md:gap-1 max-md:px-[18px] max-md:pb-3.5 max-md:pt-2.5" id="mobile-menu" aria-label="Navigare mobilă">
-    <a href="#servicii">Servicii</a>
-    <a href="#de-ce-noi">De ce noi</a>
-    <a href="#recenzii">Recenzii</a>
-    <a href="#contact">Contact</a>
+  <nav id="mobileMenu" class="mobile-menu hidden flex-col gap-1 border-t border-white/15 px-4 py-3 font-body text-sm font-semibold text-white/90 md:hidden" aria-label="Navigare mobilă">
+    <a href="#servicii" class="py-2">Servicii</a><a href="#despre" class="py-2">Cum lucrăm</a><a href="#recenzii" class="py-2">Recenzii</a><a href="#contact" class="py-2">Contact &amp; Program</a>
   </nav>
 </header>
 
-<section class="hero flex min-h-[58vh] items-center bg-[var(--c-primary)] py-[76px] max-md:py-[52px]">
-  <div class="wrap hero-grid mx-auto grid max-w-[1120px] grid-cols-[minmax(0,1.05fr)_minmax(300px,.95fr)] items-center gap-x-[54px] px-5 max-[860px]:grid-cols-1 max-[860px]:gap-9 max-md:px-[18px]">
-    <div class="hero-copy text-white">
-      <div class="hero-lockup">
-        <span class="hero-logo-plate">
-          <img class="hero-logo w-[clamp(170px,14vw,208px)] max-md:w-[clamp(140px,40vw,168px)]" src="logo.png" alt="Sabo ITP & SERVICE logo demonstrativ" decoding="async">
-        </span>
-        <span class="hero-kicker">Service auto &amp; Stație ITP · Apahida</span>
-        <h1 class="text-balance">Sabo ITP &amp; SERVICE</h1>
-        <div class="rule"></div>
+<!-- HERO -->
+<section id="top" class="hero flex min-h-[720px] items-start px-4 py-12 md:min-h-[640px] md:px-6 md:py-16">
+  <img src="hero.jpg" alt="Imagine decorativă: mașină pe elevator într-o boxă de service auto" class="hero-photo">
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-content mx-auto w-full max-w-[1180px]">
+    <div class="hero-lockup mx-auto flex max-w-[560px] flex-col items-center text-center md:ml-[7%] md:mr-auto">
+      <span class="hero-logo-plate mb-5"><img src="logo.png" alt="Sabo ITP &amp; SERVICE — siglă demonstrativă" class="hero-logo select-none" draggable="false"></span>
+      <p class="eyebrow mb-3">Service auto &amp; Stație ITP · Apahida</p>
+      <h1 class="w-full balance text-[11vw] leading-[.94] text-[var(--c-panel)] sm:text-5xl md:text-[3.6vw] md:leading-[.95]"><span class="block">SABO</span><span class="block text-center text-[var(--c-accent-2)]">ITP &amp; SERVICE</span></h1>
+      <p class="hero-subtext mt-5 max-w-[42ch] balance text-base text-white/85 md:text-lg">ITP și reparații auto în Apahida, cu diagnoza explicată clar înainte să pornim lucrul.</p>
+      <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+        <a href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE." class="btn btn-wa px-6 text-base">Scrie pe WhatsApp</a>
+        <a href="#servicii" class="btn btn-outline px-6 text-base">Vezi serviciile</a>
       </div>
-      <p class="balance-copy mb-7 text-balance text-lg text-[#DADBDD] max-md:text-[16px]">În Apahida, Sabo ITP &amp; SERVICE face ITP și reparații auto rapide, cu diagnoza explicată clar înainte să se pună mâna pe mașină.</p>
-      <div class="hero-actions mb-7 flex flex-wrap gap-3.5 max-[860px]:justify-center">
-        <a class="btn btn-wa" href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE.">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
-          Scrie pe WhatsApp
-        </a>
-        <a class="btn btn-secondary" href="https://maps.google.com/?cid=6302654443513152109&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" aria-label="Deschide harta Google Maps">
-          Vezi harta
-        </a>
-      </div>
-      <div class="badges mb-7 max-[860px]:justify-center">
-        <span class="badge"><span class="star" aria-hidden="true">★</span> 4,7 / 5 · 102 recenzii Google</span>
-        <span class="badge">📍 Apahida</span>
-        <span class="badge">🕐 Luni-Vineri 08:00-20:00 - Sâmbătă 08:00-14:00</span>
-      </div>
-      <div class="bay-rail flex flex-wrap gap-2.5 max-md:grid max-md:grid-cols-2 max-[860px]:justify-center" aria-label="Servicii rapide">
-        <a class="bay-tag" href="#servicii">ITP</a>
-        <a class="bay-tag flag-amber" href="#servicii">Diagnoză</a>
-        <a class="bay-tag" href="#servicii">Frâne</a>
-        <a class="bay-tag flag-amber" href="#servicii">Ulei</a>
-      </div>
-    </div>
-
-    <figure class="hero-photo [grid-area:photo]">
-      <div class="photo-frame">
-        <img src="hero.jpg" alt="Mașină ridicată pe elevator într-o boxă de service auto, seara" width="1600" height="900" decoding="async">
-      </div>
-      <figcaption class="photo-caption"><strong>Sabo ITP &amp; SERVICE</strong><span>Imagine decorativă de atelier — nu este o fotografie a service-ului.</span></figcaption>
-    </figure>
-  </div>
-</section>
-
-<div class="divider h-1"></div>
-
-<section class="reveal py-24 max-md:py-[68px]" id="servicii">
-  <div class="wrap mx-auto max-w-[1120px] px-5 max-md:px-[18px]">
-    <span class="section-kicker">Boxa de service</span>
-    <h2>Ce facem la Sabo ITP &amp; SERVICE</h2>
-    <div class="rule"></div>
-    <div class="grid services-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <article class="service-card relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]" data-code="ITP"><h3>ITP — Inspecție Tehnică Periodică</h3><p class="balance-copy">Programare rapidă pentru inspecția tehnică, cu actele pregătite dinainte.</p></article>
-      <article class="service-card relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]" data-code="DIAGNOZĂ"><h3>Diagnoză auto computerizată</h3><p class="balance-copy">Verificare completă cu echipament de diagnoză, explicată pe înțelesul dumneavoastră.</p></article>
-      <article class="service-card relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]" data-code="FRÂNE"><h3>Sistem de frânare</h3><p class="balance-copy">Verificare și reparație frâne, plăcuțe, discuri și lichid de frână.</p></article>
-      <article class="service-card relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]" data-code="ULEI"><h3>Schimb ulei și filtre</h3><p class="balance-copy">Revizie de rutină, cu ulei și filtre potrivite pentru mașina dumneavoastră.</p></article>
-      <article class="service-card relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]" data-code="REPARAȚII"><h3>Reparații mecanice generale</h3><p class="balance-copy">Rezolvăm problema mecanică apărută, cu explicații clare înainte de lucru.</p></article>
-      <article class="service-card relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]" data-code="VERIFICARE"><h3>Verificare înainte de drum lung</h3><p class="balance-copy">Control general al mașinii înainte de o călătorie, pentru liniște pe drum.</p></article>
+      <div class="mt-7 flex flex-wrap justify-center gap-3"><span class="stamp"><span class="stamp-dot"></span>ITP rapid</span><span class="stamp"><span class="stamp-dot"></span>Diagnoză explicată</span><span class="stamp"><span class="stamp-dot"></span>Program și sâmbăta</span></div>
     </div>
   </div>
 </section>
 
-<section class="alt reveal py-24 max-md:py-[68px]" id="de-ce-noi">
-  <div class="wrap mx-auto max-w-[1120px] px-5 max-md:px-[18px]">
-    <span class="section-kicker">De ce aici</span>
-    <h2>Semne clare că mașina e pe mâini bune</h2>
-    <div class="rule"></div>
-    <div class="pillars grid grid-cols-3 gap-6 text-left max-[860px]:grid-cols-1">
-      <div class="pillar rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]"><div class="ico">★</div><h3>Încredere confirmată de clienți</h3><p class="balance-copy">Rating 4,7/5 din 102 recenzii Google — clienții menționează profesionalism și rapiditate.</p></div>
-      <div class="pillar rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]"><div class="ico">AP</div><h3>Ușor de găsit în Apahida</h3><p class="balance-copy">Service-ul este pe DJ161A 23, Apahida — aproape de dumneavoastră.</p></div>
-      <div class="pillar rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]"><div class="ico">8-20</div><h3>Program lung, inclusiv sâmbăta</h3><p class="balance-copy">Luni - Vineri 08:00-20:00, Sâmbătă 08:00-14:00 — pentru cine lucrează în timpul săptămânii.</p></div>
+<!-- TRUST PILLARS -->
+<section id="de-ce-noi" class="px-4 py-14 md:px-6 md:py-20">
+  <div class="mx-auto max-w-[1180px]">
+    <p class="eyebrow mb-3 reveal">De ce noi</p>
+    <h2 class="mb-10 max-w-[24ch] balance text-3xl text-[var(--c-primary)] md:text-4xl reveal">Profesionalism, diagnoză clară și programări rapide</h2>
+    <div class="grid gap-5 sm:grid-cols-3">
+      <article class="card p-6 reveal-left"><div class="mb-3 flex items-center gap-1 text-[var(--c-accent-2)]"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 2.9 6.3 6.9.7-5.2 4.6 1.6 6.8-6.2-3.5-6.2 3.5 1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg><span class="font-display text-2xl text-[var(--c-text)]">4,7</span></div><p class="font-body text-[15px] leading-relaxed">4,7 din 5 pe Google — clienții menționează profesionalism și rapiditate.</p></article>
+      <article class="card p-6 reveal-right"><div class="mb-3 text-[var(--c-accent)]"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><p class="font-body text-[15px] leading-relaxed">Pe DJ161A 23, în Apahida — ITP și reparații fără drum lung din Cluj.</p></article>
+      <article class="card p-6 reveal-left"><div class="mb-3 text-[var(--c-accent)]"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div><p class="font-body text-[15px] leading-relaxed">Program Luni-Vineri 08:00-20:00 și Sâmbătă 08:00-14:00 — inclusiv pentru cine lucrează în timpul săptămânii.</p></article>
     </div>
   </div>
 </section>
 
-<section class="proof-moment reveal flex min-h-[46vh] items-center overflow-hidden bg-[var(--c-primary)] py-[100px] text-white max-md:min-h-0 max-md:py-[72px]">
-  <div class="wrap mx-auto max-w-[1120px] px-5 max-md:px-[18px]">
-    <div class="proof-quote mx-auto max-w-[860px] text-center">
-      <span class="section-kicker">Cuvântul clientului</span>
-      <h2>ITP-ul, rezolvat fără bătăi de cap</h2>
-      <blockquote class="text-balance">„Vrei sa ti faci ITP ul rapid si fara grija ? Alin este un profesionist, te rezolva cat ai clipi !"</blockquote>
-      <cite>Radu M., recenzie Google</cite>
-    </div>
+<!-- SERVICES CAROUSEL -->
+<section id="servicii" class="py-14 md:py-20" style="background:var(--c-bg-alt)">
+  <div class="mx-auto max-w-[1180px] px-4 md:px-6"><div class="mb-10 md:flex md:items-end md:justify-between md:gap-10"><div class="reveal"><p class="eyebrow mb-3">Boxa de service</p><h2 class="max-w-[20ch] balance text-3xl text-[var(--c-primary)] md:text-4xl">ITP, diagnoză și reparații auto</h2></div><p class="mt-4 max-w-[38ch] balance font-body text-[15px] leading-relaxed text-[var(--c-text-muted)] md:mt-0 reveal">Un service mic, cu diagnoza explicată clar și lucrul făcut fără amânări inutile.</p></div></div>
+  <div id="svcTrack" class="no-scrollbar reveal mx-auto flex max-w-[1180px] snap-x snap-mandatory gap-5 overflow-x-auto px-4 pb-2 md:px-6" style="scroll-padding-left:1rem">
+    <article class="svc-card card w-[78vw] flex-none p-6 sm:w-[320px]"><span class="stamp on-light mb-4"><span class="stamp-dot"></span>01</span><h3 class="mt-4 mb-2 text-lg text-[var(--c-primary)] normal-case">ITP — Inspecție Tehnică Periodică</h3><p class="font-body text-[14.5px] leading-relaxed">Programare rapidă, cu actele pregătite dinainte.</p></article>
+    <article class="svc-card card w-[78vw] flex-none p-6 sm:w-[320px]"><span class="stamp on-light mb-4"><span class="stamp-dot"></span>02</span><h3 class="mt-4 mb-2 text-lg text-[var(--c-primary)] normal-case">Diagnoză auto computerizată</h3><p class="font-body text-[14.5px] leading-relaxed">Verificare completă, explicată clar înainte de reparație.</p></article>
+    <article class="svc-card card w-[78vw] flex-none p-6 sm:w-[320px]"><span class="stamp on-light mb-4"><span class="stamp-dot"></span>03</span><h3 class="mt-4 mb-2 text-lg text-[var(--c-primary)] normal-case">Sistem de frânare</h3><p class="font-body text-[14.5px] leading-relaxed">Plăcuțe, discuri și lichid de frână verificate și schimbate.</p></article>
+    <article class="svc-card card w-[78vw] flex-none p-6 sm:w-[320px]"><span class="stamp on-light mb-4"><span class="stamp-dot"></span>04</span><h3 class="mt-4 mb-2 text-lg text-[var(--c-primary)] normal-case">Schimb ulei și filtre</h3><p class="font-body text-[14.5px] leading-relaxed">Revizie de rutină, cu ulei și filtre potrivite mașinii.</p></article>
+    <article class="svc-card card w-[78vw] flex-none p-6 sm:w-[320px]"><span class="stamp on-light mb-4"><span class="stamp-dot"></span>05</span><h3 class="mt-4 mb-2 text-lg text-[var(--c-primary)] normal-case">Reparații mecanice generale</h3><p class="font-body text-[14.5px] leading-relaxed">Rezolvăm problema, cu explicații clare înainte de lucru.</p></article>
+    <article class="svc-card card w-[78vw] flex-none p-6 sm:w-[320px]"><span class="stamp on-light mb-4"><span class="stamp-dot"></span>06</span><h3 class="mt-4 mb-2 text-lg text-[var(--c-primary)] normal-case">Verificare înainte de drum lung</h3><p class="font-body text-[14.5px] leading-relaxed">Control general al mașinii, pentru liniște pe drum.</p></article>
+  </div>
+  <div class="mt-6 flex items-center justify-center gap-2" id="svcDots"></div>
+</section>
+
+<!-- ABOUT / ALTERNATING -->
+<section id="despre" class="px-4 py-14 md:px-6 md:py-20">
+  <div class="mx-auto grid max-w-[1180px] items-center gap-10 md:grid-cols-2 md:gap-14">
+    <div class="order-2 overflow-hidden rounded-[var(--radius)] border-2 border-[var(--c-accent)]/30 shadow-xl md:order-1 reveal-left"><img src="hero.jpg" alt="" role="presentation" class="h-[280px] w-full object-cover md:h-[380px]" style="object-position:80% 55%"></div>
+    <div class="order-1 md:order-2 reveal-right"><p class="eyebrow mb-3">Cum lucrăm</p><h2 class="mb-6 max-w-[16ch] balance text-3xl text-[var(--c-primary)] md:text-4xl">Diagnoză clară, înainte de reparație</h2><p class="mb-4 font-body text-[15px] leading-relaxed">Alin verifică mașina și explică pe loc ce trebuie făcut, înainte să înceapă reparația.</p><p class="mb-7 font-body text-[15px] leading-relaxed">Pentru ITP, programarea se face rapid, cu actele pregătite dinainte, ca să nu pierdeți timp la stație.</p><a href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE." class="btn btn-outline-dark px-6 text-base">Scrie pe WhatsApp</a></div>
   </div>
 </section>
 
-<section class="reveal py-24 max-md:py-[68px]" id="recenzii">
-  <div class="wrap mx-auto max-w-[1120px] px-5 max-md:px-[18px]">
-    <span class="section-kicker">Recenzii reale</span>
-    <h2>Ce spun clienții</h2>
-    <div class="rule"></div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <article class="review relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]"><div class="stars">★★★★★</div><p class="balance-copy">„Service și itp excelent, cu oameni profi și preturi foarte bune! Recomand cu încredere!"</p><div class="author">Ioni D.</div></article>
-      <article class="review relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]"><div class="stars">★★★★★</div><p class="balance-copy">„Rapiditate, seriozitate si profesionalism. Recomand cu drag serviciile acestei firme."</p><div class="author">Daniela D.</div></article>
-      <article class="review relative rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]"><div class="stars">★★★★★</div><p class="balance-copy">„Servicii de calitate, echipa de profesionisti"</p><div class="author">Paul C.</div></article>
+<!-- REVIEWS -->
+<section id="recenzii" class="px-4 py-14 md:px-6 md:py-20" style="background:var(--c-bg-alt)">
+  <div class="mx-auto max-w-[1180px]"><p class="eyebrow mb-3 reveal">Recenzii</p><h2 class="mb-10 max-w-[24ch] balance text-3xl text-[var(--c-primary)] md:text-4xl reveal">Ce spun clienții</h2>
+    <div class="grid gap-5 md:grid-cols-3">
+      <article class="card review flex flex-col p-6 reveal"><div class="mb-4 flex gap-1 text-[var(--c-accent-2)]" aria-label="5 stele">★★★★★</div><p class="flex-1 balance font-body text-[15px] leading-relaxed">„Vrei sa ti faci ITP ul rapid si fara grija ? Alin este un profesionist, te rezolva cat ai clipi!"</p><p class="mt-4 font-display text-[12px] text-[var(--c-text-muted)]">— Radu M., Google</p></article>
+      <article class="card review flex flex-col p-6 reveal"><div class="mb-4 flex gap-1 text-[var(--c-accent-2)]" aria-label="5 stele">★★★★★</div><p class="flex-1 balance font-body text-[15px] leading-relaxed">„Service și itp excelent, cu oameni profi și preturi foarte bune! Recomand cu încredere!"</p><p class="mt-4 font-display text-[12px] text-[var(--c-text-muted)]">— Ioni D., Google</p></article>
+      <article class="card review flex flex-col p-6 reveal"><div class="mb-4 flex gap-1 text-[var(--c-accent-2)]" aria-label="5 stele">★★★★★</div><p class="flex-1 balance font-body text-[15px] leading-relaxed">„Rapiditate, seriozitate si profesionalism. Recomand cu drag serviciile acestei firme."</p><p class="mt-4 font-display text-[12px] text-[var(--c-text-muted)]">— Daniela D., Google</p></article>
     </div>
-    <p class="reviews-src text-balance text-center">Fragmente fidele din recenziile Google ale service-ului.</p>
+    <p class="mt-6 font-body text-[11px] text-[var(--c-text-muted)] reveal">Recenzii reale, preluate din profilul Google al service-ului. Google marchează recenziile ca neconfirmate.</p>
   </div>
 </section>
 
-<section class="cta reveal bg-[var(--c-primary)] py-[96px] text-center text-white">
-  <div class="wrap mx-auto max-w-[1120px] px-5 max-md:px-[18px]">
-    <h2>Aveți nevoie de ITP sau o reparație?</h2>
-    <p class="mx-auto mb-6 max-w-[560px] text-balance text-[#DADBDD]">Scrieți pe WhatsApp și spuneți-ne ce problemă are mașina — răspundem rapid.</p>
-    <div class="hero-actions mb-0 flex justify-center gap-3.5">
-      <a class="btn btn-wa" href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE.">Scrie pe WhatsApp</a>
-    </div>
-  </div>
-</section>
-
-<section class="alt reveal py-24 max-md:py-[68px]" id="contact">
-  <div class="wrap mx-auto max-w-[1120px] px-5 max-md:px-[18px]">
-    <span class="section-kicker">Contact rapid</span>
-    <h2>Contact &amp; Locație</h2>
-    <div class="rule"></div>
-    <div class="contact-grid grid grid-cols-[minmax(0,.92fr)_minmax(320px,1.08fr)] items-start gap-[30px] max-[860px]:grid-cols-1">
-      <div class="contact-panel rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] p-7 shadow-[var(--shadow-card)]">
-        <div class="contact-item flex gap-3">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
-          <div><strong>Adresă</strong><span>DJ161A 23, 407035 Apahida</span></div>
-        </div>
-        <div class="contact-item flex gap-3">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>
-          <div><strong>WhatsApp</strong><span><a href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE.">0756 221 704</a></span></div>
-        </div>
-        <div class="contact-item flex gap-3">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
-          <div><strong>Telefon</strong><span><a href="tel:+40756221704">+40 756 221 704</a></span></div>
-        </div>
-        <div class="contact-item flex gap-3">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4 11h-5V6h2v5h3z"/></svg>
-          <div><strong>Program</strong><span>Luni - Vineri: 08:00-20:00. Sâmbătă: 08:00-14:00. Duminică: închis.</span></div>
-        </div>
+<!-- CONTACT / MAP / CTA -->
+<section id="contact" class="hero px-4 py-14 md:px-6 md:py-20">
+  <div class="relative mx-auto grid max-w-[1180px] gap-10 md:grid-cols-2">
+    <div class="reveal"><p class="eyebrow mb-3">Contact &amp; program</p><h2 class="mb-8 max-w-[20ch] balance text-3xl text-[var(--c-panel)] md:text-4xl">Scrieți-ne ce problemă are mașina</h2>
+      <div class="space-y-5 font-body text-white/90">
+        <div class="flex items-start gap-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--c-accent-2)" stroke-width="2" class="mt-0.5 flex-none" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><strong class="block text-[var(--c-panel)]">Adresă</strong><span>DJ161A 23, 407035 Apahida</span></div></div>
+        <div class="flex items-start gap-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--c-accent-2)" stroke-width="2" class="mt-0.5 flex-none" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><div><strong class="block text-[var(--c-panel)]">Program</strong><span>Luni-Vineri 08:00-20:00, Sâmbătă 08:00-14:00, Duminică închis</span></div></div>
+        <div class="flex items-start gap-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--c-whatsapp)" class="mt-0.5 flex-none" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg><div><strong class="block text-[var(--c-panel)]">WhatsApp</strong><span><a href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE." class="underline transition-colors duration-200 hover:text-[var(--c-accent-2)]">0756 221 704</a></span></div></div>
+        <div class="flex items-start gap-3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--c-accent-2)" stroke-width="2" class="mt-0.5 flex-none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><div><strong class="block text-[var(--c-panel)]">Facebook</strong><span><a href="https://www.facebook.com/profile.php?id=61572422709396" target="_blank" rel="noopener" class="underline transition-colors duration-200 hover:text-[var(--c-accent-2)]">Sabo ITP &amp; SERVICE</a></span></div></div>
       </div>
-      <div class="map grid min-h-[360px] overflow-hidden rounded-[var(--radius)] border border-[var(--c-border)] bg-[var(--c-panel)] shadow-[var(--shadow-card)]">
-        <iframe src="https://www.google.com/maps?q=DJ161A%2023%2C%20Apahida&output=embed" loading="lazy" title="Hartă Sabo ITP &amp; SERVICE" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <div class="map-fallback flex items-center justify-between gap-4 border-t border-[var(--c-border)] bg-[var(--c-panel)] p-4 max-md:flex-col max-md:items-stretch" data-map-fallback>
-          <div><strong>Nu se afișează harta?</strong><span>Unele browsere din aplicații blochează hărțile în pagină.</span></div>
-          <a class="map-open" href="https://maps.google.com/?cid=6302654443513152109&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" target="_blank" rel="noopener">Deschide harta</a>
-        </div>
-      </div>
+      <a href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE." class="btn btn-wa mt-8 px-6 text-base">Scrie pe WhatsApp</a>
     </div>
+    <div class="reveal"><div class="relative min-h-[280px] overflow-hidden rounded-[var(--radius)] border-2 border-[var(--c-accent-2)]/40 bg-[var(--c-bg-alt)] aspect-[4/3] md:h-full md:aspect-auto"><iframe id="mapFrame" src="https://www.google.com/maps?q=DJ161A%2023%2C%20Apahida&amp;output=embed" class="absolute inset-0 h-full w-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Harta — Sabo ITP &amp; SERVICE"></iframe></div><div id="mapFallback" class="mt-2 hidden"><a href="https://maps.google.com/?cid=6302654443513152109&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" target="_blank" rel="noopener" class="font-body text-sm text-[var(--c-accent-2)] underline">Deschide harta</a></div><a href="https://maps.google.com/?cid=6302654443513152109&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" target="_blank" rel="noopener" class="mt-3 inline-block font-body text-sm text-white/80 underline transition-colors duration-200 hover:text-[var(--c-accent-2)]">Deschide harta în Google Maps ↗</a></div>
   </div>
 </section>
 
-<footer class="bg-[var(--c-primary-dark)] px-5 pb-[104px] pt-9 text-center text-[#C9CACC] md:pb-9">
-  <div class="fbrand">Sabo ITP &amp; SERVICE</div>
-  <div class="mx-auto max-w-[760px] text-balance">DJ161A 23, 407035 Apahida · <a href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE.">WhatsApp</a> · <a href="tel:+40756221704">+40 756 221 704</a></div>
-  <div class="copy text-balance">© 2026 Sabo ITP &amp; SERVICE. Toate drepturile rezervate.</div>
-  <div class="demo-note mx-auto inline-block max-w-[760px] rounded-[var(--radius)] border border-dashed border-[var(--c-accent)] px-4 py-3 text-balance">Propunere de website — demonstrație realizată de Calin Botean · WhatsApp +44 7577 464619. Acest site nu este publicat oficial.</div>
-</footer>
+<!-- FOOTER -->
+<footer class="bg-[var(--c-primary-dark)] px-4 py-10 text-center md:px-6"><div class="mx-auto max-w-[760px] balance font-body text-sm text-white/70"><div>DJ161A 23, 407035 Apahida · <a href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE." class="underline transition-colors duration-200 hover:text-[var(--c-accent-2)]">WhatsApp</a> · <a href="tel:+40756221704" class="underline transition-colors duration-200 hover:text-[var(--c-accent-2)]">0756 221 704</a></div><div class="mt-4 inline-block max-w-[640px] rounded-[var(--radius)] border border-dashed border-[var(--c-accent-2)]/60 px-4 py-3 text-[13px] text-[var(--c-accent-2)]/90 balance">Propunere de website — demonstrație realizată de Calin Botean · WhatsApp +44 7577 464619. Acest site nu este publicat oficial.</div></div></footer>
 
-<nav class="sticky-bar fixed inset-x-0 bottom-0 z-[200] flex h-16 bg-[var(--c-primary)] shadow-[0_-4px_18px_rgba(0,0,0,.26)] md:hidden" aria-label="Acțiuni rapide">
-  <a class="wa" href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.4 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6-2.9-1.3-4.8-4.2-5-4.4-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.9 2.2c.1.2.1.4 0 .6l-.4.6-.5.6c-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1.1 2.2 1.4 2.5 1.5.3.1.5.1.7-.1l1-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.2 1.3z"/></svg>WhatsApp</a>
-  <a href="tel:+40756221704"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>Sună</a>
-  <a href="https://maps.google.com/?cid=6302654443513152109&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4zM13 14.5V12h-3v3H8v-4a1 1 0 0 1 1-1h4V7.5l3.5 3.5z"/></svg>Hartă</a>
-</nav>
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-bar flex items-center gap-3 px-4 py-2.5 md:hidden">
+  <a class="btn btn-wa flex-1 text-sm" href="https://wa.me/40756221704?text=Bun%C4%83%21%20A%C8%99%20vrea%20s%C4%83%20aflu%20mai%20multe%20despre%20program%C4%83rile%20la%20Sabo%20ITP%20%26%20SERVICE.">WhatsApp</a>
+  <a class="flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius)] border-2 border-[var(--c-accent-2)] text-[var(--c-accent-2)] transition-transform duration-200 hover:-translate-y-0.5" href="tel:+40756221704" aria-label="Sună"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg></a>
+  <a class="flex h-11 w-11 flex-none items-center justify-center rounded-[var(--radius)] border-2 border-[var(--c-accent-2)] text-[var(--c-accent-2)] transition-transform duration-200 hover:-translate-y-0.5" href="https://maps.google.com/?cid=6302654443513152109&amp;g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" aria-label="Hartă"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6z"/><path d="M9 3v15M15 6v15"/></svg></a>
+</div>
 
 <script>
-document.documentElement.classList.add('js');
-(() => {
-  const items = document.querySelectorAll('.reveal');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduced || !('IntersectionObserver' in window)) {
-    items.forEach((item) => item.classList.add('is-visible'));
-    return;
-  }
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      observer.unobserve(entry.target);
+  // Mobile menu
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', function(){
+    var isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    menuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(function(a){
+    a.addEventListener('click', function(){ mobileMenu.classList.add('hidden'); menuBtn.setAttribute('aria-expanded','false'); });
+  });
+
+  // Map iframe fallback: if it fails to load or stays blank, reveal the "Deschide harta" link.
+  (function(){
+    var frame = document.getElementById('mapFrame');
+    var fallback = document.getElementById('mapFallback');
+    var loaded = false;
+    frame.addEventListener('load', function(){ loaded = true; });
+    setTimeout(function(){ if(!loaded){ fallback.classList.remove('hidden'); } }, 3500);
+  })();
+
+  // Scroll-triggered reveal: vertical fade+slide-up by default, horizontal for
+  // .reveal-left/.reveal-right (trust-pillars only, this build).
+  (function(){
+    var targets = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    if(!('IntersectionObserver' in window)){
+      targets.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    targets.forEach(function(el){ io.observe(el); });
+  })();
+
+  // Services carousel: dot pagination synced to horizontal scroll position.
+  (function(){
+    var track = document.getElementById('svcTrack');
+    var dotsWrap = document.getElementById('svcDots');
+    var cards = Array.prototype.slice.call(track.querySelectorAll('.svc-card'));
+    cards.forEach(function(_, i){
+      var d = document.createElement('button');
+      d.className = 'dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Produs ' + (i + 1));
+      d.addEventListener('click', function(){
+        cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      });
+      dotsWrap.appendChild(d);
     });
-  }, { threshold: 0.16 });
-  items.forEach((item) => observer.observe(item));
-})();
-(() => {
-  const header = document.querySelector('header');
-  const toggle = document.querySelector('.menu-toggle');
-  const menu = document.querySelector('#mobile-menu');
-  if (!header || !toggle || !menu) return;
-
-  const setOpen = (open) => {
-    header.classList.toggle('menu-open', open);
-    toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Închide meniul' : 'Deschide meniul');
-  };
-
-  toggle.addEventListener('click', () => {
-    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
-  });
-  menu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => setOpen(false));
-  });
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') setOpen(false);
-  });
-})();
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+    var ticking = false;
+    track.addEventListener('scroll', function(){
+      if(ticking) return;
+      ticking = true;
+      requestAnimationFrame(function(){
+        var trackLeft = track.getBoundingClientRect().left;
+        var closest = 0, closestDist = Infinity;
+        cards.forEach(function(c, i){
+          var dist = Math.abs(c.getBoundingClientRect().left - trackLeft);
+          if(dist < closestDist){ closestDist = dist; closest = i; }
+        });
+        dots.forEach(function(d, i){ d.classList.toggle('active', i === closest); });
+        ticking = false;
+      });
+    });
+  })();
 </script>
 </body>
 </html>

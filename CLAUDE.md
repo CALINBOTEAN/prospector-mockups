@@ -231,3 +231,92 @@ only, not a full transcript.
   lucrăm” copy for Depozit Cherestea Vâlcele. The shorter about copy needs
   no layout padding adjustment: its existing desktop grid uses
   `items-center`, keeping the text column balanced with the adjacent photo.
+
+- **2026-08-17** — Rebuilt only the Agrofarm Marius mockup on the standing
+  Depozit Cherestea Vâlcele architecture: full-bleed supplied hero image and
+  scrim, centered/desktop-left-biased lockup, trust-card grid, snap carousel
+  with dot controls, alternating real-photo/about section, reviews, map
+  fallback and mobile WhatsApp/call bar. Preserved the magazin-furaje palette,
+  type pairing, watermarked logo, noindex and verified reviews. Desktop and
+  360px mobile QA passed; mobile menu and carousel dots were exercised.
+
+- **2026-08-17** — Adjusted only the Agrofarm Marius hero scrim and the
+  “Cum lucrăm” copy: replaced its green overlay with a neutral warm near-black
+  and narrowed the fade so the shelving remains naturally warm on the right;
+  replaced the abstract about copy with the supplied direct Marius sentence.
+  Desktop and 360px mobile QA passed with no horizontal overflow.
+
+- **2026-08-17** — Pushed the Depozit Cherestea Vâlcele hero/copy revision to
+  GitHub (commit `222d220`, includes the hero-panel removal, centered/left-
+  biased lockup, rewritten pillars/CTA/"Cum lucrăm" copy, the new
+  `romanian-copywriting-style.md`, and the pipeline ledger correction) —
+  independently verified live via curl afterward, all three rewritten
+  strings present. Depozit is now the standing structural/behavioral
+  template for every future mockup rebuild (full-bleed hero, neutral
+  scrim, centered-then-left-biased lockup, scroll-snap services carousel,
+  reveal-on-scroll, mobile sticky WhatsApp/call bar) — Calin was explicit
+  that future rebuilds should apply this template in one comprehensive
+  pass, not iterative small patches like the Depozit session took.
+- **2026-08-17** — Generated Agrofarm Marius's new hero photo via an
+  external ChatGPT image prompt (Step 1 of the mockup build process is
+  human-in-the-loop by design — the builder never generates hero/logo
+  images itself). Learned the correct Cowork device-bridge direction for
+  getting a generated image *into* the repo: `device_stage_files` only
+  moves device → container, so pulling the ChatGPT output back out required
+  `SendUserFile` (to mint a `file_uuid`) followed by
+  `mcp__remote-devices__device_commit_files` targeting the device path —
+  confirmed written at `mockups/agrofarm-marius/hero.png` (1727×911,
+  ~2.3MB).
+- **2026-08-17** — Rebuilt Agrofarm Marius onto the Depozit template (see
+  above) and fixed two post-build issues found on review: the hero scrim
+  was tinted with the category's brand green (`--c-primary-dark`) instead
+  of a neutral tone, and the "Cum lucrăm" section had an abstract,
+  nominalized sentence that didn't read like something the real owner
+  would say — both fixed via a follow-up Codex prompt (neutral warm
+  near-black scrim, plain-sentence rewrite naming Marius directly). Calin
+  approved the result. **Not yet pushed to GitHub** — still a local,
+  uncommitted change pending a push step.
+- **2026-08-17** — Next up: Sabo ITP & SERVICE rebuild onto the same
+  Depozit template. Calin was explicit this one should land in one
+  comprehensive pass ("from one go"), with the services scroll-snap
+  carousel behavior (dot pagination, IntersectionObserver-driven active
+  state, touch/drag smoothness) fully and explicitly specified in the
+  build prompt up front — flagged as a standing requirement for future
+  mockups too, not just this one. Sabo already has both `logo.png` and
+  `hero.jpg` on disk, so no new image generation is needed before this
+  build.
+
+- **2026-08-17** — Rebuilt only Sabo ITP & SERVICE onto the standing
+  Depozit structure: full-bleed `hero.jpg` with neutral legibility scrim,
+  centered/mobile then 7%-left desktop hero lockup, watermarked `logo.png`,
+  review-grounded trust pillars, five-service scroll-snap carousel with
+  IntersectionObserver-synced dot pagination, alternating decorative-photo
+  about block, three-card review grid plus the retained fourth real review,
+  contact/map/footer/sticky WhatsApp-call bar and shared menu/reveal JS.
+  Static integrity checks passed (palette/font tokens, all four exact review
+  strings, assets, noindex/disclaimer, no placeholders and clean diff). The
+  in-app browser refuses local `file:` navigation under its URL policy, so
+  fresh desktop and 360px visual screenshots still need a permitted local
+  rendering route before this revision can be called visually QA-complete.
+
+- **2026-08-17** — Superseded the first Sabo rebuild after Calin supplied
+  the exact canonical-port brief: restored Sabo's original Tailwind config
+  byte-for-byte; replaced the CSS-background hero with Depozit's absolute
+  `img.hero-photo` + literal neutral `rgba(20,14,9,…)` scrim architecture;
+  added the compact light logo plate and two-line amber H1; ported the
+  original scroll/requestAnimationFrame carousel, map 3.5s fallback and
+  reveal IIFEs; restored the three-button mobile bar; and reduced reviews to
+  Radu, Ioni and Daniela only. Source QA confirms the requested structure,
+  six service cards, three review cards, facts/assets/noindex/disclaimer and
+  no legacy proof block or template tokens. Visual screenshots remain
+  blocked by the browser's local-file URL policy.
+
+- **2026-08-17** — Fixed the Sabo header transparency regression: Sabo's
+  Tailwind config uses plain CSS-variable colours, so
+  `bg-[var(--c-primary)]/95` silently emitted an unusable background.
+  Replaced it with `.site-header{background:rgba(22,24,29,.97)}` and gave
+  the mobile dropdown its own solid `rgba(12,13,16,.98)` rule; removed the
+  corresponding Tailwind background classes. Source checks confirm neither
+  header surface uses a var-based opacity background and that the brand and
+  all four navigation labels remain present. Fresh visual captures remain
+  blocked by the in-app browser's local-file URL policy.
