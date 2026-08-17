@@ -88,20 +88,6 @@ reply/close numbers — none of the below should be implemented before then:
 
 ## Later
 
-- **Next session priority (set 2026-08-17):** switch WhatsApp outreach from
-  the UK stopgap number to the Romanian number, then send the first
-  outreach messages — Depozit Cherestea Vâlcele, Agrofarm Marius, and Sabo
-  ITP & SERVICE are all BUILT, live, and design/copy-approved (see session
-  log below); none has been contacted yet. Read
-  `skills/prospector-outreach/prospector-outreach.md` for the WhatsApp-first,
-  text-only script before sending anything.
-- WhatsApp outreach currently uses a UK number as a stopgap. Set up WhatsApp
-  Business on the Romanian number before scaling outreach volume — same
-  phone is fine (regular WhatsApp + WhatsApp Business can coexist as
-  separate apps), the Romanian number just needs to be usable on that phone
-  during the one-time verification step (dual-SIM, eSIM, or a temporary SIM
-  swap). Once that's done, replace the UK number in agency contact details
-  with the Romanian one.
 - Sector expansion (salons, personal care, other non-trade categories) was
   raised and deliberately deferred — revisit adding them to
   `data/categories_ro.txt` at the pilot review, once Offer A conversion data
