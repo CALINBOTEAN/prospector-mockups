@@ -1,3 +1,4 @@
 data/pipeline*.csv
 data/scan_*.csv
 .claude/settings.local.json
+mockups/experiment-*
