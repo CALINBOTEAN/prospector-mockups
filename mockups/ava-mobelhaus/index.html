@@ -90,7 +90,7 @@
     .hero-dot{width:9px;height:9px;padding:0;border:1px solid #fff;border-radius:99px;background:transparent}
     .hero-dot.is-active{width:26px;background:#fff}
     .product-stage{overflow:hidden;padding-bottom:8px}
-    .product-rail{overflow-x:auto;overflow-y:hidden;margin-top:42px;padding:2px max(24px,calc((100vw - 1180px)/2)) 18px;cursor:grab;scrollbar-color:rgba(181,118,42,.65) transparent;scrollbar-width:thin;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;user-select:none}
+    .product-rail{overflow-x:auto;overflow-y:hidden;margin-top:42px;padding:2px max(24px,calc((100vw - 1180px)/2)) 18px;cursor:grab;scrollbar-color:rgba(181,118,42,.65) transparent;scrollbar-width:thin;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-x;user-select:none}
     .product-rail.is-dragging{cursor:grabbing}
     .product-rail-track,.product-rail-group{display:flex;gap:18px;width:max-content}
     .product-rail-group{padding-right:18px}
@@ -345,7 +345,7 @@
       var ids=['top','produse','servicii','recenzii','contact'],links=Array.from(document.querySelectorAll('.nav-link'));if(!('IntersectionObserver' in window))return;var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){links.forEach(function(link){link.classList.toggle('is-active',link.dataset.target===entry.target.id)})}})},{rootMargin:'-42% 0px -48% 0px',threshold:0});ids.forEach(function(id){observer.observe(document.getElementById(id))});
     }());
     (function(){
-      var rail=document.getElementById('productMarquee'),firstGroup=rail.querySelector('.product-rail-group'),reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches,last=0,isPaused=false,pauseTimer=0,mouseDown=false,startX=0,startLeft=0,dragged=false,autoLeft=rail.scrollLeft,dirty=false;
+      var rail=document.getElementById('productMarquee'),firstGroup=rail.querySelector('.product-rail-group'),reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches,last=0,isPaused=false,pauseTimer=0,mouseDown=false,startX=0,startLeft=0,dragged=false,autoLeft=rail.scrollLeft,settleTimer=0;
       var cachedGroupWidth=0;
       function refreshGroupWidth(){cachedGroupWidth=firstGroup.getBoundingClientRect().width+18}
       function groupWidth(){if(!cachedGroupWidth)refreshGroupWidth();return cachedGroupWidth}
@@ -353,23 +353,21 @@
       window.addEventListener('resize',function(){window.clearTimeout(resizeTimer);resizeTimer=window.setTimeout(refreshGroupWidth,150)});
       refreshGroupWidth();
       function pause(){isPaused=true;window.clearTimeout(pauseTimer);pauseTimer=window.setTimeout(function(){isPaused=false;autoLeft=rail.scrollLeft},2400)}
-      function wrap(){var width=groupWidth();if(width&&autoLeft>=width*2){autoLeft-=width}else if(width&&autoLeft<0){autoLeft+=width}}
-      function moveTo(clientX){var delta=clientX-startX;if(Math.abs(delta)>3)dragged=true;autoLeft=startLeft-delta;wrap();dirty=true;pause()}
-      function finishDrag(){if(!mouseDown)return;mouseDown=false;rail.classList.remove('is-dragging');autoLeft=rail.scrollLeft;pause();wrap();dirty=true}
-      function autoScroll(time){if(!last)last=time;var elapsed=time-last;last=time;if(!reduced&&!mouseDown&&!isPaused&&document.visibilityState==='visible'){autoLeft+=elapsed*.024;wrap();dirty=true}if(dirty){rail.scrollLeft=autoLeft;dirty=false}window.requestAnimationFrame(autoScroll)}
-      var activeTouchId=null;
-      function findTouch(list){return Array.prototype.filter.call(list,function(t){return t.identifier===activeTouchId})[0]}
-      rail.addEventListener('mousedown',function(event){if(event.button!==0)return;mouseDown=true;dragged=false;startX=event.clientX;startLeft=rail.scrollLeft;autoLeft=startLeft;rail.classList.add('is-dragging');pause();event.preventDefault()});
-      window.addEventListener('mousemove',function(event){if(!mouseDown||activeTouchId!==null)return;moveTo(event.clientX);event.preventDefault()});
-      window.addEventListener('mouseup',function(){if(activeTouchId!==null)return;finishDrag()});
+      rail.addEventListener('scroll',function(){
+        pause();
+        window.clearTimeout(settleTimer);
+        settleTimer=window.setTimeout(function(){
+          var width=groupWidth();if(!width)return;
+          if(rail.scrollLeft>=width*2)rail.scrollLeft-=width;
+          autoLeft=rail.scrollLeft;
+        },120);
+      },{passive:true});
+      function autoScroll(time){if(!last)last=time;var elapsed=time-last;last=time;if(!reduced&&!mouseDown&&!isPaused&&document.visibilityState==='visible'){autoLeft+=elapsed*.024;rail.scrollLeft=autoLeft}window.requestAnimationFrame(autoScroll)}
+      rail.addEventListener('mousedown',function(event){if(event.button!==0)return;mouseDown=true;dragged=false;startX=event.clientX;startLeft=rail.scrollLeft;rail.classList.add('is-dragging');pause();event.preventDefault()});
+      window.addEventListener('mousemove',function(event){if(!mouseDown)return;var delta=event.clientX-startX;if(Math.abs(delta)>3)dragged=true;rail.scrollLeft=startLeft-delta;event.preventDefault()});
+      window.addEventListener('mouseup',function(){if(!mouseDown)return;mouseDown=false;rail.classList.remove('is-dragging');autoLeft=rail.scrollLeft;pause()});
       rail.addEventListener('dragstart',function(event){event.preventDefault()});
       rail.addEventListener('click',function(event){if(!dragged)return;event.preventDefault();event.stopPropagation();dragged=false},true);
-      rail.addEventListener('wheel',function(){pause();window.setTimeout(function(){autoLeft=rail.scrollLeft},0)},{passive:true});
-      rail.addEventListener('touchstart',function(event){var touch=event.changedTouches[0];activeTouchId=touch.identifier;mouseDown=true;dragged=false;startX=touch.clientX;startLeft=rail.scrollLeft;autoLeft=startLeft;rail.classList.add('is-dragging');pause()},{passive:true});
-      rail.addEventListener('touchmove',function(event){var touch=findTouch(event.changedTouches);if(!touch)return;moveTo(touch.clientX)},{passive:true});
-      function endTouch(event){var touch=findTouch(event.changedTouches);if(!touch)return;activeTouchId=null;mouseDown=false;rail.classList.remove('is-dragging');window.setTimeout(function(){autoLeft=rail.scrollLeft;pause();wrap();dirty=true},0)}
-      rail.addEventListener('touchend',endTouch,{passive:true});
-      rail.addEventListener('touchcancel',endTouch,{passive:true});
       window.requestAnimationFrame(autoScroll);
     }());
   </script>
