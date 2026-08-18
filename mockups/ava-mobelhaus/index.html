@@ -89,13 +89,10 @@
     .hero-dots{display:flex;gap:8px}
     .hero-dot{width:9px;height:9px;padding:0;border:1px solid #fff;border-radius:99px;background:transparent}
     .hero-dot.is-active{width:26px;background:#fff}
-    .feature-band{margin-top:0;padding-top:32px;position:relative;z-index:4}
-    .feature-card{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(59,42,29,.09);border-radius:var(--radius-lg);background:rgba(253,251,247,.96);box-shadow:var(--shadow-soft);overflow:hidden}
-    .feature-card article{display:flex;align-items:flex-start;gap:14px;padding:28px 30px}
-    .feature-card article+article{border-left:1px solid rgba(59,42,29,.10)}
-    .feature-card svg{color:var(--c-accent);flex:none}
-    .feature-card h2{margin:0 0 5px;font-size:.95rem;font-weight:700}
-    .feature-card p{margin:0;color:var(--c-muted);font-size:.84rem;line-height:1.55}
+    .hero-feature-band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;width:min(100%,640px);margin-top:22px}
+    .hero-feature-pill{display:flex;min-height:86px;align-items:flex-start;gap:10px;border:1px solid rgba(253,251,247,.50);border-radius:var(--radius-md);background:rgba(253,251,247,.14);padding:16px 14px;color:#fff;box-shadow:0 8px 18px rgba(20,14,9,.12);transition:transform var(--ease),background var(--ease),border-color var(--ease),box-shadow var(--ease)}
+    .hero-feature-pill:hover{transform:translateY(-2px);border-color:rgba(253,251,247,.84);background:rgba(253,251,247,.25);box-shadow:0 12px 24px rgba(20,14,9,.22)}
+    .hero-feature-pill svg{flex:none;margin-top:1px;color:var(--c-accent2)}.hero-feature-pill span{font-size:.82rem;font-weight:700;line-height:1.38;text-shadow:0 1px 10px rgba(20,14,9,.3)}
     .product-stage{overflow:hidden;padding-bottom:8px}
     .product-rail{overflow-x:auto;overflow-y:hidden;margin-top:42px;padding:2px max(24px,calc((100vw - 1180px)/2)) 18px;cursor:grab;scrollbar-color:rgba(181,118,42,.65) transparent;scrollbar-width:thin;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;user-select:none}
     .product-rail.is-dragging{cursor:grabbing}
@@ -164,8 +161,7 @@
       .section{padding:80px 0}.page-container{width:min(100% - 32px,680px)}
       .header-shell{top:10px;width:calc(100% - 24px)}.site-header{height:64px;padding:7px 9px 7px 11px;border-radius:20px;gap:8px}.header-logo,.is-scrolled .header-logo{width:110px;height:50px}.header-shell.is-scrolled{top:5px}.header-shell.is-scrolled .site-header{height:60px}
       .desktop-nav,.desktop-wa{display:none!important}.mobile-menu-button{display:grid!important}.mobile-wa{display:grid!important;border:1px solid #25D366!important;background:#25D366!important;color:#fff!important;transition:background var(--ease),border-color var(--ease),transform var(--ease)}.mobile-wa:hover{border-color:#1EBE5D!important;background:#1EBE5D!important;color:#fff!important;transform:translateY(-1px)}.mobile-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;left:0;padding:12px;border:1px solid rgba(59,42,29,.10);border-radius:var(--radius-md);background:rgba(253,251,247,.99);box-shadow:var(--shadow-lift)}.mobile-menu.is-open{display:grid!important}.mobile-menu a{padding:11px 12px;color:var(--c-primary);font-size:.9rem;font-weight:700;text-decoration:none;border-radius:var(--radius-sm)}.mobile-menu a:hover{background:var(--c-bg-alt)}
-      .hero,.hero-content{min-height:100vh;min-height:100svh}.hero-content{padding:136px 0 112px;align-items:flex-start}.hero-lockup{align-items:center;margin:auto;text-align:center}.hero-title{font-size:clamp(3rem,13vw,4.35rem)}.hero-copy{font-size:.97rem}.hero-features{justify-content:center;gap:9px 15px}.hero-feature{font-size:.76rem;text-align:left}.hero-vignette{background:linear-gradient(180deg,rgba(20,14,9,.26) 0%,rgba(20,14,9,.48) 46%,rgba(20,14,9,.59) 100%)}.hero-controls{right:50%;bottom:26px;transform:translateX(50%)}
-      .feature-band{margin-top:0;padding-top:20px}.feature-card{grid-template-columns:1fr}.feature-card article{padding:19px 21px}.feature-card article+article{border-top:1px solid rgba(59,42,29,.10);border-left:0}
+      .hero,.hero-content{min-height:100vh;min-height:100svh}.hero-content{padding:112px 0 86px;align-items:flex-start}.hero-lockup{align-items:center;margin:auto;text-align:center}.hero-title{font-size:clamp(3rem,13vw,4.35rem)}.hero-copy{font-size:.97rem}.hero-features{justify-content:center;gap:9px 15px}.hero-feature{font-size:.76rem;text-align:left}.hero-feature-band{gap:7px;width:100%;margin-top:16px}.hero-feature-pill{min-height:86px;align-items:center;flex-direction:column;gap:6px;border-radius:14px;padding:10px 6px;text-align:center}.hero-feature-pill svg{width:18px;height:18px;margin:0}.hero-feature-pill span{font-size:.67rem;line-height:1.28}.hero-vignette{background:linear-gradient(180deg,rgba(20,14,9,.26) 0%,rgba(20,14,9,.48) 46%,rgba(20,14,9,.59) 100%)}.hero-controls{right:50%;bottom:26px;transform:translateX(50%)}
       .service-grid{grid-template-columns:repeat(2,1fr);gap:24px 18px}.split,.contact-grid{grid-template-columns:1fr}.split-media{order:2}.review-layout{grid-template-columns:1fr;gap:32px}.review-summary{padding:0 0 26px;border-right:0;border-bottom:1px solid rgba(59,42,29,.15)}.review-list{grid-template-columns:1fr}.review-card{min-height:auto}.footer-grid{grid-template-columns:1fr;gap:30px}.site-footer{padding-bottom:96px}.sticky-bar{position:fixed;z-index:51;right:12px;bottom:12px;left:12px;display:flex;gap:9px;border:1px solid rgba(59,42,29,.12);border-radius:18px;background:rgba(253,251,247,.96);padding:7px;box-shadow:var(--shadow-lift);backdrop-filter:blur(12px)}.sticky-bar .btn{min-height:46px;flex:1}.sticky-call{display:grid;width:46px;place-items:center;border:1px solid var(--c-primary);border-radius:999px;color:var(--c-primary)}
     }
     @media (min-width:901px){.mobile-menu-button,.mobile-wa,.mobile-menu{display:none!important}}
@@ -219,6 +215,11 @@
             <a class="btn btn-wa" href="https://wa.me/40751497524?text=Bun%C4%83%20ziua%21%20A%C8%99%20dori%20detalii%20despre%20mobilierul%20disponibil%20la%20AVA%20M%C3%B6belhaus." target="_blank" rel="noopener">Scrie pe WhatsApp <span aria-hidden="true">↗</span></a>
             <a class="btn btn-outline" href="#produse">Vezi produsele <span aria-hidden="true">↓</span></a>
           </div>
+          <div class="hero-feature-band" aria-label="Repere AVA Möbelhaus">
+            <article class="hero-feature-pill"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Showroom în Gilău</span></article>
+            <article class="hero-feature-pill"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2v20M5 7h14M5 17h14"/></svg><span>Mobilier pentru living și dormitor</span></article>
+            <article class="hero-feature-pill"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 7v5l3.5 2"/><circle cx="12" cy="12" r="9"/></svg><span>Ridicare și livrare</span></article>
+          </div>
         </div>
       </div>
       <div class="hero-controls" aria-label="Galerie imagini showroom">
@@ -229,14 +230,6 @@
         <button class="carousel-arrow" id="heroNext" aria-label="Imaginea următoare"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
       </div>
     </section>
-
-    <div class="page-container feature-band" aria-label="De ce AVA Möbelhaus">
-      <div class="feature-card reveal">
-        <article><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><h2>Showroom în Gilău</h2><p>Ferma 8, Hala 12.</p></div></article>
-        <article><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2v20M5 7h14M5 17h14"/></svg><div><h2>Mobilier pentru living și dormitor</h2><p>Canapele, colțare, paturi și dulapuri din selecția AVA.</p></div></article>
-        <article><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 7v5l3.5 2"/><circle cx="12" cy="12" r="9"/></svg><div><h2>Ridicare și livrare</h2><p>Întrebați despre disponibilitate, ridicare sau livrare.</p></div></article>
-      </div>
-    </div>
 
     <section class="section product-stage" id="produse">
       <div class="page-container text-center reveal">
