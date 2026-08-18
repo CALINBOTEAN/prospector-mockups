@@ -40,8 +40,8 @@
       --ease:200ms ease-out;
     }
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;background:var(--c-bg)}
-    body{margin:0;background:var(--c-bg);color:var(--c-ink);font-family:Inter,Arial,sans-serif;overflow-x:hidden}
+    html{scroll-behavior:smooth;background:var(--c-bg);overflow-x:clip}
+    body{margin:0;background:var(--c-bg);color:var(--c-ink);font-family:Inter,Arial,sans-serif;overflow-x:clip}
     img{display:block;max-width:100%}
     button,a{font:inherit}
     .balance{text-wrap:balance}
@@ -54,8 +54,8 @@
     .site-header{height:84px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:10px 18px 10px 14px;border:1px solid rgba(59,42,29,.08);border-radius:var(--radius-lg);background:rgba(253,251,247,.94);box-shadow:var(--shadow-soft);backdrop-filter:blur(12px);transition:height var(--ease),padding var(--ease),box-shadow var(--ease),background var(--ease)}
     .header-shell.is-scrolled{top:8px}
     .header-shell.is-scrolled .site-header{height:66px;padding-block:7px;background:rgba(253,251,247,.98);box-shadow:0 10px 24px rgba(59,42,29,.14)}
-    .header-logo{width:142px;height:62px;object-fit:cover;border-radius:9px;transition:width var(--ease),height var(--ease)}
-    .is-scrolled .header-logo{width:112px;height:50px}
+    .header-logo{width:154px;height:66px;object-fit:contain;border-radius:9px;transition:width var(--ease),height var(--ease)}
+    .is-scrolled .header-logo{width:128px;height:54px}
     .nav-link{position:relative;padding:8px 0;color:rgba(59,42,29,.72);font-size:.86rem;font-weight:600;transition:color var(--ease)}
     .nav-link::after{content:"";position:absolute;right:0;bottom:2px;left:0;height:1px;background:var(--c-accent);transform:scaleX(0);transform-origin:left;transition:transform var(--ease)}
     .nav-link:hover,.nav-link.is-active{color:var(--c-primary)}
@@ -75,9 +75,10 @@
     .hero-vignette{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(20,14,9,.52) 0%,rgba(20,14,9,.31) 36%,rgba(20,14,9,.05) 68%,rgba(20,14,9,.02) 100%),linear-gradient(0deg,rgba(20,14,9,.22),transparent 48%)}
     .hero-content{min-height:720px;display:flex;align-items:center;padding:138px 0 84px}
     .hero-lockup{max-width:600px;display:flex;flex-direction:column;align-items:flex-start;color:#fff}
-    .hero-logo{width:min(250px,72vw);border-radius:var(--radius-sm);box-shadow:0 14px 36px rgba(0,0,0,.22)}
-    .hero-title{margin:20px 0 14px;font-family:'Playfair Display',serif;font-size:clamp(3.05rem,5vw,4.6rem);font-weight:600;letter-spacing:-.055em;line-height:.98;text-shadow:0 2px 18px rgba(20,14,9,.35)}
+    .hero-title-block{animation:hero-title-enter 280ms ease-out 80ms both}
+    .hero-title{margin:12px 0 14px;font-family:'Playfair Display',serif;font-size:clamp(3.05rem,5vw,4.6rem);font-weight:600;letter-spacing:-.055em;line-height:.98;text-shadow:0 2px 18px rgba(20,14,9,.35)}
     .hero-copy{max-width:51ch;margin:0;color:rgba(255,255,255,.92);font-size:1.03rem;line-height:1.7;text-shadow:0 1px 12px rgba(20,14,9,.38)}
+    @keyframes hero-title-enter{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
     .hero-features{display:flex;flex-wrap:wrap;gap:10px 20px;margin:26px 0 30px}
     .hero-feature{display:flex;align-items:center;gap:8px;color:#fff;font-size:.83rem;font-weight:600;text-shadow:0 1px 10px rgba(20,14,9,.35)}
     .hero-feature svg{color:var(--c-accent2);filter:drop-shadow(0 1px 3px rgba(0,0,0,.2))}
@@ -96,16 +97,15 @@
     .feature-card h2{margin:0 0 5px;font-size:.95rem;font-weight:700}
     .feature-card p{margin:0;color:var(--c-muted);font-size:.84rem;line-height:1.55}
     .product-stage{overflow:hidden;padding-bottom:8px}
-    .marquee{overflow:hidden;margin-top:42px;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-    .marquee-track{display:flex;width:max-content;animation:marquee 38s linear infinite}
-    .marquee:hover .marquee-track,.marquee.is-paused .marquee-track{animation-play-state:paused}
-    .marquee-group{display:flex;gap:18px;padding-right:18px}
-    .product-tile{width:300px;overflow:hidden;border:1px solid rgba(59,42,29,.09);border-radius:var(--radius-md);background:#fff;box-shadow:0 8px 22px rgba(59,42,29,.07);transition:transform var(--ease),box-shadow var(--ease)}
+    .product-rail{overflow-x:auto;overflow-y:hidden;margin-top:42px;padding:2px max(24px,calc((100vw - 1180px)/2)) 18px;cursor:grab;scrollbar-color:rgba(181,118,42,.65) transparent;scrollbar-width:thin;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;user-select:none}
+    .product-rail.is-dragging{cursor:grabbing}
+    .product-rail-track,.product-rail-group{display:flex;gap:18px;width:max-content}
+    .product-rail-group{padding-right:18px}
+    .product-tile{width:300px;flex:none;overflow:hidden;border:1px solid rgba(59,42,29,.09);border-radius:var(--radius-md);background:#fff;box-shadow:0 8px 22px rgba(59,42,29,.07);transition:transform var(--ease),box-shadow var(--ease)}
     .product-tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
     .product-tile img{width:100%;height:262px;object-fit:cover;transition:transform 350ms ease-out}
     .product-tile:hover img{transform:scale(1.03)}
     .product-tile p{margin:0;padding:16px 18px;color:var(--c-primary);font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:600}
-    @keyframes marquee{to{transform:translateX(-50%)}}
     .service-panel{border-radius:var(--radius-lg);background:var(--c-bg-alt);box-shadow:inset 0 0 0 1px rgba(59,42,29,.05);padding:clamp(28px,5vw,64px)}
     .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:38px}
     .service-item{padding:20px 6px 8px;border-top:1px solid rgba(59,42,29,.18);transition:transform var(--ease),border-color var(--ease)}
@@ -137,44 +137,46 @@
     .review-card blockquote{margin:0;flex:1;color:#4D4137;font-size:.89rem;line-height:1.65}
     .review-card a{margin-top:20px;color:var(--c-muted);font-size:.82rem;font-weight:600;text-decoration:none;transition:color var(--ease)}
     .review-card a:hover{color:var(--c-accent)}
-    .contact{background:var(--c-primary);color:#fff}
-    .contact .eyebrow{color:var(--c-accent2)}
-    .contact .section-title{color:#fff}
+    .contact{background:var(--c-bg-alt);color:var(--c-primary);border-block:1px solid rgba(59,42,29,.08)}
+    .contact .eyebrow{color:var(--c-accent)}
+    .contact .section-title{color:var(--c-primary)}
     .contact-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(32px,6vw,80px);align-items:stretch}
     .contact-list{display:grid;gap:22px;margin:30px 0}
-    .contact-item{display:flex;gap:12px;color:rgba(255,255,255,.84);font-size:.94rem;line-height:1.55}
-    .contact-item svg{color:var(--c-accent2);flex:none;margin-top:2px}
-    .contact-item strong{display:block;color:#fff;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
-    .map-card{position:relative;min-height:410px;overflow:hidden;border:1px solid rgba(217,154,69,.55);border-radius:var(--radius-lg);background:#eae3d7}
+    .contact-item{display:flex;gap:12px;color:var(--c-muted);font-size:.94rem;line-height:1.55}
+    .contact-item svg{color:var(--c-accent);flex:none;margin-top:2px}
+    .contact-item strong{display:block;color:var(--c-primary);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+    .map-card{position:relative;min-height:410px;overflow:hidden;border:1px solid rgba(181,118,42,.45);border-radius:var(--radius-lg);background:#eae3d7}
     .map-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
     .map-fallback{position:absolute;bottom:16px;left:16px;z-index:2;border-radius:999px;background:rgba(253,251,247,.95);padding:10px 14px;color:var(--c-primary);font-size:.82rem;font-weight:700;text-decoration:none;box-shadow:var(--shadow-soft)}
     .map-fallback:hover{color:var(--c-accent)}
-    .site-footer{background:#17120e;color:rgba(255,255,255,.70);padding:66px 0 86px}
-    .footer-grid{display:grid;grid-template-columns:1.05fr .9fr 1.05fr;gap:48px;align-items:center}
-    .footer-logo{width:220px;border-radius:var(--radius-sm)}
+    .site-footer{background:var(--c-bg-alt);color:var(--c-muted);padding:66px 0 86px;border-top:1px solid rgba(59,42,29,.08)}
+    .footer-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+    .footer-brand{display:grid;gap:7px;color:var(--c-primary)}
+    .footer-brand strong{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:600;letter-spacing:-.03em}
+    .footer-brand span{color:var(--c-muted);font-size:.86rem}
     .footer-contact{display:grid;gap:10px;font-size:.86rem;line-height:1.5}
-    .footer-contact a{color:#fff;text-decoration:none}.footer-contact a:hover{color:var(--c-accent2)}
-    .footer-note{margin:0;color:rgba(255,255,255,.78);font-family:'Playfair Display',serif;font-size:1.35rem;line-height:1.35}
-    .footer-disclaimer{margin-top:34px;border-top:1px solid rgba(255,255,255,.13);padding-top:20px;color:rgba(255,255,255,.5);font-size:.76rem;line-height:1.55}
+    .footer-contact a{color:var(--c-primary);text-decoration:none}.footer-contact a:hover{color:var(--c-accent)}
+    .footer-note{margin:0;color:var(--c-primary);font-family:'Playfair Display',serif;font-size:1.35rem;line-height:1.35}
+    .footer-disclaimer{margin-top:34px;border-top:1px solid rgba(59,42,29,.13);padding-top:20px;color:var(--c-muted);font-size:.76rem;line-height:1.55}
     .sticky-bar{display:none}
     .reveal,.reveal-left,.reveal-right{opacity:0;transition:opacity 260ms ease-out,transform 260ms ease-out}.reveal{transform:translateY(20px)}.reveal-left{transform:translateX(-24px)}.reveal-right{transform:translateX(24px)}.is-visible{opacity:1;transform:none}
     @media (max-width:900px){
       .section{padding:80px 0}.page-container{width:min(100% - 32px,680px)}
-      .header-shell{top:10px;width:calc(100% - 24px)}.site-header{height:64px;padding:7px 9px 7px 11px;border-radius:20px;gap:8px}.header-logo,.is-scrolled .header-logo{width:102px;height:48px}.header-shell.is-scrolled{top:5px}.header-shell.is-scrolled .site-header{height:60px}
+      .header-shell{top:10px;width:calc(100% - 24px)}.site-header{height:64px;padding:7px 9px 7px 11px;border-radius:20px;gap:8px}.header-logo,.is-scrolled .header-logo{width:110px;height:50px}.header-shell.is-scrolled{top:5px}.header-shell.is-scrolled .site-header{height:60px}
       .desktop-nav,.desktop-wa{display:none!important}.mobile-menu-button{display:grid!important}.mobile-wa{display:grid!important}.mobile-menu{display:none;position:absolute;top:calc(100% + 8px);right:0;left:0;padding:12px;border:1px solid rgba(59,42,29,.10);border-radius:var(--radius-md);background:rgba(253,251,247,.99);box-shadow:var(--shadow-lift)}.mobile-menu.is-open{display:grid!important}.mobile-menu a{padding:11px 12px;color:var(--c-primary);font-size:.9rem;font-weight:700;text-decoration:none;border-radius:var(--radius-sm)}.mobile-menu a:hover{background:var(--c-bg-alt)}
-      .hero,.hero-content{min-height:760px}.hero-content{padding:136px 0 112px;align-items:flex-start}.hero-lockup{align-items:center;margin:auto;text-align:center}.hero-logo{width:min(230px,70vw)}.hero-title{font-size:clamp(3rem,13vw,4.35rem)}.hero-copy{font-size:.97rem}.hero-features{justify-content:center;gap:9px 15px}.hero-feature{font-size:.76rem;text-align:left}.hero-vignette{background:linear-gradient(180deg,rgba(20,14,9,.26) 0%,rgba(20,14,9,.48) 46%,rgba(20,14,9,.59) 100%)}.hero-controls{right:50%;bottom:26px;transform:translateX(50%)}
+      .hero,.hero-content{min-height:760px}.hero-content{padding:136px 0 112px;align-items:flex-start}.hero-lockup{align-items:center;margin:auto;text-align:center}.hero-title{font-size:clamp(3rem,13vw,4.35rem)}.hero-copy{font-size:.97rem}.hero-features{justify-content:center;gap:9px 15px}.hero-feature{font-size:.76rem;text-align:left}.hero-vignette{background:linear-gradient(180deg,rgba(20,14,9,.26) 0%,rgba(20,14,9,.48) 46%,rgba(20,14,9,.59) 100%)}.hero-controls{right:50%;bottom:26px;transform:translateX(50%)}
       .feature-band{margin-top:-26px}.feature-card{grid-template-columns:1fr}.feature-card article{padding:19px 21px}.feature-card article+article{border-top:1px solid rgba(59,42,29,.10);border-left:0}
-      .service-grid{grid-template-columns:repeat(2,1fr);gap:24px 18px}.split,.contact-grid{grid-template-columns:1fr}.split-media{order:2}.review-layout{grid-template-columns:1fr;gap:32px}.review-summary{padding:0 0 26px;border-right:0;border-bottom:1px solid rgba(59,42,29,.15)}.review-list{grid-template-columns:1fr}.review-card{min-height:auto}.footer-grid{grid-template-columns:1fr;gap:30px}.footer-logo{width:190px}.site-footer{padding-bottom:96px}.sticky-bar{position:fixed;z-index:51;right:12px;bottom:12px;left:12px;display:flex;gap:9px;border:1px solid rgba(59,42,29,.12);border-radius:18px;background:rgba(253,251,247,.96);padding:7px;box-shadow:var(--shadow-lift);backdrop-filter:blur(12px)}.sticky-bar .btn{min-height:46px;flex:1}.sticky-call{display:grid;width:46px;place-items:center;border:1px solid var(--c-primary);border-radius:999px;color:var(--c-primary)}
+      .service-grid{grid-template-columns:repeat(2,1fr);gap:24px 18px}.split,.contact-grid{grid-template-columns:1fr}.split-media{order:2}.review-layout{grid-template-columns:1fr;gap:32px}.review-summary{padding:0 0 26px;border-right:0;border-bottom:1px solid rgba(59,42,29,.15)}.review-list{grid-template-columns:1fr}.review-card{min-height:auto}.footer-grid{grid-template-columns:1fr;gap:30px}.site-footer{padding-bottom:96px}.sticky-bar{position:fixed;z-index:51;right:12px;bottom:12px;left:12px;display:flex;gap:9px;border:1px solid rgba(59,42,29,.12);border-radius:18px;background:rgba(253,251,247,.96);padding:7px;box-shadow:var(--shadow-lift);backdrop-filter:blur(12px)}.sticky-bar .btn{min-height:46px;flex:1}.sticky-call{display:grid;width:46px;place-items:center;border:1px solid var(--c-primary);border-radius:999px;color:var(--c-primary)}
     }
     @media (min-width:901px){.mobile-menu-button,.mobile-wa,.mobile-menu{display:none!important}}
     @media (max-width:560px){.section{padding:68px 0}.section-title{font-size:2.22rem}.product-tile{width:255px}.product-tile img{height:230px}.service-panel{padding:28px 22px}.service-grid{grid-template-columns:1fr}.split-media img{height:330px}.map-card{min-height:330px}.contact-grid{gap:40px}}
-    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-slide,.site-header,.header-shell,*{transition:none!important}.marquee-track{animation:none!important}.reveal,.reveal-left,.reveal-right{opacity:1!important;transform:none!important}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-slide,.site-header,.header-shell,*{transition:none!important}.reveal,.reveal-left,.reveal-right{opacity:1!important;transform:none!important}}
   </style>
 </head>
 <body>
   <div class="header-shell" id="headerShell">
     <header class="site-header">
-      <a href="#top" aria-label="AVA Möbelhaus — acasă"><img class="header-logo" src="logo.png" alt="AVA Möbelhaus — siglă demonstrativă"></a>
+      <a href="#top" aria-label="AVA Möbelhaus — acasă"><picture><source srcset="header-logo.webp" type="image/webp"><img class="header-logo" src="logo.png" alt="AVA Möbelhaus — siglă demonstrativă"></picture></a>
       <nav class="desktop-nav flex items-center gap-7" aria-label="Navigație principală">
         <a class="nav-link is-active" data-target="top" href="#top">Acasă</a>
         <a class="nav-link" data-target="produse" href="#produse">Produse</a>
@@ -197,16 +199,17 @@
 
   <main>
     <section class="hero" id="top" aria-label="AVA Möbelhaus">
-      <div class="hero-slide is-active"><img src="assets/hero-1.png" alt="Showroom AVA Möbelhaus cu pat și canapele"></div>
-      <div class="hero-slide"><img src="assets/hero-2.png" alt="Dormitor luminos prezentat de AVA Möbelhaus"></div>
-      <div class="hero-slide"><img src="assets/hero-3.png" alt="Living luminos prezentat de AVA Möbelhaus"></div>
+      <div class="hero-slide is-active"><img src="assets/hero-1.webp" alt="Showroom AVA Möbelhaus cu pat și canapele"></div>
+      <div class="hero-slide"><img src="assets/hero-2.webp" alt="Dormitor luminos prezentat de AVA Möbelhaus"></div>
+      <div class="hero-slide"><img src="assets/hero-3.webp" alt="Living luminos prezentat de AVA Möbelhaus"></div>
       <div class="hero-vignette" aria-hidden="true"></div>
       <div class="page-container hero-content">
         <div class="hero-lockup">
-          <img class="hero-logo" src="logo.png" alt="AVA Möbelhaus — siglă demonstrativă">
-          <p class="eyebrow mt-7 mb-0 text-accent2">Showroom de mobilier · Gilău</p>
-          <h1 class="hero-title balance">Piese pentru casă în care te simți acasă.</h1>
-          <p class="hero-copy">Canapele, colțare, paturi și dulapuri într-un showroom în care poți vedea piesa înainte să alegi.</p>
+          <p class="eyebrow mb-0 text-accent2">Showroom de mobilier · Gilău</p>
+          <div class="hero-title-block">
+            <h1 class="hero-title balance">AVA Möbelhaus</h1>
+            <p class="hero-copy">În showroomul din Gilău găsiți canapele, colțare, paturi și dulapuri pe care le puteți vedea înainte de alegere.</p>
+          </div>
           <div class="hero-features" aria-label="Puncte forte AVA Möbelhaus">
             <span class="hero-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.6 6.8L12 16.9 5.8 20.4l1.6-6.8L2.2 9l6.9-.7L12 2z"/></svg>4,7 din 5 · 388 recenzii</span>
             <span class="hero-feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Showroom în Gilău</span>
@@ -229,27 +232,33 @@
 
     <div class="page-container feature-band" aria-label="De ce AVA Möbelhaus">
       <div class="feature-card reveal">
-        <article><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><h2>Vezi piesele pe loc</h2><p>Showroom în Gilău, Ferma 8, Hala 12.</p></div></article>
-        <article><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2v20M5 7h14M5 17h14"/></svg><div><h2>Selecție pentru acasă</h2><p>Canapele, colțare, paturi și dulapuri publicate de AVA.</p></div></article>
-        <article><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 7v5l3.5 2"/><circle cx="12" cy="12" r="9"/></svg><div><h2>Ridicare și livrare</h2><p>Opțiuni confirmate în profilul showroomului.</p></div></article>
+        <article><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><h2>Showroom în Gilău</h2><p>Ferma 8, Hala 12.</p></div></article>
+        <article><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2v20M5 7h14M5 17h14"/></svg><div><h2>Mobilier pentru living și dormitor</h2><p>Canapele, colțare, paturi și dulapuri din selecția AVA.</p></div></article>
+        <article><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 7v5l3.5 2"/><circle cx="12" cy="12" r="9"/></svg><div><h2>Ridicare și livrare</h2><p>Întrebați despre disponibilitate, ridicare sau livrare.</p></div></article>
       </div>
     </div>
 
     <section class="section product-stage" id="produse">
       <div class="page-container text-center reveal">
         <p class="eyebrow mb-4">Categorii de produse</p>
-        <h2 class="section-title balance mx-auto max-w-[18ch]">Piese care dau tonul casei.</h2>
-        <p class="section-copy mx-auto mt-5">Selecție de produse fotografiate și publicate de AVA Möbelhaus pe Facebook. Vezi mai multe detalii direct în showroom.</p>
+        <h2 class="section-title balance mx-auto max-w-[18ch]">Produse din showroom</h2>
+        <p class="section-copy mx-auto mt-5">Fotografii publicate de AVA Möbelhaus pe Facebook. Pentru dimensiuni și disponibilitate, întrebați în showroom.</p>
       </div>
-      <div class="marquee reveal" id="productMarquee" aria-label="Produse AVA Möbelhaus">
-        <div class="marquee-track">
-          <div class="marquee-group">
+      <div class="product-rail reveal" id="productMarquee" aria-label="Produse AVA Möbelhaus" tabindex="0">
+        <div class="product-rail-track">
+          <div class="product-rail-group">
             <article class="product-tile"><img src="assets/products/canapea-showroom.jpg" alt="Canapea fotografiată în showroomul AVA"><p>Canapele</p></article>
             <article class="product-tile"><img src="assets/products/canapea-textila.jpg" alt="Canapea publicată de AVA Möbelhaus"><p>Canapele</p></article>
             <article class="product-tile"><img src="assets/products/coltar-textil.jpg" alt="Colțar publicat de AVA Möbelhaus"><p>Colțare</p></article>
             <article class="product-tile"><img src="assets/products/dulapuri-usi-glisante-fb.jpg" alt="Dulapuri cu uși glisante publicate de AVA"><p>Dulapuri cu uși glisante</p></article>
           </div>
-          <div class="marquee-group" aria-hidden="true">
+          <div class="product-rail-group" aria-hidden="true">
+            <article class="product-tile"><img src="assets/products/canapea-showroom.jpg" alt=""><p>Canapele</p></article>
+            <article class="product-tile"><img src="assets/products/canapea-textila.jpg" alt=""><p>Canapele</p></article>
+            <article class="product-tile"><img src="assets/products/coltar-textil.jpg" alt=""><p>Colțare</p></article>
+            <article class="product-tile"><img src="assets/products/dulapuri-usi-glisante-fb.jpg" alt=""><p>Dulapuri cu uși glisante</p></article>
+          </div>
+          <div class="product-rail-group" aria-hidden="true">
             <article class="product-tile"><img src="assets/products/canapea-showroom.jpg" alt=""><p>Canapele</p></article>
             <article class="product-tile"><img src="assets/products/canapea-textila.jpg" alt=""><p>Canapele</p></article>
             <article class="product-tile"><img src="assets/products/coltar-textil.jpg" alt=""><p>Colțare</p></article>
@@ -263,25 +272,25 @@
       <div class="page-container service-panel reveal">
         <div class="max-w-[760px] text-center mx-auto">
           <p class="eyebrow mb-4">În showroom</p>
-          <h2 class="section-title balance">Alegi mai ușor când vezi piesa pe loc.</h2>
-          <p class="section-copy mx-auto mt-5">Compari dimensiuni, materiale și modele, apoi întrebi direct despre piesa care te interesează.</p>
+          <h2 class="section-title balance">Vedeți mobilierul înainte de alegere.</h2>
+          <p class="section-copy mx-auto mt-5">Puteți compara dimensiuni, materiale și modele, apoi puteți cere detalii despre piesa dorită.</p>
         </div>
         <div class="service-grid">
-          <article class="service-item"><span class="service-no">01</span><h3>Consultanță în showroom</h3><p>Ceri detalii despre dimensiuni, materiale și piesele potrivite spațiului tău.</p></article>
+          <article class="service-item"><span class="service-no">01</span><h3>Consultanță în showroom</h3><p>Puteți cere detalii despre dimensiuni, materiale și piesele potrivite spațiului dumneavoastră.</p></article>
           <article class="service-item"><span class="service-no">02</span><h3>Mobilier nou și import outlet</h3><p>Selecții pentru living și dormitor, prezentate în showroomul din Gilău.</p></article>
-          <article class="service-item"><span class="service-no">03</span><h3>Ridicare din showroom</h3><p>Pentru piesele potrivite, poți alege ridicarea direct din Gilău.</p></article>
-          <article class="service-item"><span class="service-no">04</span><h3>Livrare</h3><p>Întreabă pe WhatsApp despre livrare pentru piesa care te interesează.</p></article>
+          <article class="service-item"><span class="service-no">03</span><h3>Ridicare din showroom</h3><p>Întrebați despre ridicarea directă din Gilău.</p></article>
+          <article class="service-item"><span class="service-no">04</span><h3>Livrare</h3><p>Întrebați pe WhatsApp despre livrarea piesei dorite.</p></article>
         </div>
       </div>
     </section>
 
     <section class="section" id="despre">
       <div class="page-container split">
-        <div class="split-media reveal-left"><img src="assets/hero-3.png" alt="Amenajare de living luminoasă"></div>
+        <div class="split-media reveal-left"><img src="assets/hero-3.webp" alt="Amenajare de living luminoasă"></div>
         <div class="split-copy reveal-right">
-          <p class="eyebrow mb-4">Cum alegi</p>
-          <h2 class="section-title balance">Vino să vezi piesa înainte să hotărăști.</h2>
-          <p class="mt-6">AVA Möbelhaus este un showroom din Gilău cu mobilier nou și de import outlet. Îți poți face o impresie despre piese înainte să alegi, apoi ceri informațiile de care ai nevoie direct în showroom sau pe WhatsApp.</p>
+          <p class="eyebrow mb-4">Despre showroom</p>
+          <h2 class="section-title balance">Vedeți piesa înainte de cumpărare.</h2>
+          <p class="mt-6">AVA Möbelhaus este un showroom din Gilău cu mobilier nou și de import outlet. Puteți vedea piesele, apoi puteți cere informații direct în showroom sau pe WhatsApp.</p>
           <a class="text-link" href="#contact">Vezi programul showroomului <span aria-hidden="true">→</span></a>
         </div>
       </div>
@@ -289,7 +298,7 @@
 
     <section class="section reviews" id="recenzii">
       <div class="page-container">
-        <div class="text-center mb-14 reveal"><p class="eyebrow mb-4">Recenzii Google</p><h2 class="section-title balance">Experiențe reale, de la clienții AVA.</h2></div>
+        <div class="text-center mb-14 reveal"><p class="eyebrow mb-4">Recenzii Google</p><h2 class="section-title balance">Recenzii de la clienți</h2></div>
         <div class="review-layout reveal">
           <div class="review-summary"><strong>EXCELENT</strong><div class="stars" aria-label="5 stele">★★★★★</div><small>4,7 / 5 · Pe baza a 388 de recenzii</small><div class="google-word" aria-label="Google"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></div></div>
           <div class="review-list">
@@ -303,11 +312,11 @@
 
     <section class="section contact" id="contact">
       <div class="page-container contact-grid">
-        <div class="reveal-left"><p class="eyebrow mb-4">Contact &amp; program</p><h2 class="section-title balance">Treci prin showroom sau scrie-ne.</h2>
+        <div class="reveal-left"><p class="eyebrow mb-4">Contact &amp; program</p><h2 class="section-title balance">Program și date de contact</h2>
           <div class="contact-list">
             <div class="contact-item"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-5.3-7-11a7 7 0 0 1 14 0c0 5.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><div><strong>Adresă</strong>Gilău, Ferma 8, Hala 12, 407310 Gilău</div></div>
             <div class="contact-item"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><div><strong>Program</strong>Luni–Vineri 10:00–18:00 · Sâmbătă 10:00–16:00 · Duminică închis</div></div>
-            <div class="contact-item"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg><div><strong>WhatsApp</strong><a class="text-white underline underline-offset-4" href="https://wa.me/40751497524?text=Bun%C4%83%20ziua%21%20A%C8%99%20dori%20detalii%20despre%20mobilierul%20disponibil%20la%20AVA%20M%C3%B6belhaus." target="_blank" rel="noopener">0751 497 524</a></div></div>
+            <div class="contact-item"><svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2z"/></svg><div><strong>WhatsApp</strong><a class="underline underline-offset-4 text-primary" href="https://wa.me/40751497524?text=Bun%C4%83%20ziua%21%20A%C8%99%20dori%20detalii%20despre%20mobilierul%20disponibil%20la%20AVA%20M%C3%B6belhaus." target="_blank" rel="noopener">0751 497 524</a></div></div>
           </div>
           <a class="btn btn-wa" href="https://wa.me/40751497524?text=Bun%C4%83%20ziua%21%20A%C8%99%20dori%20detalii%20despre%20mobilierul%20disponibil%20la%20AVA%20M%C3%B6belhaus." target="_blank" rel="noopener">Scrie pe WhatsApp <span aria-hidden="true">↗</span></a>
         </div>
@@ -317,7 +326,7 @@
   </main>
 
   <footer class="site-footer reveal">
-    <div class="page-container footer-grid"><img class="footer-logo" src="logo.png" alt="AVA Möbelhaus — siglă demonstrativă"><div class="footer-contact"><a href="https://wa.me/40751497524?text=Bun%C4%83%20ziua%21%20A%C8%99%20dori%20detalii%20despre%20mobilierul%20disponibil%20la%20AVA%20M%C3%B6belhaus." target="_blank" rel="noopener">WhatsApp · 0751 497 524</a><a href="tel:+40751497524">Telefon · 0751 497 524</a><span>Gilău, Ferma 8, Hala 12</span><a href="https://www.facebook.com/mobilaoutletclujava" target="_blank" rel="noopener">Facebook · AVA Möbelhaus</a></div><p class="footer-note">Piese pentru living și dormitor, văzute înainte să le alegi.</p></div>
+    <div class="page-container footer-grid"><div class="footer-brand"><strong>AVA Möbelhaus</strong><span>Showroom de mobilier · Gilău</span></div><div class="footer-contact"><a href="https://wa.me/40751497524?text=Bun%C4%83%20ziua%21%20A%C8%99%20dori%20detalii%20despre%20mobilierul%20disponibil%20la%20AVA%20M%C3%B6belhaus." target="_blank" rel="noopener">WhatsApp · 0751 497 524</a><a href="tel:+40751497524">Telefon · 0751 497 524</a><span>Gilău, Ferma 8, Hala 12</span><a href="https://www.facebook.com/mobilaoutletclujava" target="_blank" rel="noopener">Facebook · AVA Möbelhaus</a></div><p class="footer-note">Mobilier pentru living și dormitor, în showroomul din Gilău.</p></div>
     <div class="page-container footer-disclaimer">Propunere de website — demonstrație realizată de Calin Botean · WhatsApp +40 741 181 795. Acest site nu este publicat oficial.</div>
   </footer>
 
@@ -344,7 +353,18 @@
     (function(){
       var ids=['top','produse','servicii','recenzii','contact'],links=Array.from(document.querySelectorAll('.nav-link'));if(!('IntersectionObserver' in window))return;var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){links.forEach(function(link){link.classList.toggle('is-active',link.dataset.target===entry.target.id)})}})},{rootMargin:'-42% 0px -48% 0px',threshold:0});ids.forEach(function(id){observer.observe(document.getElementById(id))});
     }());
-    (function(){var marquee=document.getElementById('productMarquee');marquee.addEventListener('touchstart',function(){marquee.classList.add('is-paused')},{passive:true});marquee.addEventListener('touchend',function(){marquee.classList.remove('is-paused')},{passive:true})}());
+    (function(){
+      var rail=document.getElementById('productMarquee'),firstGroup=rail.querySelector('.product-rail-group'),reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches,last=0,pausedUntil=0,pointerId=null,startX=0,startLeft=0,autoLeft=rail.scrollLeft;
+      function groupWidth(){return firstGroup.getBoundingClientRect().width+18}
+      function pause(){pausedUntil=performance.now()+2400}
+      function normalize(){var width=groupWidth();if(width&&autoLeft>=width*2){autoLeft-=width}rail.scrollLeft=autoLeft}
+      function autoScroll(time){if(!last)last=time;var elapsed=time-last;last=time;if(!reduced&&document.visibilityState==='visible'&&time>pausedUntil){autoLeft+=elapsed*.024;normalize()}window.requestAnimationFrame(autoScroll)}
+      rail.addEventListener('pointerdown',function(event){pointerId=event.pointerId;startX=event.clientX;startLeft=rail.scrollLeft;autoLeft=startLeft;rail.setPointerCapture(pointerId);rail.classList.add('is-dragging');pause()});
+      rail.addEventListener('pointermove',function(event){if(event.pointerId!==pointerId)return;autoLeft=startLeft-(event.clientX-startX);rail.scrollLeft=autoLeft;pause()});
+      function release(event){if(event.pointerId!==pointerId)return;rail.releasePointerCapture(pointerId);pointerId=null;rail.classList.remove('is-dragging');autoLeft=rail.scrollLeft;pause();normalize()}
+      rail.addEventListener('pointerup',release);rail.addEventListener('pointercancel',release);rail.addEventListener('wheel',function(){pause();window.setTimeout(function(){autoLeft=rail.scrollLeft},0)},{passive:true});rail.addEventListener('touchstart',pause,{passive:true});
+      window.requestAnimationFrame(autoScroll);
+    }());
   </script>
 </body>
 </html>

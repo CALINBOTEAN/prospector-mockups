@@ -1,4 +1,7 @@
 data/pipeline*.csv
 data/scan_*.csv
+AGENTS.md
+CLAUDE.md
+STATUS.md
 .claude/settings.local.json
 mockups/experiment-*
