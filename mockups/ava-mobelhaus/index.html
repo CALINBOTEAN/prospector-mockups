@@ -97,13 +97,13 @@
     .feature-card h2{margin:0 0 5px;font-size:.95rem;font-weight:700}
     .feature-card p{margin:0;color:var(--c-muted);font-size:.84rem;line-height:1.55}
     .product-stage{overflow:hidden;padding-bottom:8px}
-    .product-rail{overflow-x:auto;overflow-y:hidden;margin-top:42px;padding:2px max(24px,calc((100vw - 1180px)/2)) 18px;cursor:grab;scrollbar-color:rgba(181,118,42,.65) transparent;scrollbar-width:thin;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;user-select:none}
+    .product-rail{overflow-x:auto;overflow-y:hidden;margin-top:42px;padding:2px max(24px,calc((100vw - 1180px)/2)) 18px;cursor:grab;scrollbar-color:rgba(181,118,42,.65) transparent;scrollbar-width:thin;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;user-select:none}
     .product-rail.is-dragging{cursor:grabbing}
     .product-rail-track,.product-rail-group{display:flex;gap:18px;width:max-content}
     .product-rail-group{padding-right:18px}
     .product-tile{width:300px;flex:none;overflow:hidden;border:1px solid rgba(59,42,29,.09);border-radius:var(--radius-md);background:#fff;box-shadow:0 8px 22px rgba(59,42,29,.07);transition:transform var(--ease),box-shadow var(--ease)}
     .product-tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift)}
-    .product-tile img{width:100%;height:262px;object-fit:cover;transition:transform 350ms ease-out}
+    .product-tile img{width:100%;height:262px;object-fit:cover;pointer-events:none;-webkit-user-drag:none;transition:transform 350ms ease-out}
     .product-tile:hover img{transform:scale(1.03)}
     .product-tile p{margin:0;padding:16px 18px;color:var(--c-primary);font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:600}
     .service-panel{border-radius:var(--radius-lg);background:var(--c-bg-alt);box-shadow:inset 0 0 0 1px rgba(59,42,29,.05);padding:clamp(28px,5vw,64px)}
@@ -149,15 +149,15 @@
     .map-card iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
     .map-fallback{position:absolute;bottom:16px;left:16px;z-index:2;border-radius:999px;background:rgba(253,251,247,.95);padding:10px 14px;color:var(--c-primary);font-size:.82rem;font-weight:700;text-decoration:none;box-shadow:var(--shadow-soft)}
     .map-fallback:hover{color:var(--c-accent)}
-    .site-footer{background:var(--c-bg-alt);color:var(--c-muted);padding:66px 0 86px;border-top:1px solid rgba(59,42,29,.08)}
-    .footer-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
-    .footer-brand{display:grid;gap:7px;color:var(--c-primary)}
-    .footer-brand strong{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:600;letter-spacing:-.03em}
-    .footer-brand span{color:var(--c-muted);font-size:.86rem}
+    .site-footer{background:#17120E;color:rgba(253,251,247,.72);padding:66px 0 86px;border-top:1px solid rgba(217,154,69,.28)}
+    .footer-grid{display:grid;grid-template-columns:.85fr 1.1fr .95fr;gap:48px;align-items:center}
+    .footer-brand{display:grid;gap:13px;color:#fff}
+    .footer-logo{width:min(218px,100%);height:auto;border-radius:7px}
+    .footer-brand span{color:rgba(253,251,247,.66);font-size:.86rem}
     .footer-contact{display:grid;gap:10px;font-size:.86rem;line-height:1.5}
-    .footer-contact a{color:var(--c-primary);text-decoration:none}.footer-contact a:hover{color:var(--c-accent)}
-    .footer-note{margin:0;color:var(--c-primary);font-family:'Playfair Display',serif;font-size:1.35rem;line-height:1.35}
-    .footer-disclaimer{margin-top:34px;border-top:1px solid rgba(59,42,29,.13);padding-top:20px;color:var(--c-muted);font-size:.76rem;line-height:1.55}
+    .footer-contact a{color:#fff;text-decoration:none}.footer-contact a:hover{color:var(--c-accent2)}
+    .footer-note{margin:0;color:#fff;font-family:'Playfair Display',serif;font-size:1.35rem;line-height:1.35}
+    .footer-disclaimer{margin-top:34px;border-top:1px solid rgba(253,251,247,.18);padding-top:20px;color:rgba(253,251,247,.62);font-size:.76rem;line-height:1.55}
     .sticky-bar{display:none}
     .reveal,.reveal-left,.reveal-right{opacity:0;transition:opacity 260ms ease-out,transform 260ms ease-out}.reveal{transform:translateY(20px)}.reveal-left{transform:translateX(-24px)}.reveal-right{transform:translateX(24px)}.is-visible{opacity:1;transform:none}
     @media (max-width:900px){
@@ -326,7 +326,7 @@
   </main>
 
   <footer class="site-footer reveal">
-    <div class="page-container footer-grid"><div class="footer-brand"><strong>AVA Möbelhaus</strong><span>Showroom de mobilier · Gilău</span></div><div class="footer-contact"><a href="https://wa.me/40751497524?text=Bun%C4%83%20ziua%21%20A%C8%99%20dori%20detalii%20despre%20mobilierul%20disponibil%20la%20AVA%20M%C3%B6belhaus." target="_blank" rel="noopener">WhatsApp · 0751 497 524</a><a href="tel:+40751497524">Telefon · 0751 497 524</a><span>Gilău, Ferma 8, Hala 12</span><a href="https://www.facebook.com/mobilaoutletclujava" target="_blank" rel="noopener">Facebook · AVA Möbelhaus</a></div><p class="footer-note">Mobilier pentru living și dormitor, în showroomul din Gilău.</p></div>
+    <div class="page-container footer-grid"><div class="footer-brand"><img class="footer-logo" src="logo.png" alt="AVA Möbelhaus — siglă demonstrativă"><span>Showroom de mobilier · Gilău</span></div><div class="footer-contact"><a href="https://wa.me/40751497524?text=Bun%C4%83%20ziua%21%20A%C8%99%20dori%20detalii%20despre%20mobilierul%20disponibil%20la%20AVA%20M%C3%B6belhaus." target="_blank" rel="noopener">WhatsApp · 0751 497 524</a><a href="tel:+40751497524">Telefon · 0751 497 524</a><span>Gilău, Ferma 8, Hala 12</span><a href="https://www.facebook.com/mobilaoutletclujava" target="_blank" rel="noopener">Facebook · AVA Möbelhaus</a></div><p class="footer-note">Mobilier pentru living și dormitor, în showroomul din Gilău.</p></div>
     <div class="page-container footer-disclaimer">Propunere de website — demonstrație realizată de Calin Botean · WhatsApp +40 741 181 795. Acest site nu este publicat oficial.</div>
   </footer>
 
@@ -354,15 +354,20 @@
       var ids=['top','produse','servicii','recenzii','contact'],links=Array.from(document.querySelectorAll('.nav-link'));if(!('IntersectionObserver' in window))return;var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){links.forEach(function(link){link.classList.toggle('is-active',link.dataset.target===entry.target.id)})}})},{rootMargin:'-42% 0px -48% 0px',threshold:0});ids.forEach(function(id){observer.observe(document.getElementById(id))});
     }());
     (function(){
-      var rail=document.getElementById('productMarquee'),firstGroup=rail.querySelector('.product-rail-group'),reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches,last=0,pausedUntil=0,pointerId=null,startX=0,startLeft=0,autoLeft=rail.scrollLeft;
+      var rail=document.getElementById('productMarquee'),firstGroup=rail.querySelector('.product-rail-group'),reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches,last=0,isPaused=false,pauseTimer=0,mouseDown=false,startX=0,startLeft=0,dragged=false,autoLeft=rail.scrollLeft;
       function groupWidth(){return firstGroup.getBoundingClientRect().width+18}
-      function pause(){pausedUntil=performance.now()+2400}
-      function normalize(){var width=groupWidth();if(width&&autoLeft>=width*2){autoLeft-=width}rail.scrollLeft=autoLeft}
-      function autoScroll(time){if(!last)last=time;var elapsed=time-last;last=time;if(!reduced&&document.visibilityState==='visible'&&time>pausedUntil){autoLeft+=elapsed*.024;normalize()}window.requestAnimationFrame(autoScroll)}
-      rail.addEventListener('pointerdown',function(event){pointerId=event.pointerId;startX=event.clientX;startLeft=rail.scrollLeft;autoLeft=startLeft;rail.setPointerCapture(pointerId);rail.classList.add('is-dragging');pause()});
-      rail.addEventListener('pointermove',function(event){if(event.pointerId!==pointerId)return;autoLeft=startLeft-(event.clientX-startX);rail.scrollLeft=autoLeft;pause()});
-      function release(event){if(event.pointerId!==pointerId)return;rail.releasePointerCapture(pointerId);pointerId=null;rail.classList.remove('is-dragging');autoLeft=rail.scrollLeft;pause();normalize()}
-      rail.addEventListener('pointerup',release);rail.addEventListener('pointercancel',release);rail.addEventListener('wheel',function(){pause();window.setTimeout(function(){autoLeft=rail.scrollLeft},0)},{passive:true});rail.addEventListener('touchstart',pause,{passive:true});
+      function pause(){isPaused=true;window.clearTimeout(pauseTimer);pauseTimer=window.setTimeout(function(){isPaused=false;autoLeft=rail.scrollLeft},2400)}
+      function normalize(){var width=groupWidth();if(width&&autoLeft>=width*2){autoLeft-=width}else if(width&&autoLeft<0){autoLeft+=width}rail.scrollLeft=autoLeft}
+      function moveTo(clientX){var delta=clientX-startX;if(Math.abs(delta)>3)dragged=true;autoLeft=startLeft-delta;normalize();pause()}
+      function finishDrag(){if(!mouseDown)return;mouseDown=false;rail.classList.remove('is-dragging');autoLeft=rail.scrollLeft;pause();normalize()}
+      function autoScroll(time){if(!last)last=time;var elapsed=time-last;last=time;if(!reduced&&!mouseDown&&!isPaused&&document.visibilityState==='visible'){autoLeft+=elapsed*.024;normalize()}window.requestAnimationFrame(autoScroll)}
+      rail.addEventListener('mousedown',function(event){if(event.button!==0)return;mouseDown=true;dragged=false;startX=event.clientX;startLeft=rail.scrollLeft;autoLeft=startLeft;rail.classList.add('is-dragging');pause();event.preventDefault()});
+      window.addEventListener('mousemove',function(event){if(!mouseDown)return;moveTo(event.clientX);event.preventDefault()});
+      window.addEventListener('mouseup',finishDrag);
+      rail.addEventListener('dragstart',function(event){event.preventDefault()});
+      rail.addEventListener('click',function(event){if(!dragged)return;event.preventDefault();event.stopPropagation();dragged=false},true);
+      rail.addEventListener('wheel',function(){pause();window.setTimeout(function(){autoLeft=rail.scrollLeft},0)},{passive:true});
+      rail.addEventListener('touchstart',pause,{passive:true});rail.addEventListener('touchend',function(){window.setTimeout(function(){autoLeft=rail.scrollLeft;pause();normalize()},0)},{passive:true});
       window.requestAnimationFrame(autoScroll);
     }());
   </script>
