@@ -10,6 +10,12 @@ Turn a raw `scan_*.csv` into a ranked shortlist and update
 `data/pipeline.csv`. Ruthless filtering here protects the two scarcest
 resources downstream: build hours (Agent 3) and outreach attention (Agent 4).
 
+## Backup (mandatory, first action)
+
+Before any append or status change to `data/pipeline.csv`, write a dated
+backup `data/pipeline_backup_YYYY-MM-DD.csv` if one does not already exist
+for today. This is unconditional, not a weekly-rhythm item.
+
 ## Hard gates (fail any = discard)
 
 1. `website_status` is `none` or `social_only`.

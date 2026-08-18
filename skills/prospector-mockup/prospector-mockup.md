@@ -99,6 +99,29 @@ content-specific stylistic choice tied to the reference's own industry.
 Typography and color stay grounded in this business's actual category
 shell, decided independently of what the reference used.
 
+**Visual/motion direction (part of Step 2, effective 2026-08-18).** Beyond
+the reference screenshots, this is also where Calin describes any visual
+or motion behaviour he wants — scrolling patterns, carousel style, ambient
+animation, and similar — and where Claude should proactively offer 2-3
+premium options with a one-line trade-off for each, rather than waiting to
+be asked. Decide and record this now, before Step 3, especially for
+anything that would deviate from the standing template's default
+hero/carousel mechanics (see Step 3's note on `assets/template.html` being
+the fixed architecture). Deciding it here avoids the exact costly pattern
+the AVA Möbelhaus product rail hit: several rounds of post-build fixes
+chasing a smoothness/behaviour target that was never pinned down up front.
+If Calin wants a genuinely new motion pattern (e.g. AVA's continuous
+auto-scrolling product rail, built with a pure CSS `@keyframes`/`transform`
+animation rather than JS `scrollLeft` writes, which is the smoother and
+now-proven approach for this kind of ambient motion), agree the concept
+here so Step 3 builds it once, correctly, instead of iterating on it after
+delivery. Step 3 (the build) must not begin until Calin has explicitly
+signed off the motion/animation direction in Step 2. If Step 3 is
+requested without a recorded Step 2 sign-off, stop and ask for it. This
+gate exists because discovering motion direction through post-build fixes
+is the single most expensive failure mode observed to date (AVA
+product-rail saga, 2026-08-18).
+
 Confirm the references have been reviewed and describe, in a few
 sentences, exactly which structural elements are being taken from them.
 Then stop and wait for "done" before Step 3.
@@ -156,6 +179,14 @@ Show the finished result — screenshots on both desktop and mobile — and
 stop. Do not update `data/pipeline.csv`; Calin confirms and updates it
 himself after reviewing.
 
+### Build effort logging (mandatory)
+
+When a mockup reaches `BUILT`, record in that lead's `notes` field in
+`data/pipeline.csv` a build-effort entry in the form
+`effort: ~Xh / Y prompt-rounds` — a rough estimate is fine, omission is
+not. This feeds the pilot review's cost-per-mockup analysis alongside
+reply-rate data.
+
 ## Folder structure (standing convention, effective 2026-08-16)
 
 Every mockup is self-contained in its own folder — nothing about a lead's
@@ -175,6 +206,10 @@ mockups/{slug}/references/         Step 2 structural reference screenshots
                                     (ref-1.png, ref-2.png, ref-3.png) —
                                     inspiration only, never shipped/linked
                                     from the live page
+mockups/{slug}/outreach/           real device-view screenshots of the
+                                    finished, live page, sent alongside the
+                                    WhatsApp link — see prospector-outreach
+                                    for what goes in it and when it's built
 ```
 
 Build straight into this structure from the start — create the folder and
@@ -590,3 +625,9 @@ Pages deploys automatically), and instruct: update the pipeline row to
 `status=BUILT` with `mockup_url` set to
 `https://calinbotean.github.io/prospector-mockups/mockups/{slug}/`, then run
 prospector-outreach.
+
+**After delivery, small fixes default to a direct Claude edit, not a new
+Codex prompt** — see CLAUDE.md's "Post-build fixes — division of labor"
+section. Reserve a full re-read-and-rebuild Codex prompt for a genuinely
+new build or a structural/template change, not a copy tweak or a CSS
+nudge.

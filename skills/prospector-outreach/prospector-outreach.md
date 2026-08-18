@@ -10,6 +10,12 @@ Convert a built mockup into a reply, then a meeting — entirely by text.
 No phone calls at any stage. This agent drafts every message; **the human
 sends everything personally**, from their own WhatsApp number.
 
+## Backup (mandatory, first action)
+
+Before any append or status change to `data/pipeline.csv`, write a dated
+backup `data/pipeline_backup_YYYY-MM-DD.csv` if one does not already exist
+for today. This is unconditional, not a weekly-rhythm item.
+
 ## Channel strategy (ranked)
 
 1. **WhatsApp direct** — default and primary channel. Personal, high open
@@ -75,6 +81,22 @@ concrete detail from the Maps listing or reviews)
 opened with "Bună ziua! V-am scris aici pentru că am văzut pagina de
 Facebook a {Firma}."
 
+## Screenshots (standing rule, effective 2026-08-18)
+
+Most leads will only ever open the demo link on a phone. Before the first
+WhatsApp send, put 2-3 real device-view screenshots of the finished, live
+page into `mockups/{slug}/outreach/` (create the folder if it doesn't
+already exist) — hero, one product/services view, and one more section
+that sells the page well (about/trust/reviews). Name them descriptively,
+e.g. `whatsapp-1-hero.png`, `whatsapp-2-produse.png`,
+`whatsapp-3-despre.png`. Send these alongside the WhatsApp text and link,
+in the same message flow — they let the prospect see what the phone
+experience actually looks like without needing to tap through first, which
+matters more for this channel than for a desktop-first cold email. This
+folder holds everything sent with that particular WhatsApp send, so if a
+later follow-up (Template 2/3) needs different or updated screenshots,
+add them here too rather than creating a second folder.
+
 ## Objection handling (all in text — no call fallback)
 
 - **"Am pagină de Facebook."** — "Excelent, pagina rămâne și este importantă.
@@ -109,6 +131,7 @@ volume through the same approach.
 Update the lead's row in `data/pipeline.csv`:
 `status` (CONTACTED → FOLLOWUP_1 → FOLLOWUP_2 → MEETING → WON / LOST),
 `date_contacted`, `next_action_date` (+3 or +7 days), and a short note
-(channel used, outcome, any objection verbatim). After Template 3 with no
+(channel used, outcome, any objection verbatim, and whether screenshots
+from `mockups/{slug}/outreach/` were sent). After Template 3 with no
 reply → `LOST`, schedule demo takedown per Agent 3, and a single re-approach
 is permitted after 6 months.
