@@ -33,11 +33,19 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Prepare public site scope
+        run: |
+          mkdir -p _site/mockups
+          cp -r mockups/. _site/mockups/
+          cp .nojekyll _site/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Upload only the public mockups/ tree, at _site/mockups/ so the
+          # deployed URL keeps its existing /mockups/<slug>/ path — keeps
+          # internal docs (CLAUDE.md, AGENTS.md, STATUS.md, skills/, data/,
+          # scripts/) out of the live public site.
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
